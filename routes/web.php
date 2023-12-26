@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 // Usando Vista Controlador
 Route::get('/categorias','App\Http\Controllers\CategoriesController@index');
+
+Route::get('/','App\Http\Controllers\HomeController@index');
