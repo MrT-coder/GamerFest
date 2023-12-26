@@ -45,6 +45,9 @@
                     </svg>
                 </div>
 
+<!-- Grupo 5 -->
+<div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Somos el Grupo 5</div>
+
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
