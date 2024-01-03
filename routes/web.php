@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Usando Vista Controlador
-Route::get('/categorias','App\Http\Controllers\CategoriesController@index');
+//oute::get('/categorias','App\Http\Controllers\CategoriesController@index');
 
-Route::get('/','App\Http\Controllers\HomeController@index');
+//Route::get('/','App\Http\Controllers\HomeController@index');
+
+Route::view('/primeros-pasos', 'sections.primeros-pasos');
