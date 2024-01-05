@@ -25,6 +25,4 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    //Route::get('/profile',[UsuarioController::class,'profile']);
-    Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 });
