@@ -26,13 +26,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     //Route::get('/profile',[UsuarioController::class,'profile']);
-<<<<<<< Updated upstream
     Route::get('/profile', 'App\Http\Controllers\UsuarioController@profile');
-=======
-<<<<<<< HEAD
-    Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
-=======
-    Route::get('/profile', 'App\Http\Controllers\UsuarioController@profile');
->>>>>>> 1b3a0299d3a2fd1e7f4ca841884b9a881f9bff60
->>>>>>> Stashed changes
 });
