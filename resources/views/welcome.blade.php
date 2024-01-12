@@ -9,14 +9,14 @@
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
- <link href="{{ asset( 'css/app.css' ) }}" rel="stylesheet"> 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset( 'css/app.css' ) }}" rel="stylesheet">
 
 </head>
-
 @component('vistas.nav')@endcomponent
+
 <body class="antialiased">
-    
+
     <!-- BIENVENIDA -->
     <div class="text-center bg-gray-800 text-white p-8">
         <h1 class="text-4xl font-bold mb-4">Bienvenido al mejor evento de videojuegos del Ecuador</h1>
