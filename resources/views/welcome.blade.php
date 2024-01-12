@@ -13,132 +13,133 @@
     <link href="{{ asset( 'css/app.css' ) }}" rel="stylesheet">
 
 </head>
+
+
 @component('vistas.nav')@endcomponent
 
-<body class="antialiased">
+<body class="antialiased bg-gray-800">
+
 
     <!-- BIENVENIDA -->
-    <div class="text-center bg-gray-800 text-white p-8">
-        <h1 class="text-4xl font-bold mb-4">Bienvenido al mejor evento de videojuegos del Ecuador</h1>
-        <p class="text-lg mb-6">
-            Sumérgete en la emoción digital: Bienvenido al epicentro gamer, el mejor evento de videojuegos del Ecuador!
-        </p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">VER MÁS</button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ">INGRESAR</button>
+    <div class="flex items-center justify-center h-full bg-gray-800 text-white">
+        <div class="p-56 text-center w-9/12">
+            <h1 class="text-5xl font-bold mb-4">Bienvenido al mejor evento de videojuegos del Ecuador</h1>
+            <p class="text-2xl mb-6 ">
+                Sumérgete en la emoción digital: Bienvenido al epicentro gamer, el mejor evento de videojuegos del
+                Ecuador!
+            </p>
+            <button class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-1/5">VER
+                MÁS</button>
+            <button
+                class=" hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ml-2 w-1/5 border-solid border-4 border-gray-600">INGRESAR</button>
+        </div>
     </div>
 
+<hr>
     <!-- JUEGOS -->
-    <div class="flex flex-row pt-8">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <img class="w-full" src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg"
-                alt=Fornite">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">FORTNITE</div>
-                <p class="text-gray-700 text-base ">
-                    Fortnite es un juego de Battle Royale que combina construcción y disparos. Los
-                    jugadores
-                    luchan entre sí para ser el último superviviente en un mapa que disminuye constantemente. La
-                    construcción de estructuras para protegerse y la colaboración en equipo son elementos clave.
-                </p>
-            </div>
+    <div class="flex flex-row pt-8 h-screen m-4 text-white items-center justify-center h-full ">
+
+        <div class="hover:scale-110 mr-4 ">
+            <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fifa 23" class="w-56 h-64 ">
+            <p class="text-center">
+                <b>FORTNITE</b>
+            </p>
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
+            Fortnite es un juego de Battle Royale que combina construcción y disparos. 
+            </p>
         </div>
 
-        <div class="w-1-5 overlay mr-4">
-            <img src="https://sm.ign.com/ign_es/screenshot/default/image003_ksqr.png" alt="Fifa 23" class="w-1-5 mr-4">
+        <div class="hover:scale-110  mr-4">
+            <img src="https://sm.ign.com/ign_es/screenshot/default/image003_ksqr.png" alt="Fifa 23"  class="w-56 h-64">
             <p class="text-center">
                 <b>FIFA 23</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 FIFA 23 es un juego de simulación de fútbol que recrea la experiencia del deporte en un
-                entorno virtual. Los jugadores pueden controlar equipos y participar en partidos realistas. FIFA es
-                conocido por sus gráficos impresionantes, jugabilidad auténtica y modos de juego variados, incluyendo
-                carreras de jugadores y gestión de equipos.
+                entorno virtual. 
             </p>
         </div>
 
-        <div class="w-1-5 overlay mr-4">
+        <div class="hover:scale-110 mr-4">
             <img src="https://theme.zdassets.com/theme_assets/43400/87a1ef48e43b8cf114017e3ad51b801951b20fcf.jpg"
-                alt="LOL" class="w-1-5 mr-4">
+                alt="LOL"  class="w-56 h-64">
             <p class="text-center">
                 <b>LEAGUE OF LEGENDS</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 League of Legends es un MOBA en el que dos equipos compiten para destruir la base del otro.
-                Los jugadores seleccionan campeones con habilidades únicas y trabajan en equipo para conquistar
-                territorio y derrotar a los oponentes. Es conocido por su gran comunidad y escena competitiva.
+
             </p>
         </div>
-        <div class="w-1-5 overlay mr-4">
+
+        <div class="hover:scale-110  mr-4">
             <img src="https://assetsio.reedpopcdn.com/co1mb7.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp"
-                alt="Clash Royal" class="w-1-5 mr-4">
+                alt="Clash Royal"  class="w-56 h-64">
             <p class="text-center">
                 <b>CLASH ROYALE</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 Clash Royale combina elementos de juegos de cartas coleccionables, defensa de torres y
-                estrategia en tiempo real. Los jugadores construyen mazos de cartas, despliegan unidades y hechizos en
-                un campo de juego, y luchan contra sus oponentes para destruir torres y el castillo del rey.
+                estrategia en tiempo real. 
             </p>
         </div>
-        <div class="w-1-5 overlay mr-4">
+        <div class="hover:scale-110 mr-4">
             <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant" class="w-1-5">
+                alt="Valorant"  class="w-56 h-64">
             <p class="text-center">
                 <b>VALORANT</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. Cada jugador elige un personaje con habilidades únicas, lo que agrega un elemento
-                estratégico. El juego se destaca por su énfasis en la precisión y el trabajo en equipo.
+                objetivos. 
             </p>
         </div>
 
-        <div class="w-1-5 overlay mr-4">
+        <div class="hover:scale-110 mr-4">
             <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant" class="w-1-5">
+                alt="Valorant"  class="w-56 h-64">
             <p class="text-center">
                 <b>VALORANT</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. Cada jugador elige un personaje con habilidades únicas, lo que agrega un elemento
-                estratégico. El juego se destaca por su énfasis en la precisión y el trabajo en equipo.
+                objetivos. 
             </p>
         </div>
-        <div class="w-1-5 overlay mr-4">
+        <div class="hover:scale-110  mr-4">
             <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant" class="w-1-5">
+                alt="Valorant"  class="w-56 h-64">
             <p class="text-center">
                 <b>VALORANT</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. Cada jugador elige un personaje con habilidades únicas, lo que agrega un elemento
-                estratégico. El juego se destaca por su énfasis en la precisión y el trabajo en equipo.
+                objetivos.
             </p>
         </div>
 
-        <div class="w-1-5 overlay mr-4">
+        <div class="hover:scale-110  mr-4">
             <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant" class="w-1-5">
+                alt="Valorant"  class="w-56 h-64">
             <p class="text-center">
                 <b>VALORANT</b>
             </p>
-            <p class="description">
+            <p class="opacity-0 hover:opacity-100 text-center text-sm">
                 Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. Cada jugador elige un personaje con habilidades únicas, lo que agrega un elemento
-                estratégico. El juego se destaca por su énfasis en la precisión y el trabajo en equipo.
+                objetivos.
             </p>
         </div>
 
     </div>
 
+    <hr>
     <!-- INSCRIPCIÓN -->
     <div class="text-center bg-gray-800 text-white p-8 mt-8">
         <h2 class="text-2xl font-bold mb-4">Inscríbete ahora</h2>
-        <p class="text-lg mb-6">TIMER</p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">INGRESAR</button>
+        <p class="text-lg mb-6">Quedan 5 días, 8 horas y 11 segundos.</p>
+        <button class="border-solid border-4 border-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">INGRESAR</button>
     </div>
 
 </body>
+
 </html>

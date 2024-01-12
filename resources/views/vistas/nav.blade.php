@@ -43,9 +43,9 @@
                 </div>
 
                 <div class="flex items-center py-2 -mx-1 md:mx-0">
-                    <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-gray-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-2 md:w-auto"
+                    <a class="block w-1/2 px-3 py-2 mx-1 rounded-full text-center text-sm bg-gray-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-2 md:w-auto"
                         href="{{ route('login') }}">Ingresar</a>
-                    <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-blue-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto"
+                    <a class="block w-1/2 px-3 py-2 mx-1 rounded-full  text-center text-sm bg-gray-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto"
                         href="{{ route('register') }}">Registrarse</a>
                 </div>
 
