@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RolController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +28,3 @@ Route::middleware([
     //Route::get('/profile',[UsuarioController::class,'profile']);
     Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 });
-Route::resource('rols',RolController::class);
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
