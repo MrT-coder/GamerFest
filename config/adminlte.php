@@ -312,9 +312,9 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Rol',
-            'url'         => 'rols',
-            'icon'        => 'fa fa-bus',
+            'text'        => 'pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
         ],
