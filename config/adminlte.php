@@ -322,6 +322,11 @@ return [
             'url'         => '/usuarios',
             'icon'        => 'fa fa-user-plus',
         ],
+        [
+            'text'        => 'Juegos',
+            'url'         => '/juegos',
+            'icon'        => 'fa-solid fa-gamepad',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
