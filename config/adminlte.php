@@ -327,6 +327,11 @@ return [
             'url'         => '/juegos',
             'icon'        => 'fa-solid fa-gamepad',
         ],
+        [
+            'text'        => 'Comprobantes',
+            'url'         => '/comprobantes',
+            'icon'        => 'fa-solid fa-receipt',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

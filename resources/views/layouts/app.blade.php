@@ -42,6 +42,9 @@
                         <ul class="navbar-nav mr-auto">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/comprobantes') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Comprobantes</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/juegos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Juegos</a> 
                         </li>
                         </ul>
