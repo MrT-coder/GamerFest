@@ -332,6 +332,11 @@ return [
             'url'         => '/comprobantes',
             'icon'        => 'fa-solid fa-receipt',
         ],
+        [
+            'text'        => 'Partidas',
+            'url'         => '/partidas',
+            'icon'        => 'fa-solid fa-chess',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
