@@ -28,7 +28,6 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Partidas</th>
 								<th>Id Juegos</th>
 								<th>Id Usuarios</th>
 								<th>Salon</th>
@@ -43,7 +42,6 @@
 							@forelse($partidas as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_partidas }}</td>
 								<td>{{ $row->id_juegos }}</td>
 								<td>{{ $row->id_usuarios }}</td>
 								<td>{{ $row->salon }}</td>

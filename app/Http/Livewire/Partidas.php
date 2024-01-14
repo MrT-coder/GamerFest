@@ -18,7 +18,6 @@ class Partidas extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.partidas.view', [
             'partidas' => Partida::latest()
-						->orWhere('id_partidas', 'LIKE', $keyWord)
 						->orWhere('id_juegos', 'LIKE', $keyWord)
 						->orWhere('id_usuarios', 'LIKE', $keyWord)
 						->orWhere('salon', 'LIKE', $keyWord)
@@ -37,7 +36,6 @@ class Partidas extends Component
 	
     private function resetInput()
     {		
-		$this->id_partidas = null;
 		$this->id_juegos = null;
 		$this->id_usuarios = null;
 		$this->salon = null;
@@ -50,7 +48,6 @@ class Partidas extends Component
     public function store()
     {
         $this->validate([
-		'id_partidas' => 'required',
 		'id_juegos' => 'required',
 		'id_usuarios' => 'required',
 		'salon' => 'required',
@@ -61,7 +58,6 @@ class Partidas extends Component
         ]);
 
         Partida::create([ 
-			'id_partidas' => $this-> id_partidas,
 			'id_juegos' => $this-> id_juegos,
 			'id_usuarios' => $this-> id_usuarios,
 			'salon' => $this-> salon,
@@ -80,7 +76,6 @@ class Partidas extends Component
     {
         $record = Partida::findOrFail($id);
         $this->selected_id = $id; 
-		$this->id_partidas = $record-> id_partidas;
 		$this->id_juegos = $record-> id_juegos;
 		$this->id_usuarios = $record-> id_usuarios;
 		$this->salon = $record-> salon;
@@ -93,7 +88,6 @@ class Partidas extends Component
     public function update()
     {
         $this->validate([
-		'id_partidas' => 'required',
 		'id_juegos' => 'required',
 		'id_usuarios' => 'required',
 		'salon' => 'required',
@@ -106,7 +100,6 @@ class Partidas extends Component
         if ($this->selected_id) {
 			$record = Partida::find($this->selected_id);
             $record->update([ 
-			'id_partidas' => $this-> id_partidas,
 			'id_juegos' => $this-> id_juegos,
 			'id_usuarios' => $this-> id_usuarios,
 			'salon' => $this-> salon,

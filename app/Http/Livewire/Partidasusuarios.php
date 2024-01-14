@@ -18,7 +18,6 @@ class Partidasusuarios extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.partidasusuarios.view', [
             'partidasusuarios' => Partidasusuario::latest()
-						->orWhere('id_partidasusuarios', 'LIKE', $keyWord)
 						->orWhere('id_partidas', 'LIKE', $keyWord)
 						->orWhere('id_usuarios', 'LIKE', $keyWord)
 						->orWhere('gana', 'LIKE', $keyWord)
@@ -33,7 +32,6 @@ class Partidasusuarios extends Component
 	
     private function resetInput()
     {		
-		$this->id_partidasusuarios = null;
 		$this->id_partidas = null;
 		$this->id_usuarios = null;
 		$this->gana = null;
@@ -42,14 +40,12 @@ class Partidasusuarios extends Component
     public function store()
     {
         $this->validate([
-		'id_partidasusuarios' => 'required',
 		'id_partidas' => 'required',
 		'id_usuarios' => 'required',
 		'gana' => 'required',
         ]);
 
         Partidasusuario::create([ 
-			'id_partidasusuarios' => $this-> id_partidasusuarios,
 			'id_partidas' => $this-> id_partidas,
 			'id_usuarios' => $this-> id_usuarios,
 			'gana' => $this-> gana
@@ -64,7 +60,6 @@ class Partidasusuarios extends Component
     {
         $record = Partidasusuario::findOrFail($id);
         $this->selected_id = $id; 
-		$this->id_partidasusuarios = $record-> id_partidasusuarios;
 		$this->id_partidas = $record-> id_partidas;
 		$this->id_usuarios = $record-> id_usuarios;
 		$this->gana = $record-> gana;
@@ -73,7 +68,6 @@ class Partidasusuarios extends Component
     public function update()
     {
         $this->validate([
-		'id_partidasusuarios' => 'required',
 		'id_partidas' => 'required',
 		'id_usuarios' => 'required',
 		'gana' => 'required',
@@ -82,7 +76,6 @@ class Partidasusuarios extends Component
         if ($this->selected_id) {
 			$record = Partidasusuario::find($this->selected_id);
             $record->update([ 
-			'id_partidasusuarios' => $this-> id_partidasusuarios,
 			'id_partidas' => $this-> id_partidas,
 			'id_usuarios' => $this-> id_usuarios,
 			'gana' => $this-> gana

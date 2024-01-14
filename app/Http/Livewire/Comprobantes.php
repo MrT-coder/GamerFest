@@ -18,7 +18,6 @@ class Comprobantes extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.comprobantes.view', [
             'comprobantes' => Comprobante::latest()
-						->orWhere('id_comprobantes', 'LIKE', $keyWord)
 						->orWhere('id_usuarios', 'LIKE', $keyWord)
 						->orWhere('id_juegos', 'LIKE', $keyWord)
 						->orWhere('estado_pago', 'LIKE', $keyWord)
@@ -34,7 +33,6 @@ class Comprobantes extends Component
 	
     private function resetInput()
     {		
-		$this->id_comprobantes = null;
 		$this->id_usuarios = null;
 		$this->id_juegos = null;
 		$this->estado_pago = null;
@@ -44,7 +42,6 @@ class Comprobantes extends Component
     public function store()
     {
         $this->validate([
-		'id_comprobantes' => 'required',
 		'id_usuarios' => 'required',
 		'id_juegos' => 'required',
 		'estado_pago' => 'required',
@@ -52,7 +49,6 @@ class Comprobantes extends Component
         ]);
 
         Comprobante::create([ 
-			'id_comprobantes' => $this-> id_comprobantes,
 			'id_usuarios' => $this-> id_usuarios,
 			'id_juegos' => $this-> id_juegos,
 			'estado_pago' => $this-> estado_pago,
@@ -68,7 +64,6 @@ class Comprobantes extends Component
     {
         $record = Comprobante::findOrFail($id);
         $this->selected_id = $id; 
-		$this->id_comprobantes = $record-> id_comprobantes;
 		$this->id_usuarios = $record-> id_usuarios;
 		$this->id_juegos = $record-> id_juegos;
 		$this->estado_pago = $record-> estado_pago;
@@ -78,7 +73,6 @@ class Comprobantes extends Component
     public function update()
     {
         $this->validate([
-		'id_comprobantes' => 'required',
 		'id_usuarios' => 'required',
 		'id_juegos' => 'required',
 		'estado_pago' => 'required',
@@ -88,7 +82,6 @@ class Comprobantes extends Component
         if ($this->selected_id) {
 			$record = Comprobante::find($this->selected_id);
             $record->update([ 
-			'id_comprobantes' => $this-> id_comprobantes,
 			'id_usuarios' => $this-> id_usuarios,
 			'id_juegos' => $this-> id_juegos,
 			'estado_pago' => $this-> estado_pago,
