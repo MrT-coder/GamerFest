@@ -318,6 +318,16 @@ return [
             'icon'        => 'far  fa-user-circle',
         ],
         [
+            'text'        => 'Equipos',
+            'url'         => '/equipos',
+            'icon'        => 'far  fa-user-circle',
+        ],
+        [
+            'text'        => 'Integrantes',
+            'url'         => '/equipointegrantes',
+            'icon'        => 'far  fa-user-circle',
+        ],
+        [
             'text'        => 'Usuarios',
             'url'         => '/usuarios',
             'icon'        => 'fa fa-user-plus',
