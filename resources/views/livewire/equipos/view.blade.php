@@ -28,7 +28,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Equ</th>
+
 								<th>Nombre Equ</th>
 								<td>ACTIONS</td>
 							</tr>
@@ -37,7 +37,6 @@
 							@forelse($equipos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_equ }}</td>
 								<td>{{ $row->nombre_equ }}</td>
 								<td width="90">
 									<div class="dropdown">

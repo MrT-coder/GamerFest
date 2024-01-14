@@ -9,10 +9,6 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="id_equ_int"></label>
-                        <input wire:model="id_equ_int" type="text" class="form-control" id="id_equ_int" placeholder="Id Equ Int">@error('id_equ_int') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="id_usu"></label>
                         <input wire:model="id_usu" type="text" class="form-control" id="id_usu" placeholder="Id Usu">@error('id_usu') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>

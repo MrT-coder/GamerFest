@@ -18,7 +18,6 @@ class Equipointegrantes extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.equipointegrantes.view', [
             'equipointegrantes' => Equipointegrante::latest()
-						->orWhere('id_equ_int', 'LIKE', $keyWord)
 						->orWhere('id_usu', 'LIKE', $keyWord)
 						->orWhere('id_equ', 'LIKE', $keyWord)
 						->orWhere('isLider', 'LIKE', $keyWord)
@@ -42,14 +41,12 @@ class Equipointegrantes extends Component
     public function store()
     {
         $this->validate([
-		'id_equ_int' => 'required',
 		'id_usu' => 'required',
 		'id_equ' => 'required',
 		'isLider' => 'required',
         ]);
 
         Equipointegrante::create([ 
-			'id_equ_int' => $this-> id_equ_int,
 			'id_usu' => $this-> id_usu,
 			'id_equ' => $this-> id_equ,
 			'isLider' => $this-> isLider
@@ -64,7 +61,6 @@ class Equipointegrantes extends Component
     {
         $record = Equipointegrante::findOrFail($id);
         $this->selected_id = $id; 
-		$this->id_equ_int = $record-> id_equ_int;
 		$this->id_usu = $record-> id_usu;
 		$this->id_equ = $record-> id_equ;
 		$this->isLider = $record-> isLider;
@@ -73,7 +69,6 @@ class Equipointegrantes extends Component
     public function update()
     {
         $this->validate([
-		'id_equ_int' => 'required',
 		'id_usu' => 'required',
 		'id_equ' => 'required',
 		'isLider' => 'required',
@@ -82,7 +77,6 @@ class Equipointegrantes extends Component
         if ($this->selected_id) {
 			$record = Equipointegrante::find($this->selected_id);
             $record->update([ 
-			'id_equ_int' => $this-> id_equ_int,
 			'id_usu' => $this-> id_usu,
 			'id_equ' => $this-> id_equ,
 			'isLider' => $this-> isLider

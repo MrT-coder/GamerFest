@@ -8,10 +8,7 @@
             </div>
            <div class="modal-body">
 				<form>
-                    <div class="form-group">
-                        <label for="id_equ"></label>
-                        <input wire:model="id_equ" type="text" class="form-control" id="id_equ" placeholder="Id Equ">@error('id_equ') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+
                     <div class="form-group">
                         <label for="nombre_equ"></label>
                         <input wire:model="nombre_equ" type="text" class="form-control" id="nombre_equ" placeholder="Nombre Equ">@error('nombre_equ') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -38,10 +35,7 @@
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
-                    <div class="form-group">
-                        <label for="id_equ"></label>
-                        <input wire:model="id_equ" type="text" class="form-control" id="id_equ" placeholder="Id Equ">@error('id_equ') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+
                     <div class="form-group">
                         <label for="nombre_equ"></label>
                         <input wire:model="nombre_equ" type="text" class="form-control" id="nombre_equ" placeholder="Nombre Equ">@error('nombre_equ') <span class="error text-danger">{{ $message }}</span> @enderror

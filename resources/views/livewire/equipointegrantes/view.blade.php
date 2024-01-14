@@ -28,7 +28,6 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Equ Int</th>
 								<th>Id Usu</th>
 								<th>Id Equ</th>
 								<th>Islider</th>
@@ -39,7 +38,6 @@
 							@forelse($equipointegrantes as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_equ_int }}</td>
 								<td>{{ $row->id_usu }}</td>
 								<td>{{ $row->id_equ }}</td>
 								<td>{{ $row->isLider }}</td>
