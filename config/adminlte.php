@@ -317,6 +317,19 @@ return [
             'url'         => '/rols',
             'icon'        => 'far  fa-user-circle',
         ],
+
+        [
+            'text'        => 'Ingresos',
+            'url'         => '/ingresos',
+            'icon'        => 'fa-solid fa-dollar-sign',
+        ],
+        [
+            'text'        => 'Egresos',
+            'url'         => '/Egresos',
+            'icon'        => 'fa-solid fa-arrow-trend-down',
+        ],
+
+
         [
             'text'        => 'Usuarios',
             'url'         => '/usuarios',
