@@ -42,6 +42,9 @@
                         <ul class="navbar-nav mr-auto">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/partidasusuarios') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Partidasusuarios</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/partidas') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Partidas</a> 
                         </li>
 						<li class="nav-item">

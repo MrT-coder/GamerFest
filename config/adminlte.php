@@ -337,6 +337,11 @@ return [
             'url'         => '/partidas',
             'icon'        => 'fa-solid fa-chess',
         ],
+        [
+            'text'        => 'Partidas-Usuarios',
+            'url'         => '/partidasusuarios',
+            'icon'        => 'fa-solid fa-arrow-right-arrow-left',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
