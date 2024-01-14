@@ -28,3 +28,11 @@ Route::middleware([
     //Route::get('/profile',[UsuarioController::class,'profile']);
     Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Route Hooks - Do not delete//
+	Route::view('usuarios', 'livewire.usuarios.index')->middleware('auth');
+	Route::view('rols', 'livewire.rols.index')->middleware('auth');
