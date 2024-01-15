@@ -13,7 +13,6 @@ class EquipointegranteFactory extends Factory
     public function definition()
     {
         return [
-			'id_equ_int' => $this->faker->name,
 			'id_usu' => $this->faker->name,
 			'id_equ' => $this->faker->name,
 			'isLider' => $this->faker->name,

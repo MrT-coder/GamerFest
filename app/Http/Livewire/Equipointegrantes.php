@@ -11,7 +11,7 @@ class Equipointegrantes extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $id_equ_int, $id_usu, $id_equ, $isLider;
+    public $selected_id, $keyWord, $id_usu, $id_equ, $isLider;
 
     public function render()
     {
@@ -32,7 +32,6 @@ class Equipointegrantes extends Component
 	
     private function resetInput()
     {		
-		$this->id_equ_int = null;
 		$this->id_usu = null;
 		$this->id_equ = null;
 		$this->isLider = null;
