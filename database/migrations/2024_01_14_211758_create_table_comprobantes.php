@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('comprobantes', function (Blueprint $table) {
             $table->id('id_comprobantes');
             $table->unsignedBigInteger('id_usuarios');
-            $table->foreign('id_usuarios')->references('id_usuarios')->on('usuarios');
+            $table->foreign('id_usuarios')->references('id')->on('usuarios');
 
             $table->unsignedBigInteger('id_juegos');
             $table->foreign('id_juegos')->references('id_juegos')->on('juegos');

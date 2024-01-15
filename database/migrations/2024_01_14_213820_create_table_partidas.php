@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('id_juegos')->references('id_juegos')->on('juegos');
 
             $table->unsignedBigInteger('id_usuarios');
-            $table->foreign('id_usuarios')->references('id_usuarios')->on('usuarios');
+            $table->foreign('id_usuarios')->references('id')->on('usuarios');
 
             $table->string('salon', 255);
             $table->date('fecha');

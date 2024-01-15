@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('id_partidas')->references('id_partidas')->on('partidas');
 
             $table->unsignedBigInteger('id_usuarios');
-            $table->foreign('id_usuarios')->references('id_usuarios')->on('usuarios');
+            $table->foreign('id_usuarios')->references('id')->on('usuarios');
 
             $table->string('gana', 50);
             $table->timestamps();
