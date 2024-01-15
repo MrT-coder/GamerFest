@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table->id('id_equ');
+            $table->id();
             $table->string('nombre_equ',250);
             $table->timestamps();
         });

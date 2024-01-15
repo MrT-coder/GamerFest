@@ -11,8 +11,7 @@ class Equipos extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $id_equ, $nombre_equ;
-
+    public $selected_id, $keyWord, $nombre_equ;
 
     public function render()
     {

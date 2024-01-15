@@ -13,14 +13,14 @@ class Comprobante extends Model
 
     protected $table = 'comprobantes';
 
-    protected $fillable = ['id_comprobantes','id_usuarios','id_juegos','estado_pago','ruta_comprobante'];
+    protected $fillable = ['id_usuarios','id_juegos','estado_pago','ruta_comprobante'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function juego()
     {
-        return $this->hasOne('App\Models\Juego', 'id_juegos', 'id_juegos');
+        return $this->hasOne('App\Models\Juego', 'id', 'id_juegos');
     }
     
     /**
@@ -28,7 +28,7 @@ class Comprobante extends Model
      */
     public function usuario()
     {
-        return $this->hasOne('App\Models\Usuario', 'id_usuarios', 'id_usuarios');
+        return $this->hasOne('App\Models\Usuario', 'id', 'id_usuarios');
     }
     
 }
