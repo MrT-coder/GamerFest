@@ -9,15 +9,15 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="nombre_rol"></label>
-                        <input wire:model="nombre_rol" type="text" class="form-control" id="nombre_rol" placeholder="Nombre Rol">@error('nombre_rol') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="nombre_rol">Nombre del rol</label>
+                        <input wire:model="nombre_rol" type="text" class="form-control" id="nombre_rol" placeholder="Rol">@error('nombre_rol') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Crear</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success">Crear</button>
             </div>
         </div>
     </div>
@@ -28,22 +28,22 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Actualizar</h5>
+                <h5 class="modal-title" id="updateModalLabel">Actualizar rol</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="nombre_rol"></label>
-                        <input wire:model="nombre_rol" type="text" class="form-control" id="nombre_rol" placeholder="Nombre Rol">@error('nombre_rol') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="nombre_rol">Nombre del rol</label>
+                        <input wire:model="nombre_rol" type="text" class="form-control" id="nombre_rol" placeholder="Rol">@error('nombre_rol') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-warning">Guardar</button>
             </div>
        </div>
     </div>
