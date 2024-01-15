@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56b40573dedd358af509c3c834ebbcdd",
+    "content-hash": "380cf5193e1d560a2d57e696f69db9f9",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -7018,6 +7018,68 @@
                 "source": "https://github.com/mockery/mockery"
             },
             "time": "2023-12-10T02:24:34+00:00"
+        },
+        {
+            "name": "mrdebug/crudgen",
+            "version": "1.10.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/misterdebug/crud-generator-laravel.git",
+                "reference": "da7dac8aeb71502324007cc50e3f0d3c9c9d8c58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/misterdebug/crud-generator-laravel/zipball/da7dac8aeb71502324007cc50e3f0d3c9c9d8c58",
+                "reference": "da7dac8aeb71502324007cc50e3f0d3c9c9d8c58",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mrdebug\\Crudgen\\CrudgenServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mrdebug\\Crudgen\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Escarem",
+                    "email": "jonathan@labo-dev.fr"
+                }
+            ],
+            "description": "Create a Laravel Crud in a few seconds",
+            "keywords": [
+                "composer-package",
+                "crud",
+                "crud-generator",
+                "generator",
+                "laravel",
+                "laravel-crud",
+                "laravel-crud-generator",
+                "laravel-package",
+                "laravel10",
+                "laravel8",
+                "laravel9",
+                "rest",
+                "rest-api"
+            ],
+            "support": {
+                "issues": "https://github.com/misterdebug/crud-generator-laravel/issues",
+                "source": "https://github.com/misterdebug/crud-generator-laravel/tree/1.10.7"
+            },
+            "time": "2023-11-03T01:33:27+00:00"
         },
         {
             "name": "myclabs/deep-copy",

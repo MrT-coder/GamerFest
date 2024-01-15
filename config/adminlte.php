@@ -332,6 +332,26 @@ return [
             'url'         => '/usuarios',
             'icon'        => 'fa fa-user-plus',
         ],
+        [
+            'text'        => 'Juegos',
+            'url'         => '/juegos',
+            'icon'        => 'fa-solid fa-gamepad',
+        ],
+        [
+            'text'        => 'Comprobantes',
+            'url'         => '/comprobantes',
+            'icon'        => 'fa-solid fa-receipt',
+        ],
+        [
+            'text'        => 'Partidas',
+            'url'         => '/partidas',
+            'icon'        => 'fa-solid fa-chess',
+        ],
+        [
+            'text'        => 'Partidas-Usuarios',
+            'url'         => '/partidasusuarios',
+            'icon'        => 'fa-solid fa-arrow-right-arrow-left',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

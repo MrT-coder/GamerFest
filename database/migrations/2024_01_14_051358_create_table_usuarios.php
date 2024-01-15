@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->id(); // Esto crea una columna 'id' como clave primaria
+            $table->id('id_usuarios'); // Esto crea una columna 'id' como clave primaria
             $table->unsignedBigInteger('id_rol');
             $table->foreign('id_rol')->references('id')->on('rols');
             $table->string('nombre', 100);
