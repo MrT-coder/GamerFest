@@ -13,14 +13,22 @@ class Partida extends Model
 
     protected $table = 'partidas';
 
-    protected $fillable = ['id_partidas','id_juegos','id_usuarios','salon','fecha','hora_inicio','hora_fin','estado'];
+    protected $fillable = ['id_juegos','id_usuarios','salon','fecha','hora_inicio','hora_fin','estado'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function juego()
     {
-        return $this->hasOne('App\Models\Juego', 'id_juegos', 'id_juegos');
+        return $this->hasOne('App\Models\Juego', 'id', 'id_juegos');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function partidasusuarios()
+    {
+        return $this->hasMany('App\Models\Partidasusuario', 'id_partidas', 'id');
     }
     
     /**
@@ -28,7 +36,7 @@ class Partida extends Model
      */
     public function usuario()
     {
-        return $this->hasOne('App\Models\Usuario', 'id_usuarios', 'id_usuarios');
+        return $this->hasOne('App\Models\Usuario', 'id', 'id_usuarios');
     }
     
 }

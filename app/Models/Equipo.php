@@ -13,6 +13,14 @@ class Equipo extends Model
 
     protected $table = 'equipos';
 
-    protected $fillable = ['id_equ','nombre_equ'];
+    protected $fillable = ['nombre_equ'];
 	
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function equipointegrantes()
+    {
+        return $this->hasMany('App\Models\Equipointegrante', 'id_equ', 'id');
+    }
+    
 }

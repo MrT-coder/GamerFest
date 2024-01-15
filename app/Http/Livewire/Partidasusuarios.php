@@ -11,7 +11,7 @@ class Partidasusuarios extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $id_partidasusuarios, $id_partidas, $id_usuarios, $gana;
+    public $selected_id, $keyWord, $id_partidas, $id_usuarios, $gana;
 
     public function render()
     {
