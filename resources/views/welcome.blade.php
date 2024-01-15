@@ -25,8 +25,9 @@
         <div class="p-56 text-center w-9/12">
             <h1 class="text-5xl font-bold mb-4">Bienvenido al mejor evento de videojuegos del Ecuador</h1>
             <p class="text-2xl mb-6 ">
-                Sumérgete en la emoción digital: Bienvenido al epicentro gamer, el mejor evento de videojuegos del
-                Ecuador!
+                Sumérgete en la emoción digital de los videojuegos y la competencia en línea. 
+                <br>
+                <span class = " font-extrabold text-5xl">INSCRÍBETE AHORA !!!</span>
             </p>
             <button class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-1/5">VER
                 MÁS</button>
@@ -134,11 +135,11 @@
 
     <hr>
     <!-- INSCRIPCIÓN -->
-    <div class="text-center bg-gray-800 text-white p-8 mt-8">
+    {{-- <div class="text-center bg-gray-800 text-white p-8 mt-8">
         <h2 class="text-2xl font-bold mb-4">Inscríbete ahora</h2>
         <p class="text-lg mb-6">Quedan 5 días, 8 horas y 11 segundos.</p>
         <button class="border-solid border-4 border-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">INGRESAR</button>
-    </div>
+    </div> --}}
 
 </body>
 
