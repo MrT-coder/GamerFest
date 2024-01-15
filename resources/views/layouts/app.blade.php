@@ -24,7 +24,6 @@
 </head>
 
 <body>
-   
 
     @livewireScripts
     <script type="module">
