@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New Equipo</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Crear nuevo Equipo</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
@@ -11,14 +11,14 @@
 
                     <div class="form-group">
                         <label for="nombre_equ"></label>
-                        <input wire:model="nombre_equ" type="text" class="form-control" id="nombre_equ" placeholder="Nombre Equ">@error('nombre_equ') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="nombre_equ" type="text" class="form-control" id="nombre_equ" placeholder="Nombre Equipo">@error('nombre_equ') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Crear</button>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Equipo</h5>
+                <h5 class="modal-title" id="updateModalLabel">Actualizar</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -44,8 +44,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Save</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
             </div>
        </div>
     </div>

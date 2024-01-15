@@ -28,17 +28,17 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Rol</th>
+								<th>Rol</th>
 								<th>Nombre</th>
 								<th>Apellido</th>
-								<th>Telefono</th>
+								<th>Teléfono</th>
 								<th>Universidad</th>
 								<th>Carrera</th>
 								<th>Semestre</th>
 								<th>Email</th>
-								<th>Pass</th>
+								<th>Contraseña</th>
 								<th>Activo</th>
-								<td>ACTIONS</td>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -66,7 +66,7 @@
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No data Found </td>
+								<td class="text-center" colspan="100%">No hay información</td>
 							</tr>
 							@endforelse
 						</tbody>

@@ -28,8 +28,8 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Nombre Rol</th>
-								<td>ACTIONS</td>
+								<th>Rol</th>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -41,14 +41,14 @@
 									<div class="dropdown">
 
 											<a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>
-											<a class="dropdown-item" onclick="confirm('Confirm Delete Rol id {{$row->id}}? \nDeleted Rols cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a> 
+											<a class="dropdown-item" onclick="confirm('Desea eliminar el id {{$row->id}}? \nNo se pueden recuperar los roles eliminados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a> 
 
 									</div>								
 								</td>
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No data Found </td>
+								<td class="text-center" colspan="100%">No hay Información </td>
 							</tr>
 							@endforelse
 						</tbody>

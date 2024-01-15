@@ -53,7 +53,7 @@ class Ingresos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Ingreso Successfully created.');
+		session()->flash('message', 'Ingreso creado!!!.');
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class Ingresos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Ingreso Successfully updated.');
+			session()->flash('message', 'Ingreso actualziado!!!.');
         }
     }
 

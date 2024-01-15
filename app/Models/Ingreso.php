@@ -14,5 +14,6 @@ class Ingreso extends Model
     protected $table = 'ingresos';
 
     protected $fillable = ['Detalle','Valor','Fecha'];
+
 	
 }

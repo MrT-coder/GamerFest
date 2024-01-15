@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Menu</b>Admin',
+    'logo' => '<b>Gamer</b>Fest',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -333,12 +333,12 @@ return [
         [
             'text'        => 'Equipos',
             'url'         => '/equipos',
-            'icon'        => 'far  fa-user-circle',
+            'icon'        => 'fa-solid fa-people-group',
         ],
         [
             'text'        => 'Integrantes',
             'url'         => '/equipointegrantes',
-            'icon'        => 'far  fa-user-circle',
+            'icon'        => 'fa-solid fa-user-plus',
         ],
         [
             'text'        => 'Usuarios',
