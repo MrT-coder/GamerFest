@@ -41,7 +41,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Crear</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success">Crear</button>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Actualizar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-warning">Actualizar</button>
             </div>
        </div>
     </div>

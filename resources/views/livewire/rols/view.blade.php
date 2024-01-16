@@ -6,7 +6,7 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="  text-info fa fa-user-circle"></i>
+							<h4><i class="text-info fa fa-user-circle"></i>
 							Lista de Roles</h4>
 						</div>
 						@if (session()->has('message'))

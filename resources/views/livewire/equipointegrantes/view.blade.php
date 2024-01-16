@@ -6,8 +6,8 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
-							Lista de Equipos - Integrantes</h4>
+							<h4><i class="fa-solid fa-users"></i>
+							Lista de Integrantes</h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.5s class="btn btn-info placeholder-wave" style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i> {{ session('message') }} </div>
@@ -21,9 +21,9 @@
 				<div class="card-body">
 						@include('livewire.equipointegrantes.modals')
 					<div class="d-flex mb-3 justify-content-between align-items-center">
-							<p>Lista de Equipos - Integrantes.</p>
+							<p>Lista de Integrantes.</p>
 							<div class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createDataModal">
-							<i class="fa fa-plus"></i>  Añadir Equipo - Integrante
+							<i class="fa fa-plus"></i>  Añadir Integrante
 							</div>
 					</div>
 				<div class="table-responsive">
@@ -48,7 +48,7 @@
 									<div>
 
 											<a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="btn btn-sm btn-warning m-1" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>
-											<a class="btn btn-sm btn-danger m-1" onclick="confirm('¿Desea eliminar el Equipointegrante con ID {{$row->id}}? \n¡No se pueden recuperar los Equipointegrantes eliminados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a>  
+											<a class="btn btn-sm btn-danger m-1" onclick="confirm('¿Desea eliminar el Integrante con ID {{$row->id}}? \n¡No se pueden recuperar los Integrantes eliminados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a>  
 										</ul>
 									</div>								
 								</td>

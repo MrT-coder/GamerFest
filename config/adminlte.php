@@ -338,7 +338,7 @@ return [
         [
             'text'        => 'Integrantes',
             'url'         => '/equipointegrantes',
-            'icon'        => 'fa-solid fa-user-plus',
+            'icon'        => 'fa-solid fa-users',
         ],
         [
             'text'        => 'Usuarios',
