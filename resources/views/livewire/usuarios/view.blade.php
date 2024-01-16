@@ -7,27 +7,30 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fa fa-user-plus text-info"></i>
-							Usuarios </h4>
+							Lista de Usuarios</h4>
 						</div>
 						@if (session()->has('message'))
-						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
+						<div wire:poll.5s class="btn btn-info placeholder-wave" style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar">
-						</div>
-						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Usuarios">
 						</div>
 					</div>
 				</div>
 				
 				<div class="card-body">
 						@include('livewire.usuarios.modals')
+					<div class="d-flex mb-3 justify-content-between align-items-center">
+							<p>Lista de usuarios.</p>
+							<div class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createDataModal">
+							<i class="fa fa-plus"></i>  Añadir Usuario
+							</div>
+					</div>
 				<div class="table-responsive">
-					<table class="table table-bordered table-sm">
-						<thead class="thead">
+					<table class="table table-sm table-hover table-bordered table-striped">
+						<thead class="thead text-center">
 							<tr> 
-								<td>#</td> 
+								<th class="col-1">#</td> 
 								<th>Rol</th>
 								<th>Nombre</th>
 								<th>Apellido</th>
@@ -38,35 +41,35 @@
 								<th>Email</th>
 								<th>Contraseña</th>
 								<th>Activo</th>
-								<th>Acciones</th>
+								<th class="col-2">Acciones</td>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($usuarios as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_rol }}</td>
-								<td>{{ $row->nombre }}</td>
-								<td>{{ $row->apellido }}</td>
-								<td>{{ $row->telefono }}</td>
-								<td>{{ $row->universidad }}</td>
-								<td>{{ $row->carrera }}</td>
-								<td>{{ $row->semestre }}</td>
-								<td>{{ $row->email }}</td>
-								<td>{{ $row->pass }}</td>
-								<td>{{ $row->activo }}</td>
+								<th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td> 
+								<td class="align-middle">{{ $row->id_rol }}</td>
+								<td class="align-middle">{{ $row->nombre }}</td>
+								<td class="align-middle">{{ $row->apellido }}</td>
+								<td class="align-middle">{{ $row->telefono }}</td>
+								<td class="align-middle">{{ $row->universidad }}</td>
+								<td class="align-middle">{{ $row->carrera }}</td>
+								<td class="align-middle">{{ $row->semestre }}</td>
+								<td class="align-middle">{{ $row->email }}</td>
+								<td class="align-middle">{{ $row->pass }}</td>
+								<td class="align-middle">{{ $row->activo }}</td>
 								<td width="90">
 									<div class="dropdown">
 
 										<a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>
-										<a class="dropdown-item" onclick="confirm('Confirm Delete Rol id {{$row->id}}? \nDeleted Rols cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a> 
+										<a class="btn btn-sm btn-danger m-1" onclick="confirm('¿Desea eliminar el Rol con ID {{$row->id}}? \n¡No se pueden recuperar los Rols cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a> 
 
 								</div>								
 								</td>
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No hay información</td>
+								<td class="table-danger text-center" colspan="100%">No se encontraron registros.</td>
 							</tr>
 							@endforelse
 						</tbody>

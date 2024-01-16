@@ -7,24 +7,23 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="  text-info fa fa-user-circle"></i>
-							Roles </h4>
+							Lista de Roles</h4>
 						</div>
 						@if (session()->has('message'))
-						<div wire:poll.5s class="btn btn-info placeholder-wave" style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>{{ session('message') }} </div>
+						<div wire:poll.5s class="btn btn-info placeholder-wave" style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Roles">
 						</div>
 					</div>
 				</div>
 				
 				<div class="card-body">
 					@include('livewire.rols.modals')
-					{{-- Descripción de la tabla --}}
 					<div class="d-flex mb-3 justify-content-between align-items-center">
 							<p>Lista de roles registrados de los usuarios.</p>
 							<div class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createDataModal">
-								<i class="fa fa-plus"></i>  Añadir
+								<i class="fa fa-plus"></i>  Añadir Rol
 						</div>
 					</div>
 				<div class="table-responsive">
@@ -45,14 +44,14 @@
 									<div>
 
 											<a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="btn btn-sm btn-warning m-1" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>
-											<a class="btn btn-sm btn-danger m-1" onclick="confirm('Desea eliminar el rol {{$row->nombre_rol}}? \n¡No se pueden recuperar los roles eliminados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a> 
+											<a class="btn btn-sm btn-danger m-1" onclick="confirm('¿Desea eliminar el rol {{$row->nombre_rol}}? \n¡No se pueden recuperar los roles eliminados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a> 
 
 									</div>								
 								</td>
 							</tr>
 							@empty
 							<tr>
-								<td class="table-danger text-center" colspan="100%">No hay Información </td>
+								<td class="table-danger text-center" colspan="100%">No se encontraron registros.</td>
 							</tr>
 							@endforelse
 						</tbody>
