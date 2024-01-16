@@ -20,7 +20,8 @@
     }
 </style>
 
-<header x-data="{ isOpen: false }" class="bg-black shadow">
+<!--<header x-data="{ isOpen: false }" class="bg-blue-900  shadow">-->
+<header x-data="{ isOpen: false }" class="bg-gradient-to-r from-purple-700 to-blue-500 shadow">
     <nav class="container mx-auto px-6 py-3">
         <div class="flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex justify-between items-center">
