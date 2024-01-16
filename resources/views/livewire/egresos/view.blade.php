@@ -36,7 +36,7 @@
                                     <th class="col-1">#</td>
                                     <th>Detalle</th>
                                     <th>Valor</th>
-                                    <th>Fecha</th>
+                                    <th>Fecha y hora</th>
                                     <th class="col-2">Acciones</td>
                                 </tr>
                             </thead>
@@ -45,7 +45,7 @@
                                     <tr>
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">{{ $row->Detalle }}</td>
-                                        <td class="align-middle">{{ $row->Valor }}</td>
+                                        <td class="align-middle">$ {{ $row->Valor }}</td>
                                         <td class="align-middle">{{ $row->Fecha }}</td>
                                         <td width="90">
                                             <div class="dropdown">

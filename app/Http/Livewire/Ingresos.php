@@ -13,6 +13,28 @@ class Ingresos extends Component
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $Detalle, $Valor, $Fecha;
 
+    protected $rules = [
+        'Detalle' => 'required|max:255',
+        'Valor' => 'required|numeric|min:0|max:999',
+        'Fecha' => 'required',
+    ];
+
+    protected $messages = [
+        'required' => 'Campo requerido.',
+        'Detalle.max' => 'Escribe menos de 255 caracteres.',
+        'Valor.min' => 'Escribe un valor mayor o igual a 0.',
+        'Valor.max' => 'Escribe un valor menor o igual a 999.',
+    ];
+
+    public function updated($id)
+    {
+        $this->validateOnly($id, [
+            'Detalle' => 'required|max:255',
+            'Valor' => 'required|numeric|min:0|max:999',
+            'Fecha' => 'required',
+        ]);
+    }
+
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
@@ -39,11 +61,7 @@ class Ingresos extends Component
 
     public function store()
     {
-        $this->validate([
-            'Detalle' => 'required',
-            'Valor' => 'required',
-            'Fecha' => 'required',
-        ]);
+        $this->validate();
 
         Ingreso::create([
             'Detalle' => $this->Detalle,
@@ -67,11 +85,7 @@ class Ingresos extends Component
 
     public function update()
     {
-        $this->validate([
-            'Detalle' => 'required',
-            'Valor' => 'required',
-            'Fecha' => 'required',
-        ]);
+        $this->validate();
 
         if ($this->selected_id) {
             $record = Ingreso::find($this->selected_id);

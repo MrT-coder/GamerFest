@@ -1,7 +1,7 @@
 <!-- Add Modal -->
 <div wire:ignore.self class="modal fade" id="createDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="createDataModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createDataModalLabel">Crear Nuevo Egreso</h5>
@@ -11,28 +11,33 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="Detalle"></label>
-                        <input wire:model="Detalle" type="text" class="form-control" id="Detalle"
-                            placeholder="Detalle">
+                        <label for="Detalle">Detalle</label>
+                        <textarea wire:model="Detalle" type="text" class="form-control" id="Detalle" placeholder="Detalle" rows="3"></textarea>
                         @error('Detalle')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="Valor"></label>
-                        <input wire:model="Valor" type="text" class="form-control" id="Valor"
-                            placeholder="Valor">
-                        @error('Valor')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="FechaHora">Fecha y Hora</label>
-                        <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora"
-                            placeholder="Fecha y Hora">
-                        @error('FechaHora')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="Valor">Valor</label>
+                                <input wire:model="Valor" type="text" class="form-control" id="Valor"
+                                    placeholder="Valor">
+                                @error('Valor')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="FechaHora">Fecha y hora de la transacción</label>
+                                <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora"
+                                    placeholder="Fecha y Hora">
+                                @error('Fecha')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
 
                 </form>
@@ -50,7 +55,7 @@
 <!-- Edit Modal -->
 <div wire:ignore.self class="modal fade" id="updateDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="updateModalLabel">Actualizar Egreso</h5>
@@ -61,28 +66,33 @@
                 <form>
                     <input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="Detalle"></label>
-                        <input wire:model="Detalle" type="text" class="form-control" id="Detalle"
-                            placeholder="Detalle">
+                        <label for="Detalle">Detalle</label>
+                        <textarea wire:model="Detalle" type="text" class="form-control" id="Detalle" placeholder="Detalle" rows="3"></textarea>
                         @error('Detalle')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="Valor"></label>
-                        <input wire:model="Valor" type="text" class="form-control" id="Valor"
-                            placeholder="Valor">
-                        @error('Valor')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="FechaHora">Fecha y Hora</label>
-                        <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora"
-                            placeholder="Fecha y Hora">
-                        @error('FechaHora')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="Valor">Valor</label>
+                                <input wire:model="Valor" type="text" class="form-control" id="Valor"
+                                    placeholder="Valor">
+                                @error('Valor')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="FechaHora">Fecha y hora de la transacción</label>
+                                <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora"
+                                    placeholder="Fecha y Hora">
+                                @error('FechaHora')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
 
                 </form>
