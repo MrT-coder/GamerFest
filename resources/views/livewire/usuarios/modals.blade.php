@@ -42,13 +42,16 @@
                                         <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
                                     @endforeach
                                 </select>
+                                @error('id_rol')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="telefono">Celular</label>
                                 <input wire:model="telefono" type="tel" class="form-control" id="telefono"
-                                    placeholder="Celular" maxlength="10">
+                                    placeholder="Celular" maxlength="10" min="1" step="1">
                                 @error('telefono')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
@@ -119,6 +122,9 @@
                                     <option value="1">Activo</option>
                                     <option value="0">Inactivo</option>
                                 </select>
+                                @error('activo')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -137,7 +143,7 @@
 <!-- Edit Modal -->
 <div wire:ignore.self class="modal fade" id="updateDataModal" data-bs-backdrop="static" tabindex="-1"
     role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="updateModalLabel">Actualizar Usuario</h5>
@@ -147,87 +153,125 @@
             <div class="modal-body">
                 <form>
                     <input type="hidden" wire:model="selected_id">
-                    <div class="form-group">
-                        <label for="id_rol"></label>
-                        <input wire:model="id_rol" type="text" class="form-control" id="id_rol"
-                            placeholder="Id Rol">
-                        @error('id_rol')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="nombre">Nombres</label>
+                                <input wire:model="nombre" type="text" class="form-control" id="nombre"
+                                    placeholder="Nombre">
+                                @error('nombre')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="apellido">Apellidos</label>
+                                <input wire:model="apellido" type="text" class="form-control" id="apellido"
+                                    placeholder="Apellido">
+                                @error('apellido')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nombre"></label>
-                        <input wire:model="nombre" type="text" class="form-control" id="nombre"
-                            placeholder="Nombre">
-                        @error('nombre')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_rol">Rol</label>
+                                <select wire:model="id_rol" class="form-control" id="id_rol"
+                                    placeholder="Id Rol">
+                                    <option value="">Selecciona un rol</option>
+                                    @foreach ($roles as $rol)
+                                        <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_rol')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="telefono">Celular</label>
+                                <input wire:model="telefono" type="tel" class="form-control" id="telefono"
+                                    placeholder="Celular" maxlength="10" min="1" step="1">
+                                @error('telefono')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="apellido"></label>
-                        <input wire:model="apellido" type="text" class="form-control" id="apellido"
-                            placeholder="Apellido">
-                        @error('apellido')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="universidad">Universidad</label>
+                                <input wire:model="universidad" type="text" class="form-control" id="universidad"
+                                    placeholder="Universidad">
+                                @error('universidad')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="carrera">Carrera</label>
+                                <input wire:model="carrera" type="text" class="form-control" id="carrera"
+                                    placeholder="Carrera">
+                                @error('carrera')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="telefono"></label>
-                        <input wire:model="telefono" type="text" class="form-control" id="telefono"
-                            placeholder="Telefono">
-                        @error('telefono')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="semestre">Semestre</label>
+                                <input wire:model="semestre" type="number" class="form-control" id="semestre"
+                                    placeholder="Ingresa un número">
+                                @error('semestre')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input wire:model="email" type="email" class="form-control" id="email"
+                                    placeholder="Email">
+                                @error('email')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="universidad"></label>
-                        <input wire:model="universidad" type="text" class="form-control" id="universidad"
-                            placeholder="Universidad">
-                        @error('universidad')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="pass">Contraseña</label>
+                                <input wire:model="pass" type="text" class="form-control" id="pass"
+                                    placeholder="Pass">
+                                @error('pass')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="activo">Estado</label>
+                                <select wire:model="activo" class="form-control" id="activo"
+                                    placeholder="Activo">
+                                    <option value="">Seleccione una opción...</option>
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                                @error('activo')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="carrera"></label>
-                        <input wire:model="carrera" type="text" class="form-control" id="carrera"
-                            placeholder="Carrera">
-                        @error('carrera')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="semestre"></label>
-                        <input wire:model="semestre" type="text" class="form-control" id="semestre"
-                            placeholder="Semestre">
-                        @error('semestre')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="email"></label>
-                        <input wire:model="email" type="text" class="form-control" id="email"
-                            placeholder="Email">
-                        @error('email')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="pass"></label>
-                        <input wire:model="pass" type="text" class="form-control" id="pass"
-                            placeholder="Pass">
-                        @error('pass')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="activo"></label>
-                        <input wire:model="activo" type="text" class="form-control" id="activo"
-                            placeholder="Activo">
-                        @error('activo')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer justify-content-between">

@@ -14,11 +14,59 @@ class Usuarios extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $id_rol, $nombre, $apellido, $telefono, $universidad, $carrera, $semestre, $email, $pass, $activo;
 
+	protected $rules = [
+		'id_rol' => 'required',
+		'nombre' => 'required|max:100',
+		'apellido' => 'required|max:100',
+		'telefono' => 'required|numeric|digits:10',
+		'universidad' => 'required|max:100',
+		'carrera' => 'required|max:100',
+		'semestre' => 'required|numeric|integer|min:1|max:10',
+		'email' => 'required|unique:usuarios,email|email|max:60',
+		'pass' => 'required|min:8|max:60',
+		'activo' => 'required',
+	];
+
+	protected $messages = [
+		'required' => 'Campo requerido.',
+		'nombre.max' => 'Escribe menos de 100 caracteres.',
+		'apellido.max' => 'Escribe menos de 100 caracteres.',
+		'telefono.numeric' => 'Escribe solo números.',
+		'telefono.digits' => 'Escribe 10 dígitos.',
+		'universidad.max' => 'Escribe menos de 100 caracteres.',
+		'carrera.max' => 'Escribe menos de 100 caracteres.',
+		'semestre.numeric' => 'Escribe solo números.',
+		'semestre.integer' => 'Escribe solo números enteros.',
+		'semestre.min' => 'Escribe un número mayor a 0.',
+		'semestre.max' => 'Escribe un número menor a 11.',
+		'email.unique' => 'Este email ya existe.',
+		'email.email' => 'Escribe un email válido.',
+		'email.max' => 'Escribe menos de 60 caracteres.',
+		'pass.min' => 'Escribe al menos 8 caracteres.',
+		'pass.max' => 'Escribe menos de 60 caracteres.',
+	];
+
+	public function updated($id)
+	{
+		$this->validateOnly($id, [
+			'id_rol' => 'required',
+			'nombre' => 'required|max:100',
+			'apellido' => 'required|max:100',
+			'telefono' => 'required|numeric|digits:10',
+			'universidad' => 'required|max:100',
+			'carrera' => 'required|max:100',
+			'semestre' => 'required|numeric|integer|min:1|max:10',
+			'email' => 'required|unique:usuarios,email|email|max:60',
+			'pass' => 'required|min:8|max:60',
+			'activo' => 'required',
+		]);
+	}
+
 	public function render()
 	{
 		$keyWord = '%' . $this->keyWord . '%';
 		return view('livewire.usuarios.view', [
-			'usuarios' => Usuario::latest()
+			'usuarios' => Usuario::with('rol')->latest()
 				->orWhere('id_rol', 'LIKE', $keyWord)
 				->orWhere('nombre', 'LIKE', $keyWord)
 				->orWhere('apellido', 'LIKE', $keyWord)
@@ -55,18 +103,7 @@ class Usuarios extends Component
 
 	public function store()
 	{
-		$this->validate([
-			'id_rol' => 'required',
-			'nombre' => 'required',
-			'apellido' => 'required',
-			'telefono' => 'required',
-			'universidad' => 'required',
-			'carrera' => 'required',
-			'semestre' => 'required',
-			'email' => 'required',
-			'pass' => 'required',
-			'activo' => 'required',
-		]);
+		$this->validate();
 
 		Usuario::create([
 			'id_rol' => $this->id_rol,
@@ -104,18 +141,7 @@ class Usuarios extends Component
 
 	public function update()
 	{
-		$this->validate([
-			'id_rol' => 'required',
-			'nombre' => 'required',
-			'apellido' => 'required',
-			'telefono' => 'required',
-			'universidad' => 'required',
-			'carrera' => 'required',
-			'semestre' => 'required',
-			'email' => 'required',
-			'pass' => 'required',
-			'activo' => 'required',
-		]);
+		$this->validate();
 
 		if ($this->selected_id) {
 			$record = Usuario::find($this->selected_id);

@@ -50,7 +50,7 @@
                                 @forelse($usuarios as $row)
                                     <tr>
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->id_rol }}</td>
+                                        <td class="align-middle">{{ $row->rol->nombre_rol }}</td>
                                         <td class="align-middle">{{ $row->nombre }}</td>
                                         <td class="align-middle">{{ $row->apellido }}</td>
                                         <td class="align-middle">{{ $row->telefono }}</td>
