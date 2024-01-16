@@ -11,7 +11,7 @@ class Comprobantes extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $id_comprobantes, $id_usuarios, $id_juegos, $estado_pago, $ruta_comprobante;
+    public $selected_id, $keyWord, $id_usuarios, $id_juegos, $estado_pago, $ruta_comprobante;
 
     public function render()
     {

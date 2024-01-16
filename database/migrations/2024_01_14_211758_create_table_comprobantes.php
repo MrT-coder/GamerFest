@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comprobantes', function (Blueprint $table) {
-            $table->id('id_comprobantes');
+            $table->id();
             $table->unsignedBigInteger('id_usuarios');
             $table->foreign('id_usuarios')->references('id')->on('usuarios');
 
             $table->unsignedBigInteger('id_juegos');
-            $table->foreign('id_juegos')->references('id_juegos')->on('juegos');
+            $table->foreign('id_juegos')->references('id')->on('juegos');
 
             $table->string('estado_pago', 255);
             $table->string('ruta_comprobante', 255);

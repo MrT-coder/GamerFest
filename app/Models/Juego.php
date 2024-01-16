@@ -15,4 +15,20 @@ class Juego extends Model
 
     protected $fillable = ['nombre','modalidad','costo','ruta_foto_principal','ruta_foto_portada','descripcion'];
 	
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comprobantes()
+    {
+        return $this->hasMany('App\Models\Comprobante', 'id_juegos', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function partidas()
+    {
+        return $this->hasMany('App\Models\Partida', 'id_juegos', 'id');
+    }
+    
 }

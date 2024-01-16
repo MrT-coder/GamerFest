@@ -13,7 +13,6 @@ class PartidasusuarioFactory extends Factory
     public function definition()
     {
         return [
-			'id_partidasusuarios' => $this->faker->name,
 			'id_partidas' => $this->faker->name,
 			'id_usuarios' => $this->faker->name,
 			'gana' => $this->faker->name,

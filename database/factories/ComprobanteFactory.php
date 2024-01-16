@@ -13,7 +13,6 @@ class ComprobanteFactory extends Factory
     public function definition()
     {
         return [
-			'id_comprobantes' => $this->faker->name,
 			'id_usuarios' => $this->faker->name,
 			'id_juegos' => $this->faker->name,
 			'estado_pago' => $this->faker->name,
