@@ -28,14 +28,14 @@
                     </div> 
                     
                     <div class="form-group">
-                        <label for="hora_inicio">Fecha y Hora</label>
-                        <input wire:model="hora_inicio" type="datetime-local" class="form-control" id="hora_inicio" placeholder="Fecha y Hora">
+                        <label for="hora_inicio">Hora de inicio</label>
+                        <input wire:model="hora_inicio" type="time" class="form-control" id="hora_inicio" placeholder="Fecha y Hora">
                         @error('hora_inicio') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="hora_fin">Fecha y Hora</label>
-                        <input wire:model="hora_fin" type="datetime-local" class="form-control" id="hora_fin" placeholder="Fecha y Hora">
+                        <label for="hora_fin">Hora de finalización</label>
+                        <input wire:model="hora_fin" type="time" class="form-control" id="hora_fin" placeholder="Fecha y Hora">
                         @error('hora_fin') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 

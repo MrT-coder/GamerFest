@@ -80,6 +80,7 @@
                             <div class="form-group">
                                 <label for="activo">Estado</label>
                                 <select wire:model="activo" class="form-control" id="activo" placeholder="Activo">
+                                    <option value="">Seleccione una opción...</option>
                                     <option value="1">Activo</option>
                                     <option value="0">Inactivo</option>
                                 </select>
