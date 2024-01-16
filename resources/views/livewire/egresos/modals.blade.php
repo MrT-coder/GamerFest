@@ -17,8 +17,9 @@
                         <input wire:model="Valor" type="text" class="form-control" id="Valor" placeholder="Valor">@error('Valor') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="Fecha"></label>
-                        <input wire:model="Fecha" type="text" class="form-control" id="Fecha" placeholder="Fecha">@error('Fecha') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="FechaHora">Fecha y Hora</label>
+                        <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora" placeholder="Fecha y Hora">
+                        @error('FechaHora') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
@@ -51,8 +52,9 @@
                         <input wire:model="Valor" type="text" class="form-control" id="Valor" placeholder="Valor">@error('Valor') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="Fecha"></label>
-                        <input wire:model="Fecha" type="text" class="form-control" id="Fecha" placeholder="Fecha">@error('Fecha') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="FechaHora">Fecha y Hora</label>
+                        <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora" placeholder="Fecha y Hora">
+                        @error('FechaHora') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
