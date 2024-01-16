@@ -10,66 +10,66 @@ class Equipos extends Component
 {
     use WithPagination;
 
-	protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre_equ;
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '%' . $this->keyWord . '%';
         return view('livewire.equipos.view', [
             'equipos' => Equipo::latest()
-						->orWhere('nombre_equ', 'LIKE', $keyWord)
-						->paginate(10),
+                ->orWhere('nombre_equ', 'LIKE', $keyWord)
+                ->paginate(10),
         ]);
     }
-	
+
     public function cancel()
     {
         $this->resetInput();
     }
-	
+
     private function resetInput()
-    {		
-		$this->nombre_equ = null;
+    {
+        $this->nombre_equ = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nombre_equ' => 'required',
+            'nombre_equ' => 'required',
         ]);
 
-        Equipo::create([ 
-			'nombre_equ' => $this-> nombre_equ
+        Equipo::create([
+            'nombre_equ' => $this->nombre_equ
         ]);
-        
+
         $this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Equipo creado correctamente.');
+        $this->dispatchBrowserEvent('closeModal');
+        session()->flash('message', 'Equipo creado correctamente.');
     }
 
     public function edit($id)
     {
         $record = Equipo::findOrFail($id);
-        $this->selected_id = $id; 
-		$this->nombre_equ = $record-> nombre_equ;
+        $this->selected_id = $id;
+        $this->nombre_equ = $record->nombre_equ;
     }
 
     public function update()
     {
         $this->validate([
-		'nombre_equ' => 'required',
+            'nombre_equ' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Equipo::find($this->selected_id);
-            $record->update([ 
-			'nombre_equ' => $this-> nombre_equ
+            $record = Equipo::find($this->selected_id);
+            $record->update([
+                'nombre_equ' => $this->nombre_equ
             ]);
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Equipo actualizado correctamente.');
+            session()->flash('message', 'Equipo actualizado correctamente.');
         }
     }
 

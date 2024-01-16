@@ -10,80 +10,80 @@ class Egresos extends Component
 {
     use WithPagination;
 
-	protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $Detalle, $Valor, $Fecha;
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '%' . $this->keyWord . '%';
         return view('livewire.egresos.view', [
             'egresos' => Egreso::latest()
-						->orWhere('Detalle', 'LIKE', $keyWord)
-						->orWhere('Valor', 'LIKE', $keyWord)
-						->orWhere('Fecha', 'LIKE', $keyWord)
-						->paginate(10),
+                ->orWhere('Detalle', 'LIKE', $keyWord)
+                ->orWhere('Valor', 'LIKE', $keyWord)
+                ->orWhere('Fecha', 'LIKE', $keyWord)
+                ->paginate(10),
         ]);
     }
-	
+
     public function cancel()
     {
         $this->resetInput();
     }
-	
+
     private function resetInput()
-    {		
-		$this->Detalle = null;
-		$this->Valor = null;
-		$this->Fecha = null;
+    {
+        $this->Detalle = null;
+        $this->Valor = null;
+        $this->Fecha = null;
     }
 
     public function store()
     {
         $this->validate([
-		'Detalle' => 'required',
-		'Valor' => 'required',
-		'Fecha' => 'required',
+            'Detalle' => 'required',
+            'Valor' => 'required',
+            'Fecha' => 'required',
         ]);
 
-        Egreso::create([ 
-			'Detalle' => $this-> Detalle,
-			'Valor' => $this-> Valor,
-			'Fecha' => $this-> Fecha
+        Egreso::create([
+            'Detalle' => $this->Detalle,
+            'Valor' => $this->Valor,
+            'Fecha' => $this->Fecha
         ]);
-        
+
         $this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Egreso creado correctamente.');
+        $this->dispatchBrowserEvent('closeModal');
+        session()->flash('message', 'Egreso creado correctamente.');
     }
 
     public function edit($id)
     {
         $record = Egreso::findOrFail($id);
-        $this->selected_id = $id; 
-		$this->Detalle = $record-> Detalle;
-		$this->Valor = $record-> Valor;
-		$this->Fecha = $record-> Fecha;
+        $this->selected_id = $id;
+        $this->Detalle = $record->Detalle;
+        $this->Valor = $record->Valor;
+        $this->Fecha = $record->Fecha;
     }
 
     public function update()
     {
         $this->validate([
-		'Detalle' => 'required',
-		'Valor' => 'required',
-		'Fecha' => 'required',
+            'Detalle' => 'required',
+            'Valor' => 'required',
+            'Fecha' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Egreso::find($this->selected_id);
-            $record->update([ 
-			'Detalle' => $this-> Detalle,
-			'Valor' => $this-> Valor,
-			'Fecha' => $this-> Fecha
+            $record = Egreso::find($this->selected_id);
+            $record->update([
+                'Detalle' => $this->Detalle,
+                'Valor' => $this->Valor,
+                'Fecha' => $this->Fecha
             ]);
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Egreso actualizado correctamente.');
+            session()->flash('message', 'Egreso actualizado correctamente.');
         }
     }
 
