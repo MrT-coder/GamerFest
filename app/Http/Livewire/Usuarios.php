@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Usuario;
+use App\Models\Rol;
 
 class Usuarios extends Component
 {
@@ -29,6 +30,7 @@ class Usuarios extends Component
 						->orWhere('pass', 'LIKE', $keyWord)
 						->orWhere('activo', 'LIKE', $keyWord)
 						->paginate(10),
+						'roles' => Rol::all(), // Obtener todos los roles
         ]);
     }
 	

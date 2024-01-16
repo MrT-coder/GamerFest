@@ -39,7 +39,6 @@
 								<th>Carrera</th>
 								<th>Semestre</th>
 								<th>Email</th>
-								<th>Contraseña</th>
 								<th>Activo</th>
 								<th class="col-2">Acciones</td>
 							</tr>
@@ -56,7 +55,6 @@
 								<td class="align-middle">{{ $row->carrera }}</td>
 								<td class="align-middle">{{ $row->semestre }}</td>
 								<td class="align-middle">{{ $row->email }}</td>
-								<td class="align-middle">{{ $row->pass }}</td>
 								<td class="align-middle">{{ $row->activo }}</td>
 								<td width="90">
 									<div class="dropdown">
