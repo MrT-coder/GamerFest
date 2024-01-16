@@ -69,7 +69,7 @@ class Partidas extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Partida Successfully created.');
+		session()->flash('message', 'Partida creada correctamente.');
     }
 
     public function edit($id)
@@ -111,7 +111,7 @@ class Partidas extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Partida Successfully updated.');
+			session()->flash('message', 'Partida actualizada correctamente.');
         }
     }
 
@@ -120,5 +120,8 @@ class Partidas extends Component
         if ($id) {
             Partida::where('id', $id)->delete();
         }
+
+		$this->resetInput();
+		session()->flash('message', 'Partida eliminada correctamente.');
     }
 }

@@ -53,7 +53,7 @@ class Partidasusuarios extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Partidasusuario Successfully created.');
+		session()->flash('message', 'Partida - Usuario creado correctamente.');
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class Partidasusuarios extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Partidasusuario Successfully updated.');
+			session()->flash('message', 'Partida - Usuario actualizado correctamente.');
         }
     }
 
@@ -92,5 +92,8 @@ class Partidasusuarios extends Component
         if ($id) {
             Partidasusuario::where('id', $id)->delete();
         }
+
+        $this->resetInput();
+        session()->flash('message', 'Partida - Usuario eliminado correctamente.');
     }
 }

@@ -81,7 +81,7 @@ class Usuarios extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Usuario Successfully created.');
+		session()->flash('message', 'Usuario creado correctamente.');
     }
 
     public function edit($id)
@@ -132,7 +132,7 @@ class Usuarios extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Usuario Successfully updated.');
+			session()->flash('message', 'Usuario actualizado correctamente.');
         }
     }
 
@@ -141,5 +141,8 @@ class Usuarios extends Component
         if ($id) {
             Usuario::where('id', $id)->delete();
         }
+
+		$this->resetInput();
+		session()->flash('message', 'Usuario eliminado correctamente.');
     }
 }

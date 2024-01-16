@@ -53,7 +53,7 @@ class Ingresos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Ingreso creado!!!.');
+		session()->flash('message', 'Ingreso creado correctamente.');
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class Ingresos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Ingreso actualziado!!!.');
+			session()->flash('message', 'Ingreso actualziado correctamente.');
         }
     }
 
@@ -92,5 +92,8 @@ class Ingresos extends Component
         if ($id) {
             Ingreso::where('id', $id)->delete();
         }
+
+        $this->resetInput();
+        session()->flash('message', 'Ingreso eliminado correctamente.');
     }
 }

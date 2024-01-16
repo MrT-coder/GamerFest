@@ -65,7 +65,7 @@ class Juegos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Juego Successfully created.');
+		session()->flash('message', 'Juego creado correctamente.');
     }
 
     public function edit($id)
@@ -104,7 +104,7 @@ class Juegos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Juego Successfully updated.');
+			session()->flash('message', 'Juego actualizado correctamente.');
         }
     }
 
@@ -113,5 +113,8 @@ class Juegos extends Component
         if ($id) {
             Juego::where('id', $id)->delete();
         }
+
+		$this->resetInput();
+		session()->flash('message', 'Juego eliminado correctamente.');
     }
 }

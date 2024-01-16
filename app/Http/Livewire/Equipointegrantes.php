@@ -53,7 +53,7 @@ class Equipointegrantes extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Equipointegrante Successfully created.');
+		session()->flash('message', 'Equipo - Integrante creado correctamente.');
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class Equipointegrantes extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Equipointegrante Successfully updated.');
+			session()->flash('message', 'Equipo - Integrante actualizado correctamente.');
         }
     }
 
@@ -92,5 +92,8 @@ class Equipointegrantes extends Component
         if ($id) {
             Equipointegrante::where('id', $id)->delete();
         }
+
+        $this->resetInput();
+        session()->flash('message', 'Equipo - Integrante eliminado correctamente.');
     }
 }

@@ -24,7 +24,7 @@
 				<div class="card-body">
 						@include('livewire.partidasusuarios.modals')
 				<div class="table-responsive">
-					<table class="table table-bordered table-sm">
+					<table class="table table-bordered table-sm align-middle">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 

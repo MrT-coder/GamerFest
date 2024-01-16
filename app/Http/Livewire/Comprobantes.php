@@ -57,7 +57,7 @@ class Comprobantes extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Comprobante Successfully created.');
+		session()->flash('message', 'Comprobante creado correctamente.');
     }
 
     public function edit($id)
@@ -90,7 +90,7 @@ class Comprobantes extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Comprobante Successfully updated.');
+			session()->flash('message', 'Comprobante actualizado correctamente.');
         }
     }
 
@@ -99,5 +99,8 @@ class Comprobantes extends Component
         if ($id) {
             Comprobante::where('id', $id)->delete();
         }
+
+        $this->resetInput();
+        session()->flash('message', 'Comprobante eliminado correctamente.');
     }
 }

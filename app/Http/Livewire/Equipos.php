@@ -45,7 +45,7 @@ class Equipos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Equipo Successfully created.');
+		session()->flash('message', 'Equipo creado correctamente.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class Equipos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Equipo Successfully updated.');
+			session()->flash('message', 'Equipo actualizado correctamente.');
         }
     }
 
@@ -78,5 +78,8 @@ class Equipos extends Component
         if ($id) {
             Equipo::where('id', $id)->delete();
         }
+
+        $this->resetInput();
+        session()->flash('message', 'Equipo eliminado correctamente.');
     }
 }
