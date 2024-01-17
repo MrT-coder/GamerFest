@@ -9,7 +9,7 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form wire:submit.prevent="store" enctype="multipart/form-data">
+                <form wire:submit.prevent="save">
                     <div class="row">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
@@ -62,15 +62,15 @@
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="ruta_foto_portada">Foto portada</label>
-                                    <input wire:model="ruta_foto_portada" type="file" class="form-control"
-                                        id="ruta_foto_portada">
-                                    @error('ruta_foto_portada')
-                                        <span class="error text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="ruta_foto_portada">Foto portada</label>
+                                <input wire:model="ruta_foto_portada" type="file" class="form-control"
+                                    id="ruta_foto_portada">
+                                @error('ruta_foto_portada')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,8 @@
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"><i
                         class="fa-solid fa-xmark"></i> Cancelar</button>
                 <button type="button" wire:click.prevent="store()" class="btn btn-success"><i
-                        class="fa-solid fa-plus"></i> Crear</button>
+                        class="fa-solid fa-plus"></i>
+                    Crear</button>
             </div>
         </div>
     </div>
@@ -97,7 +98,7 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form wire:submit.prevent="save">
                     <div class="row">
                         <input type="hidden" wire:model="selected_id">
                         <div class="form-group">

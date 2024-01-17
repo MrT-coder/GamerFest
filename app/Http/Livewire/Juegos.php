@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use App\Models\Juego;
 
@@ -14,6 +13,44 @@ class Juegos extends Component
 
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $nombre, $modalidad, $costo, $ruta_foto_principal, $ruta_foto_portada, $descripcion;
+
+	protected $rules = [
+		'nombre' => 'required|max:100',
+		'modalidad' => 'required|max:100',
+		'costo' => 'required|numeric|min:0|max:999',
+		'ruta_foto_principal' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		'ruta_foto_portada' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		'descripcion' => 'required|min:3|max:255',
+	];
+
+	protected $messages = [
+		'required' => 'Campo requerido.',
+		'nombre.max' => 'Escribe menos de 100 caracteres.',
+		'modalidad.max' => 'Escribe menos de 100 caracteres.',
+		'costo.numeric' => 'Escribe solo números.',
+		'costo.min' => 'Escribe un número mayor o igual a 0.',
+		'costo.max' => 'Escribe un número menor o igual a 999.',
+		'ruta_foto_principal.image' => 'Solo se permiten imágenes.',
+		'ruta_foto_principal.mimes' => 'Solo se permiten imágenes con formato jpeg, png, jpg, gif o svg.',
+		'ruta_foto_principal.max' => 'La imagen no debe pesar más de 2MB.',
+		'ruta_foto_portada.image' => 'Solo se permiten imágenes.',
+		'ruta_foto_portada.mimes' => 'Solo se permiten imágenes con formato jpeg, png, jpg, gif o svg.',
+		'ruta_foto_portada.max' => 'La imagen no debe pesar más de 2MB.',
+		'descripcion.min' => 'Escribe al menos 3 caracteres.',
+		'descripcion.max' => 'Escribe menos de 255 caracteres.',
+	];
+
+	public function updated($id)
+	{
+		$this->validateOnly($id, [
+			'nombre' => 'required|max:100',
+			'modalidad' => 'required|max:100',
+			'costo' => 'required|numeric|min:0|max:999',
+			'ruta_foto_principal' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'ruta_foto_portada' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'descripcion' => 'required|min:3|max:255',
+		]);
+	}
 
 	public function render()
 	{
@@ -47,17 +84,7 @@ class Juegos extends Component
 
 	public function store()
 	{
-		$this->validate([
-			'nombre' => 'required',
-			'modalidad' => 'required',
-			'costo' => 'required',
-			'ruta_foto_principal' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-			'ruta_foto_portada' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-			'descripcion' => 'required',
-		]);
-
-		$this->ruta_foto_principal = Juego::uploadImage($this->ruta_foto_principal, 'ruta_foto_principal');
-		$this->ruta_foto_portada = Juego::uploadImage($this->ruta_foto_portada, 'ruta_foto_portada');
+		$this->validate();
 
 		Juego::create([
 			'nombre' => $this->nombre,
@@ -87,30 +114,10 @@ class Juegos extends Component
 
 	public function update()
 	{
-		$this->validate([
-			'nombre' => 'required',
-			'modalidad' => 'required',
-			'costo' => 'required',
-			'ruta_foto_principal' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-			'ruta_foto_portada' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-			'descripcion' => 'required',
-		]);
+		$this->validate();
 
 		if ($this->selected_id) {
 			$record = Juego::find($this->selected_id);
-
-			if ($this->ruta_foto_principal) {
-				$this->ruta_foto_principal = $this->ruta_foto_principal->storeAs('ruta_foto_principal', uniqid('image') . '.' . $this->ruta_foto_principal->getClientOriginalExtension(), 'public');
-			} else {
-				$this->ruta_foto_principal = $record->ruta_foto_principal;
-			}
-
-			if ($this->ruta_foto_portada) {
-				$this->ruta_foto_portada = $this->ruta_foto_portada->storeAs('ruta_foto_portada', uniqid('image') . '.' . $this->ruta_foto_portada->getClientOriginalExtension(), 'public');
-			} else {
-				$this->ruta_foto_portada = $record->ruta_foto_portada;
-			}
-
 			$record->update([
 				'nombre' => $this->nombre,
 				'modalidad' => $this->modalidad,
