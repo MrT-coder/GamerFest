@@ -34,8 +34,8 @@
                             <thead class="thead text-center">
                                 <tr>
                                     <th class="col-1">#</td>
-                                    <th>Id Juegos</th>
-                                    <th>Id Usuarios</th>
+                                    <th>Juego</th>
+                                    <th>Usuario</th>
                                     <th>Salon</th>
                                     <th>Fecha</th>
                                     <th>Hora Inicio</th>
@@ -48,8 +48,8 @@
                                 @forelse($partidas as $row)
                                     <tr>
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->id_juegos }}</td>
-                                        <td class="align-middle">{{ $row->id_usuarios }}</td>
+                                        <td class="align-middle">{{ $row->juego->nombre }}</td>
+                                        <td class="align-middle">{{ $row->usuario->nombre }} {{ $row->usuario->apellido}}</td>
                                         <td class="align-middle">{{ $row->salon }}</td>
                                         <td class="align-middle">{{ $row->fecha }}</td>
                                         <td class="align-middle">{{ $row->hora_inicio }}</td>
