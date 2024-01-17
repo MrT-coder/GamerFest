@@ -36,11 +36,19 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="id_rol">Rol</label>
-                                <select wire:model="id_rol" class="form-control" id="id_rol" placeholder="Id Rol">
-                                    <option value="">Selecciona un rol</option>
-                                    @foreach ($roles as $rol)
-                                        <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
-                                    @endforeach
+                                {{-- Si hay roles, despliega lista, sino, se reemplaza por "No hay roles disponibles" --}}
+                                @if ($roles->count())
+                                    <select wire:model="id_rol" class="form-control" id="id_rol"
+                                        placeholder="Id Rol">
+                                        <option value="">Selecciona un rol</option>
+                                        @foreach ($roles as $rol)
+                                            <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_rol" class="form-control" id="id_rol"
+                                            placeholder="Id Rol" disabled>
+                                            <option value="">No hay roles disponibles</option>
+                                @endif
                                 </select>
                                 @error('id_rol')
                                     <span class="error text-danger">{{ $message }}</span>
