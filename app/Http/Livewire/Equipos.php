@@ -13,6 +13,24 @@ class Equipos extends Component
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre_equ;
 
+    protected $rules = [
+        'nombre_equ' => 'required|unique:equipos,nombre_equ|min:3|max:100',
+    ];
+
+    protected $messages = [
+        'required' => 'Campo requerido.',
+        'nombre_equ.unique' => 'Ya existe un equipo con ese nombre.',
+        'nombre_equ.min' => 'Escribe al menos 3 caracteres.',
+        'nombre_equ.max' => 'Escribe menos de 100 caracteres.',
+    ];
+
+    public function updated($id)
+    {
+        $this->validateOnly($id, [
+            'nombre_equ' => 'required|unique:equipos,nombre_equ|min:3|max:100',
+        ]);
+    }
+
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
@@ -35,9 +53,7 @@ class Equipos extends Component
 
     public function store()
     {
-        $this->validate([
-            'nombre_equ' => 'required',
-        ]);
+        $this->validate();
 
         Equipo::create([
             'nombre_equ' => $this->nombre_equ
@@ -57,9 +73,7 @@ class Equipos extends Component
 
     public function update()
     {
-        $this->validate([
-            'nombre_equ' => 'required',
-        ]);
+        $this->validate();
 
         if ($this->selected_id) {
             $record = Equipo::find($this->selected_id);

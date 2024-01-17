@@ -34,7 +34,7 @@
                             <thead class="thead text-center">
                                 <tr>
                                     <th class="col-1">#</td>
-                                    <th>Nombre Equ</th>
+                                    <th>Nombre del equipo</th>
                                     <th class="col-2">Acciones</td>
                                 </tr>
                             </thead>

@@ -11,9 +11,9 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="nombre_equ"></label>
+                        <label for="nombre_equ">Nombre de equipo</label>
                         <input wire:model="nombre_equ" type="text" class="form-control" id="nombre_equ"
-                            placeholder="Nombre Equ">
+                            placeholder="Nombre de equipo">
                         @error('nombre_equ')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
@@ -45,9 +45,9 @@
                 <form>
                     <input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="nombre_equ"></label>
+                        <label for="nombre_equ">Nombre de equipo</label>
                         <input wire:model="nombre_equ" type="text" class="form-control" id="nombre_equ"
-                            placeholder="Nombre Equ">
+                            placeholder="Nombre de ">
                         @error('nombre_equ')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
