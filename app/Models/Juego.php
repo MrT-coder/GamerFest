@@ -31,4 +31,5 @@ class Juego extends Model
         return $this->hasMany('App\Models\Partida', 'id_juegos', 'id');
     }
     
+
 }

@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Juego;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JuegoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+	
 });
 
 Route::middleware([
@@ -45,3 +48,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('ingresos', 'livewire.ingresos.index')->middleware('auth');
 	Route::view('usuarios', 'livewire.usuarios.index')->middleware('auth');
 	Route::view('rols', 'livewire.rols.index')->middleware('auth');
+
+	//Mostar Datos Juegos
+	route::get('/',[JuegoController::class,'mostrarJuegos']);
