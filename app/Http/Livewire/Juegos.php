@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
 use App\Models\Juego;
 
 class Juegos extends Component
 {
-	use WithPagination;
+	use WithPagination, WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $nombre, $modalidad, $costo, $ruta_foto_principal, $ruta_foto_portada, $descripcion;
@@ -49,10 +51,13 @@ class Juegos extends Component
 			'nombre' => 'required',
 			'modalidad' => 'required',
 			'costo' => 'required',
-			'ruta_foto_principal' => 'required',
-			'ruta_foto_portada' => 'required',
+			'ruta_foto_principal' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'ruta_foto_portada' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 			'descripcion' => 'required',
 		]);
+
+		$this->ruta_foto_principal = Juego::uploadImage($this->ruta_foto_principal, 'ruta_foto_principal');
+		$this->ruta_foto_portada = Juego::uploadImage($this->ruta_foto_portada, 'ruta_foto_portada');
 
 		Juego::create([
 			'nombre' => $this->nombre,
@@ -86,13 +91,26 @@ class Juegos extends Component
 			'nombre' => 'required',
 			'modalidad' => 'required',
 			'costo' => 'required',
-			'ruta_foto_principal' => 'required',
-			'ruta_foto_portada' => 'required',
+			'ruta_foto_principal' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'ruta_foto_portada' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 			'descripcion' => 'required',
 		]);
 
 		if ($this->selected_id) {
 			$record = Juego::find($this->selected_id);
+
+			if ($this->ruta_foto_principal) {
+				$this->ruta_foto_principal = $this->ruta_foto_principal->storeAs('ruta_foto_principal', uniqid('image') . '.' . $this->ruta_foto_principal->getClientOriginalExtension(), 'public');
+			} else {
+				$this->ruta_foto_principal = $record->ruta_foto_principal;
+			}
+
+			if ($this->ruta_foto_portada) {
+				$this->ruta_foto_portada = $this->ruta_foto_portada->storeAs('ruta_foto_portada', uniqid('image') . '.' . $this->ruta_foto_portada->getClientOriginalExtension(), 'public');
+			} else {
+				$this->ruta_foto_portada = $record->ruta_foto_portada;
+			}
+
 			$record->update([
 				'nombre' => $this->nombre,
 				'modalidad' => $this->modalidad,

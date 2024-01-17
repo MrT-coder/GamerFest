@@ -37,8 +37,8 @@
                                     <th>Nombre</th>
                                     <th>Modalidad</th>
                                     <th>Costo</th>
-                                    <th>Ruta Foto Principal</th>
-                                    <th>Ruta Foto Portada</th>
+                                    <th>Foto Principal</th>
+                                    <th>Foto Portada</th>
                                     <th>Descripcion</th>
                                     <th class="col-2">Acciones</td>
                                 </tr>
