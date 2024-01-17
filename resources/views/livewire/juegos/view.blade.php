@@ -50,8 +50,12 @@
                                         <td class="align-middle">{{ $row->nombre }}</td>
                                         <td class="align-middle">{{ $row->modalidad }}</td>
                                         <td class="align-middle">{{ $row->costo }}</td>
-                                        <td class="align-middle">{{ $row->ruta_foto_principal }}</td>
-                                        <td class="align-middle">{{ $row->ruta_foto_portada }}</td>
+                                        <td class="align-middle text-center">
+                                            <img class="img-thumbnail img-fluid" src="{{ $row->ruta_foto_principal }}" alt="Foto principal" width="100">
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <img class="img-thumbnail img-fluid" src="{{ $row->ruta_foto_portada }}" alt="Foto portada" width="100">
+                                        </td>
                                         <td class="align-middle">{{ $row->descripcion }}</td>
                                         <td class="text-center align-middle">
                                             <div>
