@@ -13,6 +13,24 @@ class Rols extends Component
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre_rol;
 
+    protected $rules = [
+        'nombre_rol' => 'required|min:3|max:100|unique:rols,nombre_rol',
+    ];
+
+    protected $messages = [
+        'required' => 'Campo requerido.',
+        'nombre_rol.min' => 'Escribe al menos 3 caracteres.',
+        'nombre_rol.max' => 'Escribe menos de 100 caracteres.',
+        'nombre_rol.unique' => 'El rol ya existe.',
+    ];
+
+    public function updated($id)
+    {
+        $this->validateOnly($id, [
+            'nombre_rol' => 'required|min:3|max:100|unique:rols,nombre_rol',
+        ]);
+    }
+
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
@@ -35,9 +53,7 @@ class Rols extends Component
 
     public function store()
     {
-        $this->validate([
-            'nombre_rol' => 'required',
-        ]);
+        $this->validate();
 
         Rol::create([
             'nombre_rol' => $this->nombre_rol
@@ -57,9 +73,7 @@ class Rols extends Component
 
     public function update()
     {
-        $this->validate([
-            'nombre_rol' => 'required',
-        ]);
+        $this->validate();
 
         if ($this->selected_id) {
             $record = Rol::find($this->selected_id);
