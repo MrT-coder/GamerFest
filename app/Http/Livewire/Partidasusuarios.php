@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Partidasusuario;
+use App\Models\Partida;
+use App\Models\Usuario;
 
 class Partidasusuarios extends Component
 {
@@ -13,15 +15,37 @@ class Partidasusuarios extends Component
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $id_partidas, $id_usuarios, $gana;
 
+    protected $rules = [
+        'id_partidas' => 'required',
+        'id_usuarios' => 'required',
+        'gana' => 'required|max:50',
+    ];
+
+    protected $messages = [
+        'required' => 'Campo requerido.',
+        'gana.max' => 'Escribe menos de 50 caracteres.',
+    ];
+
+    public function updated($id)
+    {
+        $this->validateOnly($id, [
+            'id_partidas' => 'required',
+            'id_usuarios' => 'required',
+            'gana' => 'required|max:50',
+        ]);
+    }
+
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
         return view('livewire.partidasusuarios.view', [
-            'partidasusuarios' => Partidasusuario::latest()
+            'partidasusuarios' => Partidasusuario::with('partida', 'usuario')->latest()
                 ->orWhere('id_partidas', 'LIKE', $keyWord)
                 ->orWhere('id_usuarios', 'LIKE', $keyWord)
                 ->orWhere('gana', 'LIKE', $keyWord)
                 ->paginate(10),
+                'partidas' => Partida::all(),
+                'usuarios' => Usuario::all(),
         ]);
     }
 
@@ -39,11 +63,7 @@ class Partidasusuarios extends Component
 
     public function store()
     {
-        $this->validate([
-            'id_partidas' => 'required',
-            'id_usuarios' => 'required',
-            'gana' => 'required',
-        ]);
+        $this->validate();
 
         Partidasusuario::create([
             'id_partidas' => $this->id_partidas,
@@ -67,11 +87,7 @@ class Partidasusuarios extends Component
 
     public function update()
     {
-        $this->validate([
-            'id_partidas' => 'required',
-            'id_usuarios' => 'required',
-            'gana' => 'required',
-        ]);
+        $this->validate();
 
         if ($this->selected_id) {
             $record = Partidasusuario::find($this->selected_id);
