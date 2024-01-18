@@ -27,9 +27,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <!--<a class="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700" href="#">@GamerFest</a>-->
-                    <img class="zoom-on-hover w-25 h-20 " src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">
-                   
-                
+                    <img class="zoom-on-hover w-25 h-20 " src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">                
                 </div>
                 <!-- Mobile menu button -->
                 <div class="flex md:hidden">
@@ -64,7 +62,6 @@
                     <a class="block w-1/2 px-3 py-2 mx-1 rounded-full  text-center text-lg bg-gray-500 font-medium text-white leading-5 hover:bg-yellow-600 md:mx-0 md:w-auto "
                         href="{{ route('register') }}">Registrarse</a>
                 </div>
-
                 <!-- Search input on mobile screen -->
                 <div class="mt-3 md:hidden">
                     <input type="text"

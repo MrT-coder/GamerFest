@@ -40,7 +40,25 @@
     <!-- JUEGOS -->
     <div class="flex flex-row pt-8 h-screen m-4 text-white items-center justify-center h-full ">
 
-        <div class="hover:scale-110 mr-4 ">
+        <div class="transform hover:scale-110 mr-4">
+        <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-orange-200 to-orange-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+        <div class="w-28 h-28 bg-blue-700 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500">
+        <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fortnite Image" class="w-full h-full object-cover rounded-full" />
+        </div>
+        <div class="z-10  group-hover:-translate-y-10 transition-all duration-500">
+        <span class="text-2xl font-semibold">FORNITE</span>
+        <p>Fortnite es un juego de Battle Royale que combina construcción y disparos. </p>
+        </div>
+        <a class="bg-blue-700 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Inscibete</a>
+        </div>
+        
+    </div>
+
+    
+      
+
+       <!--
+         <div class="hover:scale-110 mr-4 ">
             <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fifa 23" class="w-56 h-64 ">
             <p class="text-center">
                 <b>FORTNITE</b>
@@ -49,7 +67,7 @@
             Fortnite es un juego de Battle Royale que combina construcción y disparos. 
             </p>
         </div>
-
+        -->
         <div class="hover:scale-110  mr-4">
             <img src="https://sm.ign.com/ign_es/screenshot/default/image003_ksqr.png" alt="Fifa 23"  class="w-56 h-64">
             <p class="text-center">
