@@ -8,7 +8,7 @@ use App\Models\Juego;
 class JuegoController extends Controller
 {
     public function mostrarJuegos(){
-        $juegos = Juego::select('nombre', 'descripcion','costo')->get();
+        $juegos = Juego::select('nombre', 'descripcion','costo','modalidad')->get();
 
         return view('welcome', compact('juegos'));
 
