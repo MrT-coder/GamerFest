@@ -9,32 +9,124 @@
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-@component('vistas.nav')@endcomponent
 
-<body class="antialiased bg-black">
 
-    <!-- BIENVENIDA -->
-    <section class="flex items-center justify-center h-screen text-white bg-black">
-        <div class="p-8 text-center sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
-            <h1 class="text-4xl sm:text-5xl font-bold mb-4">Bienvenido al mejor evento de videojuegos del Ecuador</h1>
-            <p class="text-lg sm:text-2xl m-3">
-                Sumérgete en la emoción digital de los videojuegos y la competencia en línea.
-                <br>
-                <span class="font-extrabold text-3xl sm:text-5xl">INSCRÍBETE AHORA !!!</span>
-            </p>
-            <div class="flex justify-center mt-4 space-x-4">
-                <button class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full sm:w-1/2">VER MÁS</button>
-                <button class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full sm:w-1/2 border-solid border-4 border-gray-600">INGRESAR</button>
+<body class="antialiased scroll-smooth">
+
+
+    <section>
+        <div class="relative overflow-hidden bg-cover bg-center bg-no-repeat p-8 md:p-12 text-center bg-fixed"
+            style="background-image: url('img/bg_op1.jpg'); height: 750px ">
+            <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+                style="background-color: rgba(0, 0, 0, 0.6)">
+                @component('vistas.nav')
+                @endcomponent
+                <div class="flex h-full items-center justify-center">
+                    <div class="text-white">
+                        <h2 class="mb-2 text-2xl md:mb-4 md:text-4xl lg:text-5xl font-semibold">Bienvenido al mejor
+                            evento de videojuegos del Ecuador</h2>
+                        <h4 class="mb-4 text-lg md:mb-6 md:text-xl lg:text-2xl font-semibold">Sumérgete en la emoción
+                            digital de los videojuegos y la competencia en línea.
+                            <br>
+                            <span class="font-extrabold text-3xl sm:text-5xl md:text-6xl">INSCRÍBETE AHORA !!!</span>
+                        </h4>
+                        <a href="{{ route('login') }}"
+                            class="bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300">
+                            INSCRIBIRSE
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- JUEGOS -->
-    <section class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 content-center pt-8 m-4 text-white">
+
+    <section
+        class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 content-center p-8 h-5/6 bg-black">
+        @foreach ($juegos as $juego)
+            <div>
+                <div class="group 
+  overflow-hidden
+   relative shadow-lg max-w-xs">
+                    <img class="block group-hover:opacity-40 transition-opacity duration-700"
+                        src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" />
+                    <div
+                        class="absolute bg-black flex items-center group-hover:-top-0 group-hover:opacity-100 duration-700 top-full right-0 w-full opacity-0 h-1/2 transition-all">
+                        <div class=""
+                            style="background-image: url(&quot;https://cdn.cloudflare.steamstatic.com/steam/apps/230410/ss_2d79448091149a8cc790b62e7422615a011d015a.600x338.jpg?t=1637183731&quot;);">
+
+                            <div class="w-full aspect-w-16 aspect-h-9">
+                                <iframe class="w-full h-full"
+                                    src="https://www.youtube.com/embed/6Mtfo8asqjM?autoplay=1&loop=1&mute=1"
+                                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div
+                        class="absolute  bg-gradient-to-br duration-700 bg-gradient-to-r from-indigo-900 via-violet-500 to-purple-900 text-white block left-0 right-0 top-full text-base h-1/2 w-full opacity-50 
+    transition-all group-hover:top-1/2 group-hover:opacity-100">
+                        <div class="py-4 text-xs px-7">
+                            <div class="text-xl font-bold text-center uppercase">{{ $juego->nombre }}</div>
+                            <div class="overflow-ellipsis overflow-hidden ">
+                                <p class="text-center">{{ $juego->descripcion }}</p>
+                            </div>
+                            <div class="whitespace-nowrap overflow-hidden overflow-ellipsis relative z-20">
+                                <span
+                                    class="uppercase font-bold text-white whitespace-nowrap text-xs md:text-sm">Modalidad:</span>
+                                <span class="whitespace-nowrap overflow-hidden overflow-ellipsis relative z-20 text-sm">
+                                    {{ $juego->modalidad }}
+                                </span>
+                            </div>
+                            <div class="font-bold whitespace-nowrap overflow-hidden overflow-ellipsis relative z-20">
+                                <span class="uppercase text-white whitespace-nowrap text-xs md:text-sm">Costo:</span>
+                                <span class="whitespace-nowrap  overflow-hidden overflow-ellipsis relative z-20">
+                                    <span class="text-sm">
+                                        {{ $juego->costo }} $ </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="absolute left-0  pl-7 pt-1">
+                            <a href="{{ route('login') }}"
+                                class="bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300 text-sm">
+                                Inscríbete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+    </section>
+
+    {{-- Contador --}}
+    <section>
+
+    </section>
+
+    {{-- Footer --}}
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">© 2023 Grupo 5. Todos los derechos reservados.</p>
+            <div class="mt-2">
+                <a href="https://github.com/MrT-coder/GamerFest" class="text-white hover:text-white mx-2">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    {{-- <section class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 content-center pt-8 m-4 text-white">
 
         @foreach ($juegos as $juego)
             <div class="hover:scale-110 mb-8 bg-gray-800 rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:opacity-75">
@@ -49,125 +141,11 @@
             </div>
         @endforeach
 
-    </section>
-        <div class="transform hover:scale-110 mr-4">
-        <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-orange-200 to-orange-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-        <div class="w-28 h-28 bg-blue-700 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500">
-        <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fortnite Image" class="w-full h-full object-cover rounded-full" />
-        </div>
-        <div class="z-10  group-hover:-translate-y-10 transition-all duration-500">
-        <span class="text-2xl font-semibold">FORNITE</span>
-        <p>Fortnite es un juego de Battle Royale que combina construcción y disparos. </p>
-        </div>
-        <a class="bg-blue-700 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Inscibete</a>
-        </div>
-        
-    </div>
+    </section> --}}
 
-    
-      
 
-       <!--
-         <div class="hover:scale-110 mr-4 ">
-            <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fifa 23" class="w-56 h-64 ">
-            <p class="text-center">
-                <b>FORTNITE</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-            Fortnite es un juego de Battle Royale que combina construcción y disparos. 
-            </p>
-        </div>
-        -->
-        <div class="hover:scale-110  mr-4">
-            <img src="https://sm.ign.com/ign_es/screenshot/default/image003_ksqr.png" alt="Fifa 23"  class="w-56 h-64">
-            <p class="text-center">
-                <b>FIFA 23</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                FIFA 23 es un juego de simulación de fútbol que recrea la experiencia del deporte en un
-                entorno virtual. 
-            </p>
-        </div>
 
-        <div class="hover:scale-110 mr-4">
-            <img src="https://theme.zdassets.com/theme_assets/43400/87a1ef48e43b8cf114017e3ad51b801951b20fcf.jpg"
-                alt="LOL"  class="w-56 h-64">
-            <p class="text-center">
-                <b>LEAGUE OF LEGENDS</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                League of Legends es un MOBA en el que dos equipos compiten para destruir la base del otro.
 
-            </p>
-        </div>
-
-        <div class="hover:scale-110  mr-4">
-            <img src="https://assetsio.reedpopcdn.com/co1mb7.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp"
-                alt="Clash Royal"  class="w-56 h-64">
-            <p class="text-center">
-                <b>CLASH ROYALE</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Clash Royale combina elementos de juegos de cartas coleccionables, defensa de torres y
-                estrategia en tiempo real. 
-            </p>
-        </div>
-        <div class="hover:scale-110 mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. 
-            </p>
-        </div>
-
-        <div class="hover:scale-110 mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. 
-            </p>
-        </div>
-        <div class="hover:scale-110  mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos.
-            </p>
-        </div>
-
-        <div class="hover:scale-110  mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos.
-            </p>
-        </div>
-
-    </div>
-
-    <hr>
-    <!-- INSCRIPCIÓN -->
-    {{-- <div class="text-center bg-gray-800 text-white p-8 mt-8">
-        <h2 class="text-2xl font-bold mb-4">Inscríbete ahora</h2>
-        <p class="text-lg mb-6">Quedan 5 días, 8 horas y 11 segundos.</p>
-        <button class="border-solid border-4 border-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">INGRESAR</button>
-    </div> --}}
 
 </body>
 
