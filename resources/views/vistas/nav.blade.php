@@ -28,15 +28,8 @@
         <div class="flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex justify-around items-center">
                 <div class="flex items-center">
-<<<<<<< Updated upstream
-                    <!--<a class="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700" href="#">@GamerFest</a>-->
-                    <img class="zoom-on-hover w-25 h-20 " src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">
-                   
-                
-=======
                     
                     <img class="zoom-on-hover size-28 " src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">                
->>>>>>> Stashed changes
                 </div>
                 <!-- Mobile menu button -->
                 <div class="flex md:hidden">
