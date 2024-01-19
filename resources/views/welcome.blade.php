@@ -18,7 +18,7 @@
 
 
 
-<body class="antialiased ">
+<body class="antialiased scroll-smooth">
 
 
     <section>
@@ -112,17 +112,17 @@
 
     </section>
 
-{{-- Footer --}}
-<footer class="bg-gray-800 text-white p-4">
-    <div class="container mx-auto text-center">
-        <p class="text-sm">© 2023 Grupo 5. Todos los derechos reservados.</p>
-        <div class="mt-2">
-            <a href="https://github.com/MrT-coder/GamerFest"  class="text-white hover:text-white mx-2">
+    {{-- Footer --}}
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">© 2023 Grupo 5. Todos los derechos reservados.</p>
+            <div class="mt-2">
+                <a href="https://github.com/MrT-coder/GamerFest" class="text-white hover:text-white mx-2">
                     <i class="fab fa-github"></i>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 
 

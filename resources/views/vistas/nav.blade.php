@@ -48,8 +48,8 @@
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div class="md:flex items-center" :class="isOpen ? 'block' : 'hidden'">
                 <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
-                    <a class="my-1 text-lg text-white leading-5 hover:text-purple-600 hover:underline md:mx-4 md:my-0 font-bold"
-                        href="#">Inicio</a>
+                    {{-- <a class="my-1 text-lg text-white leading-5 hover:text-purple-600 hover:underline md:mx-4 md:my-0 font-bold"
+                        href="#">Inicio</a> --}}
                     <a class="my-1 text-lg text-white leading-5 hover:text-purple-600  hover:underline md:mx-4 md:my-0 font-bold"
                         href="#">Juegos</a>
                     <a class="my-1 text-lg text-white leading-5 hover:text-purple-600 hover:underline md:mx-4 md:my-0 font-bold"
