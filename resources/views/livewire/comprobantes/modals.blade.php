@@ -12,16 +12,36 @@
                 <form>
                     <div class="form-group">
                         <label for="id_usuarios">Usuario</label>
-                        <input wire:model="id_usuarios" type="text" class="form-control" id="id_usuarios"
-                            placeholder="Id Usuarios">
+                        @if ($usuarios->count())
+                            <select wire:model="id_usuarios" class="form-control">
+                                <option value="">Seleccione un usuario</option>
+                                @foreach ($usuarios as $usuario)
+                                    <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{ $usuario->apellido }}
+                                    </option>
+                                @endforeach
+                            @else
+                                <select wire:model="id_usuarios" class="form-control" disabled>
+                                    <option value="">No hay usuarios registrados</option>
+                        @endif
+                        </select>
                         @error('id_usuarios')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="id_juegos">Juego</label>
-                        <input wire:model="id_juegos" type="text" class="form-control" id="id_juegos"
-                            placeholder="Id Juegos">
+                        @if ($juegos->count())
+                            <select wire:model="id_juegos" class="form-control">
+                                <option value="">Seleccione un juego</option>
+                                @foreach ($juegos as $juego)
+                                    <option value="{{ $juego->id }}">{{ $juego->nombre }} - {{ $juego->modalidad }}
+                                    </option>
+                                @endforeach
+                            @else
+                                <select wire:model="id_juegos" class="form-control" disabled>
+                                    <option value="">No hay juegos registrados</option>
+                        @endif
+                        </select>
                         @error('id_juegos')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
