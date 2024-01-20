@@ -21,8 +21,11 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="Valor">Valor</label>
-                                <input wire:model="Valor" type="text" class="form-control" id="Valor"
-                                    placeholder="Valor">
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input wire:model="Valor" type="text" class="form-control" id="Valor"
+                                        placeholder="Valor">
+                                </div>
                                 @error('Valor')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
@@ -76,8 +79,11 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="Valor">Valor</label>
-                                <input wire:model="Valor" type="text" class="form-control" id="Valor"
-                                    placeholder="Valor">
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input wire:model="Valor" type="text" class="form-control" id="Valor"
+                                        placeholder="Valor">
+                                </div>
                                 @error('Valor')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
