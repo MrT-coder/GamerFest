@@ -20,7 +20,7 @@ class Equipointegrante extends Model
      */
     public function equipo()
     {
-        return $this->hasOne('App\Models\Equipo', 'id', 'id_equ');
+        return $this->belongsTo(Equipo::class, 'id_equ');
     }
     
     /**
@@ -28,7 +28,7 @@ class Equipointegrante extends Model
      */
     public function usuario()
     {
-        return $this->hasOne('App\Models\Usuario', 'id', 'id_usu');
+        return $this->belongsTo(Usuario::class, 'id_usu');
     }
     
 }
