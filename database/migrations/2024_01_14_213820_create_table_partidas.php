@@ -23,8 +23,8 @@ return new class extends Migration
 
             $table->string('salon', 255);
             $table->date('fecha');
-            $table->dateTime('hora_inicio');
-            $table->dateTime('hora_fin');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->string('estado', 255);
             $table->timestamps();
         });
