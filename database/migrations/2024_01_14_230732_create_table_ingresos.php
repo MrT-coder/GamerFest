@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('Detalle');
             $table->float('Valor');
-            $table->date('Fecha');
+            $table->dateTime('Fecha');
 
 
 

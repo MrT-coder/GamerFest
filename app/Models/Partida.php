@@ -20,7 +20,7 @@ class Partida extends Model
      */
     public function juego()
     {
-        return $this->hasOne('App\Models\Juego', 'id', 'id_juegos');
+        return $this->belongsTo(Juego::class, 'id_juegos');
     }
     
     /**
@@ -36,7 +36,7 @@ class Partida extends Model
      */
     public function usuario()
     {
-        return $this->hasOne('App\Models\Usuario', 'id', 'id_usuarios');
+        return $this->belongsTo(Usuario::class, 'id_usuarios');
     }
     
 }

@@ -20,7 +20,7 @@ class Usuario extends Model
      */
     public function rol()
     {
-        return $this->hasOne('App\Models\Rol', 'id_rol', 'id_rol');
+        return $this->belongsTo(Rol::class, 'id_rol');
     }
     
 }

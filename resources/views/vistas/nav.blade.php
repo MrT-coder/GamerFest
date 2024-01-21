@@ -62,7 +62,6 @@
                     <a class="block w-1/2 px-3 py-2 mx-1 rounded-full  text-center text-lg bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300 font-medium text-white leading-5  md:mx-0 md:w-auto "
                         href="{{ route('register') }}">Registrarse</a>
                 </div>
-
                 <!-- Search input on mobile screen -->
                 <div class="mt-3 md:hidden">
                     <input type="text"

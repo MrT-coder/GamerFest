@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -304,7 +304,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
         ],
         [
             'text' => 'blog',
@@ -338,7 +338,7 @@ return [
         [
             'text'        => 'Integrantes',
             'url'         => '/equipointegrantes',
-            'icon'        => 'fa-solid fa-user-plus',
+            'icon'        => 'fa-solid fa-users',
         ],
         [
             'text'        => 'Usuarios',
