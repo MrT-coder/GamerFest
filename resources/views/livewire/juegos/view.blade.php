@@ -49,14 +49,24 @@
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">{{ $row->nombre }}</td>
                                         <td class="align-middle">{{ $row->modalidad }}</td>
-                                        <td class="align-middle">{{ $row->costo }}</td>
+                                        <td class="align-middle">$ {{ $row->costo }}</td>
                                         <td class="align-middle text-center">
-                                            <img class="img-thumbnail img-fluid" src="{{ $row->ruta_foto_principal }}"
-                                                alt="Foto principal" width="100">
+                                            @if ($row->ruta_foto_principal && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_principal)))
+                                                <img class="img-thumbnail img-fluid"
+                                                    src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_principal)) }}"
+                                                    alt="Foto principal" width="100">
+                                            @else
+                                                <span class="text-muted">Sin foto</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <img class="img-thumbnail img-fluid" src="{{ $row->ruta_foto_portada }}"
-                                                alt="Foto portada" width="100">
+                                            @if ($row->ruta_foto_portada && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_portada)))
+                                                <img class="img-thumbnail img-fluid"
+                                                    src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_portada)) }}"
+                                                    alt="Foto portada" width="100">
+                                            @else
+                                                <span class="text-muted">Sin foto</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle">{{ $row->descripcion }}</td>
                                         <td class="text-center align-middle">
