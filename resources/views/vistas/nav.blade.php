@@ -51,29 +51,19 @@
                     {{-- <a class="my-1 text-lg text-white leading-5 hover:text-purple-600 hover:underline md:mx-4 md:my-0 font-bold"
                         href="#">Inicio</a> --}}
                     <a class="my-1 text-lg text-white leading-5 hover:text-purple-600  hover:underline md:mx-4 md:my-0 font-bold"
-                        href="#">Juegos</a>
+                        href="#juegos">Juegos</a>
                     <a class="my-1 text-lg text-white leading-5 hover:text-purple-600 hover:underline md:mx-4 md:my-0 font-bold"
-                        href="#">Sobre Nosotros</a>
+                        href="#sobrenosotros">Sobre Nosotros</a>
                 </div>
 
-                <!--
+                
                 <div class="flex items-center py-2 -mx-1 md:mx-0">
                     <a class="block w-1/2 px-3 py-2 mx-1 rounded-full text-center text-lg bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300 font-medium text-white leading-5  md:mx-2 md:w-auto "
                         href="{{ route('login') }}">Ingresar</a>
                     <a class="block w-1/2 px-3 py-2 mx-1 rounded-full  text-center text-lg bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300 font-medium text-white leading-5  md:mx-0 md:w-auto "
                         href="{{ route('register') }}">Registrarse</a>
                 </div>
-                -->
-
-                <div class="flex space-x-4">
-                    <button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
-                        Ingresar
-                    </button>
-                    
-                    <button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
-                        Registrarse
-                    </button>
-                </div>
+                
                 <!-- Search input on mobile screen -->
                 <div class="mt-3 md:hidden">
                     <input type="text"
