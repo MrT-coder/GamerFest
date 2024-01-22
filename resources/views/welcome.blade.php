@@ -58,17 +58,20 @@
                 <div class="group 
   overflow-hidden
    relative shadow-lg max-w-xs">
-                    <img class="block group-hover:opacity-40 transition-opacity duration-700"
-                        src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" />
+
+                        <img class="block group-hover:opacity-40 transition-opacity duration-700"
+                        src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
+                        alt="Foto principal" >
+
                     <div
                         class="absolute bg-black flex items-center group-hover:-top-0 group-hover:opacity-100 duration-700 top-full right-0 w-full opacity-0 h-1/2 transition-all">
                         <div class=""
                             style="background-image: url(&quot;https://cdn.cloudflare.steamstatic.com/steam/apps/230410/ss_2d79448091149a8cc790b62e7422615a011d015a.600x338.jpg?t=1637183731&quot;);">
 
                             <div class="w-full aspect-w-16 aspect-h-9">
-                                <iframe class="w-full h-full"
-                                    src="https://www.youtube.com/embed/6Mtfo8asqjM?autoplay=1&loop=1&mute=1"
-                                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                                <img class="block group-hover:opacity-40 transition-opacity duration-700"
+                                src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}"
+                                alt="Foto principal" >
                             </div>
 
 
@@ -206,7 +209,7 @@
 
                         <ul role="list" class="space-y-8">
                             <li>
-                                <a href="#" class="flex items-center space-x-3 hover:text-sky-400 transition">
+                                <a href="https://github.com/MrT-coder/GamerFest" class="flex items-center space-x-3 hover:text-sky-400 transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5"
                                         viewBox="0 0 16 16">
                                         <path
@@ -230,10 +233,82 @@
         </div>
         <div aria-hidden="true" class="absolute h-screen inset-0 flex items-center">
             <div aria-hidden="true"
-                class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-gradient-to-r from-blue-900 via-rose-900 to-indigo-500 rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl">
+                class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-url['{
+  "type": "selection",
+  "guid": "1f7140a7",
+  "source": "a3fbc0074",
+  "data": {
+    "nodes": [
+      {
+        "id": "6b209ba7",
+        "x": 112,
+        "y": 84,
+        "width": 349,
+        "height": 39,
+        "rotation": 0,
+        "transform": "matrix(1 0 0 1 112 84)",
+        "inspectables": {
+          "width_policy": "auto",
+          "height_policy": "auto",
+          "color": "rgb(68, 68, 68)",
+          "font_size": 30,
+          "text_align": "left",
+          "line_height": 1.3,
+          "bold": null,
+          "italic": false,
+          "underline": false,
+          "opacity": 100,
+          "strikethrough": false,
+          "small_caps": false,
+          "uppercase": false,
+          "letter_spacing": 0,
+          "font": "Source Sans Pro",
+          "font_weight": 600,
+          "aspect_lock": false,
+          "fe_dropshadow_enabled": false,
+          "fe_dropshadow_opacity": 75,
+          "fe_dropshadow_angle": 90,
+          "fe_dropshadow_distance": 5,
+          "fe_dropshadow_size": 5,
+          "fe_dropshadow_color": "rgb(0, 0, 0)",
+          "vertical_align": "top",
+          "padding_left": 0,
+          "padding_right": 0,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "fe_blur_enabled": false,
+          "fe_blur_size": 5
+        },
+        "text": "<p dir=\"auto\">N DE PERSONAS INSCRITAS</p>",
+        "name": "text",
+        "link": null,
+        "deps": {}
+      }
+    ],
+    "hierarchy": {
+      "6b209ba7": {
+        "id": "6b209ba7",
+        "type": "item",
+        "locked": false,
+        "link": null,
+        "aspect_lock": false,
+        "visible": true,
+        "instance_name": "Paragraph 3 Copy 25"
+      }
+    },
+    "idMapping": {
+      "91a2ba5b": "6b209ba7"
+    },
+    "size": {
+      "width": 349,
+      "height": 39
+    },
+    "symbolInstances": {}
+  }
+}'] rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl">
             </div>
         </div>
-        <div aria-hidden="true" class="absolute inset-0 w-screen h-screen bg-[#020314] opacity-80"></div>
+        <div aria-hidden="true" class="absolute inset-0 w-screen h-screen  opacity-80"></div>
     </footer>
 
 
