@@ -34,9 +34,9 @@
                             <thead class="thead text-center">
                                 <tr>
                                     <th class="col-1">#</td>
-                                    <th>Id Usu</th>
-                                    <th>Id Equ</th>
-                                    <th>Islider</th>
+                                    <th>Usuario</th>
+                                    <th>Equipo</th>
+                                    <th>Líder</th>
                                     <th class="col-2">Acciones</td>
                                 </tr>
                             </thead>
@@ -44,12 +44,17 @@
                                 @forelse($equipointegrantes as $row)
                                     <tr>
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->id_usu }}</td>
-                                        <td class="align-middle">{{ $row->id_equ }}</td>
-                                        <td class="align-middle">{{ $row->isLider }}</td>
+                                        <td class="align-middle">{{ $row->usuario->nombre }}</td>
+                                        <td class="align-middle">{{ $row->equipo->nombre_equ }}</td>
+                                        <td class="align-middle">
+                                            @if ($row->isLider == 1)
+                                                Líder
+                                            @else
+                                                No Líder
+                                            @endif
+                                        </td>
                                         <td class="text-center align-middle">
                                             <div>
-
                                                 <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
                                                     class="btn btn-sm btn-warning m-1"
                                                     wire:click="edit({{ $row->id }})"><i class="fa fa-edit"></i>
@@ -58,7 +63,6 @@
                                                     onclick="confirm('¿Desea eliminar el Integrante con ID {{ $row->id }}? \n¡No se pueden recuperar los Integrantes eliminados!')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $row->id }})"><i
                                                         class="fa fa-trash"></i> Eliminar </a>
-                                                </ul>
                                             </div>
                                         </td>
                                     </tr>

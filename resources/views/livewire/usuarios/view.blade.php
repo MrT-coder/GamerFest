@@ -59,9 +59,8 @@
                                         <td class="align-middle">{{ $row->semestre }}</td>
                                         <td class="align-middle">{{ $row->email }}</td>
                                         <td class="align-middle">{{ $row->activo }}</td>
-                                        <td width="90">
-                                            <div class="dropdown">
-
+                                        <td class="text-center align-middle">
+                                            <div>
                                                 <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
                                                     class="btn btn-sm btn-warning m-1"
                                                     wire:click="edit({{ $row->id }})"><i class="fa fa-edit"></i>
@@ -70,7 +69,6 @@
                                                     onclick="confirm('¿Desea eliminar el Rol con ID {{ $row->id }}? \n¡No se pueden recuperar los Rols cannot be recovered!')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $row->id }})"><i
                                                         class="fa fa-trash"></i> Eliminar </a>
-
                                             </div>
                                         </td>
                                     </tr>

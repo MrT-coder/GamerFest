@@ -5,6 +5,9 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Equipointegrante;
+use Livewire\WithFileUploads;
+use App\Models\Usuario;
+use App\Models\Equipo;
 
 class Equipointegrantes extends Component
 {
@@ -13,15 +16,39 @@ class Equipointegrantes extends Component
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $id_usu, $id_equ, $isLider;
 
+    protected $rules = [
+        'id_usu' => 'required',
+        'id_equ' => 'required',
+        'isLider' => 'required',
+    ];
+
+    protected $messages = [
+        'required' => 'Campo requerido.',
+        'id_usu.required' => 'Selecciona un usuario.',
+        'id_equ.required' => 'Selecciona un equipo.',
+        'isLider.required' => 'Selecciona si es líder o no.',
+    ];
+
+    public function updated($id)
+    {
+        $this->validateOnly($id, [
+            'id_usu' => 'required',
+            'id_equ' => 'required',
+            'isLider' => 'required',
+        ]);
+    }
+
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
         return view('livewire.equipointegrantes.view', [
-            'equipointegrantes' => Equipointegrante::latest()
+            'equipointegrantes' => Equipointegrante::with('usuario', 'equipo')->latest()
                 ->orWhere('id_usu', 'LIKE', $keyWord)
                 ->orWhere('id_equ', 'LIKE', $keyWord)
                 ->orWhere('isLider', 'LIKE', $keyWord)
                 ->paginate(10),
+                'usuarios' => Usuario::all(),
+                'equipos' => Equipo::all(),
         ]);
     }
 
@@ -39,11 +66,7 @@ class Equipointegrantes extends Component
 
     public function store()
     {
-        $this->validate([
-            'id_usu' => 'required',
-            'id_equ' => 'required',
-            'isLider' => 'required',
-        ]);
+        $this->validate();
 
         Equipointegrante::create([
             'id_usu' => $this->id_usu,
@@ -67,11 +90,7 @@ class Equipointegrantes extends Component
 
     public function update()
     {
-        $this->validate([
-            'id_usu' => 'required',
-            'id_equ' => 'required',
-            'isLider' => 'required',
-        ]);
+        $this->validate();
 
         if ($this->selected_id) {
             $record = Equipointegrante::find($this->selected_id);

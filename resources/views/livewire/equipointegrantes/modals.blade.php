@@ -10,31 +10,61 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="id_usu"></label>
-                        <input wire:model="id_usu" type="text" class="form-control" id="id_usu"
-                            placeholder="Id Usu">
-                        @error('id_usu')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_usu">Usuario</label>
+                                @if ($usuarios->count())
+                                    <select wire:model="id_usu" class="form-control">
+                                        <option value="">Seleccione un Usuario</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }}
+                                                {{ $usuario->apellido }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_usu" class="form-control" disabled>
+                                            <option value="">No hay usuarios registrados</option>
+                                @endif
+                                </select>
+                                @error('id_usu')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_equ">Equipo</label>
+                                @if ($equipos->count())
+                                    <select wire:model="id_equ" class="form-control">
+                                        <option value="">Seleccione un Equipo</option>
+                                        @foreach ($equipos as $equipo)
+                                            <option value="{{ $equipo->id }}">{{ $equipo->nombre_equ }}</option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_equ" class="form-control" disabled>
+                                            <option value="">No hay equipos registrados</option>
+                                @endif
+                                </select>
+                                @error('id_equ')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="id_equ"></label>
-                        <input wire:model="id_equ" type="text" class="form-control" id="id_equ"
-                            placeholder="Id Equ">
-                        @error('id_equ')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="isLider">¿El usuario es el líder del equipo?</label>
+                            <select wire:model="isLider" class="form-control">
+                                <option value="">Seleccione una opción</option>
+                                <option value="1">Lider</option>
+                                <option value="0">No Lider</option>
+                            </select>
+                            @error('isLider')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="isLider"></label>
-                        <input wire:model="isLider" type="text" class="form-control" id="isLider"
-                            placeholder="Islider">
-                        @error('isLider')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
@@ -60,31 +90,61 @@
             <div class="modal-body">
                 <form>
                     <input type="hidden" wire:model="selected_id">
-                    <div class="form-group">
-                        <label for="id_usu"></label>
-                        <input wire:model="id_usu" type="text" class="form-control" id="id_usu"
-                            placeholder="Id Usu">
-                        @error('id_usu')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_usu">Usuario</label>
+                                @if ($usuarios->count())
+                                    <select wire:model="id_usu" class="form-control">
+                                        <option value="">Seleccione un Usuario</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }}
+                                                {{ $usuario->apellido }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_usu" class="form-control" disabled>
+                                            <option value="">No hay usuarios registrados</option>
+                                @endif
+                                </select>
+                                @error('id_usu')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_equ">Equipo</label>
+                                @if ($equipos->count())
+                                    <select wire:model="id_equ" class="form-control">
+                                        <option value="">Seleccione un Equipo</option>
+                                        @foreach ($equipos as $equipo)
+                                            <option value="{{ $equipo->id }}">{{ $equipo->nombre_equ }}</option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_equ" class="form-control" disabled>
+                                            <option value="">No hay equipos registrados</option>
+                                @endif
+                                </select>
+                                @error('id_equ')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="id_equ"></label>
-                        <input wire:model="id_equ" type="text" class="form-control" id="id_equ"
-                            placeholder="Id Equ">
-                        @error('id_equ')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="isLider">¿El usuario es el líder del equipo?</label>
+                            <select wire:model="isLider" class="form-control">
+                                <option value="">Seleccione una opción</option>
+                                <option value="1">Lider</option>
+                                <option value="0">No Lider</option>
+                            </select>
+                            @error('isLider')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="isLider"></label>
-                        <input wire:model="isLider" type="text" class="form-control" id="isLider"
-                            placeholder="Islider">
-                        @error('isLider')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
