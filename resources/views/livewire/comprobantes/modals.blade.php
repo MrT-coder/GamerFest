@@ -9,60 +9,71 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="id_usuarios">Usuario</label>
-                        @if ($usuarios->count())
-                            <select wire:model="id_usuarios" class="form-control">
-                                <option value="">Seleccione un usuario</option>
-                                @foreach ($usuarios as $usuario)
-                                    <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{ $usuario->apellido }}
-                                    </option>
-                                @endforeach
-                            @else
-                                <select wire:model="id_usuarios" class="form-control" disabled>
-                                    <option value="">No hay usuarios registrados</option>
-                        @endif
-                        </select>
-                        @error('id_usuarios')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                <form wire:submit.prevent="save">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_usuarios">Usuario</label>
+                                @if ($usuarios->count())
+                                    <select wire:model="id_usuarios" class="form-control">
+                                        <option value="">Seleccione un usuario</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }}
+                                                {{ $usuario->apellido }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_usuarios" class="form-control" disabled>
+                                            <option value="">No hay usuarios registrados</option>
+                                @endif
+                                </select>
+                                @error('id_usuarios')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_juegos">Juego</label>
+                                @if ($juegos->count())
+                                    <select wire:model="id_juegos" class="form-control">
+                                        <option value="">Seleccione un juego</option>
+                                        @foreach ($juegos as $juego)
+                                            <option value="{{ $juego->id }}">{{ $juego->nombre }} -
+                                                {{ $juego->modalidad }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_juegos" class="form-control" disabled>
+                                            <option value="">No hay juegos registrados</option>
+                                @endif
+                                </select>
+                                @error('id_juegos')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="id_juegos">Juego</label>
-                        @if ($juegos->count())
-                            <select wire:model="id_juegos" class="form-control">
-                                <option value="">Seleccione un juego</option>
-                                @foreach ($juegos as $juego)
-                                    <option value="{{ $juego->id }}">{{ $juego->nombre }} - {{ $juego->modalidad }}
-                                    </option>
-                                @endforeach
-                            @else
-                                <select wire:model="id_juegos" class="form-control" disabled>
-                                    <option value="">No hay juegos registrados</option>
-                        @endif
-                        </select>
-                        @error('id_juegos')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="estado_pago">Estado del pago</label>
+                            <input wire:model="estado_pago" type="text" class="form-control" id="estado_pago"
+                                placeholder="Estado Pago">
+                            @error('estado_pago')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="estado_pago">Estado del pago</label>
-                        <input wire:model="estado_pago" type="text" class="form-control" id="estado_pago"
-                            placeholder="Estado Pago">
-                        @error('estado_pago')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="ruta_comprobante">Subir comprobante</label>
+                            <input wire:model="ruta_comprobante" type="file" class="form-control"
+                                id="ruta_comprobante">
+                            @error('ruta_comprobante')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ruta_comprobante">Subir comprobante</label>
-                        <input wire:model="ruta_comprobante" type="text" class="form-control" id="ruta_comprobante"
-                            placeholder="Ruta Comprobante">
-                        @error('ruta_comprobante')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
@@ -86,41 +97,72 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form wire:submit.prevent="save">
                     <input type="hidden" wire:model="selected_id">
-                    <div class="form-group">
-                        <label for="id_usuarios"></label>
-                        <input wire:model="id_usuarios" type="text" class="form-control" id="id_usuarios"
-                            placeholder="Id Usuarios">
-                        @error('id_usuarios')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_usuarios">Usuario</label>
+                                @if ($usuarios->count())
+                                    <select wire:model="id_usuarios" class="form-control">
+                                        <option value="">Seleccione un usuario</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }}
+                                                {{ $usuario->apellido }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_usuarios" class="form-control" disabled>
+                                            <option value="">No hay usuarios registrados</option>
+                                @endif
+                                </select>
+                                @error('id_usuarios')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_juegos">Juego</label>
+                                @if ($juegos->count())
+                                    <select wire:model="id_juegos" class="form-control">
+                                        <option value="">Seleccione un juego</option>
+                                        @foreach ($juegos as $juego)
+                                            <option value="{{ $juego->id }}">{{ $juego->nombre }} -
+                                                {{ $juego->modalidad }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        <select wire:model="id_juegos" class="form-control" disabled>
+                                            <option value="">No hay juegos registrados</option>
+                                @endif
+                                </select>
+                                @error('id_juegos')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="id_juegos"></label>
-                        <input wire:model="id_juegos" type="text" class="form-control" id="id_juegos"
-                            placeholder="Id Juegos">
-                        @error('id_juegos')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="estado_pago">Estado de pago</label>
+                            <input wire:model="estado_pago" type="text" class="form-control" id="estado_pago"
+                                placeholder="Estado Pago">
+                            @error('estado_pago')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="estado_pago"></label>
-                        <input wire:model="estado_pago" type="text" class="form-control" id="estado_pago"
-                            placeholder="Estado Pago">
-                        @error('estado_pago')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="ruta_comprobante">Subir comprobante</label>
+                            <input wire:model="ruta_comprobante" type="file" class="form-control"
+                                id="ruta_comprobante" placeholder="Ruta Comprobante">
+                            @error('ruta_comprobante')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ruta_comprobante"></label>
-                        <input wire:model="ruta_comprobante" type="text" class="form-control"
-                            id="ruta_comprobante" placeholder="Ruta Comprobante">
-                        @error('ruta_comprobante')
-                            <span class="error text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer justify-content-between">

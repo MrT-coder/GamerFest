@@ -7,10 +7,11 @@ use Livewire\WithPagination;
 use App\Models\Comprobante;
 use App\Models\Usuario;
 use App\Models\Juego;
+use Livewire\WithFileUploads;
 
 class Comprobantes extends Component
 {
-    use WithPagination;
+    use WithPagination, WithFileUploads;
 
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $id_usuarios, $id_juegos, $estado_pago, $ruta_comprobante;
@@ -19,7 +20,7 @@ class Comprobantes extends Component
         'id_usuarios' => 'required',
         'id_juegos' => 'required',
         'estado_pago' => 'required|max:255',
-        'ruta_comprobante' => 'required|images|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'ruta_comprobante' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
     protected $messages = [
@@ -28,7 +29,7 @@ class Comprobantes extends Component
         'id_juegos.required' => 'Selecciona un juego.',
         'estado_pago.max' => 'Escribe menos de 255 caracteres.',
         'ruta_comprobante.required' => 'Selecciona una imagen.',
-        'ruta_comprobante.images' => 'Solo se permiten imágenes.',
+        'ruta_comprobante.image' => 'Solo se permiten imágenes.',
         'ruta_comprobante.mimes' => 'Solo se permiten imágenes con formato jpeg, png, jpg, gif o svg.',
         'ruta_comprobante.max' => 'La imagen no debe pesar más de 2MB.',
     ];
@@ -39,7 +40,7 @@ class Comprobantes extends Component
             'id_usuarios' => 'required',
             'id_juegos' => 'required',
             'estado_pago' => 'required|max:255',
-            'ruta_comprobante' => 'required|images|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ruta_comprobante' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 

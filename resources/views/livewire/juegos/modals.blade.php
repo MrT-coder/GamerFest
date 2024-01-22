@@ -34,8 +34,11 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="costo">Costo</label>
-                                <input wire:model="costo" type="number" class="form-control" id="costo"
-                                    placeholder="Costo">
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input wire:model="costo" type="number" class="form-control" id="costo"
+                                        placeholder="Costo">
+                                </div>
                                 @error('costo')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
@@ -61,6 +64,16 @@
                                 @error('ruta_foto_principal')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
+                                <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_foto_principal">
+                                    <button class="btn btn-outline-dark" disabled>
+                                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        <span role="status">Cargando...</span>
+                                    </button>
+                                </div>
+                                {{-- @if ($ruta_foto_principal)
+                                    <img class="img-thumbnail img-fluid mt-1"
+                                        src="{{ $ruta_foto_principal->temporaryUrl() }}">
+                                @endif --}}
                             </div>
                         </div>
                         <div class="col">
@@ -71,6 +84,15 @@
                                 @error('ruta_foto_portada')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
+                                <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_foto_portada">
+                                    <button class="btn btn-outline-dark" disabled>
+                                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        <span role="status">Cargando...</span>
+                                    </button>
+                                </div>
+                                {{-- @if ($ruta_foto_portada)
+                                    <img class="img-thumbnail img-fluid" src="{{ $ruta_foto_portada->temporaryUrl() }}">
+                                @endif --}}
                             </div>
                         </div>
                     </div>
@@ -88,8 +110,8 @@
 </div>
 
 <!-- Edit Modal -->
-<div wire:ignore.self class="modal fade" id="updateDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="updateModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="updateDataModal" data-bs-backdrop="static" tabindex="-1"
+    role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -124,8 +146,11 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="costo">Costo</label>
-                                <input wire:model="costo" type="number" class="form-control" id="costo"
-                                    placeholder="Costo">
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input wire:model="costo" type="number" class="form-control" id="costo"
+                                        placeholder="Costo">
+                                </div>
                                 @error('costo')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
@@ -151,6 +176,23 @@
                                 @error('ruta_foto_principal')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
+                                <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_foto_principal">
+                                    <button class="btn btn-outline-dark" disabled>
+                                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        <span role="status">Cargando...</span>
+                                    </button>
+                                </div>
+                                {{-- @if ($ruta_foto_principal && is_object($ruta_foto_principal))
+                                    <img class="img-thumbnail img-fluid"
+                                        src="{{ $ruta_foto_principal->temporaryUrl() }}">
+                                @else
+                                    @if ($ruta_foto_principal)
+                                        <img class="img-thumbnail img-fluid"
+                                            src="{{ asset('storage/' . str_replace('public/', '', $ruta_foto_principal)) }}">
+                                    @else
+                                        <span class="text-muted">Sin foto</span>
+                                    @endif
+                                @endif --}}
                             </div>
                         </div>
                         <div class="col">
@@ -161,6 +203,18 @@
                                 @error('ruta_foto_portada')
                                     <span class="error text-danger">{{ $message }}</span>
                                 @enderror
+                                <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_foto_portada">
+                                    <button class="btn btn-outline-dark" disabled>
+                                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        <span role="status">Cargando...</span>
+                                    </button>
+                                </div>
+                                {{-- @if ($ruta_foto_portada)
+                                    <img class="img-thumbnail img-fluid"
+                                        src="{{ $ruta_foto_portada->temporaryUrl() }}">
+                                @else
+                                    <img class="img-thumbnail img-fluid" src="{{ $ruta_foto_portada }}">
+                                @endif --}}
                             </div>
                         </div>
                     </div>

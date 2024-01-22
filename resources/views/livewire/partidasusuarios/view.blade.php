@@ -45,11 +45,11 @@
                                     <tr>
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">Partida {{ $row->id_partidas }}</td>
-                                        <td class="align-middle">{{ $row->usuario->nombre }} {{ $row->usuario->apellido }}</td>
+                                        <td class="align-middle">{{ $row->usuario->nombre }}
+                                            {{ $row->usuario->apellido }}</td>
                                         <td class="align-middle">{{ $row->gana }}</td>
                                         <td class="text-center align-middle">
                                             <div>
-
                                                 <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
                                                     class="btn btn-sm btn-warning m-1"
                                                     wire:click="edit({{ $row->id }})"><i class="fa fa-edit"></i>
@@ -58,7 +58,6 @@
                                                     onclick="confirm('¿Desea eliminar el Partidasusuario con ID {{ $row->id }}? \n¡No se pueden recuperar los Partidasusuarios eliminados!')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $row->id }})"><i
                                                         class="fa fa-trash"></i> Eliminar </a>
-                                                </ul>
                                             </div>
                                         </td>
                                     </tr>

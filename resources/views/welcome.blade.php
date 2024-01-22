@@ -15,9 +15,7 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
 
-    <scriptv src="resources\js\inicio.js"></script>
 </head>
 
 
@@ -25,7 +23,7 @@
 <body class="antialiased scroll-smooth">
 
 
-    <section>
+    <section id="inicio">
         <div class="relative overflow-hidden bg-cover bg-center bg-no-repeat p-8 md:p-12 text-center bg-fixed"
             style="background-image: url('img/bg_op1.jpg'); height: 750px ">
             <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
@@ -53,7 +51,8 @@
 
 
     <section
-        class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 content-center p-8 h-5/6 bg-black">
+        class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 content-center p-8 h-5/6 bg-black"
+        id="juegos">
         @foreach ($juegos as $juego)
             <div>
                 <div class="group 
@@ -112,290 +111,134 @@
     </section>
 
     {{-- Contador --}}
-    <section>
+    <section id="cuenta">
+        <div class="w-50 h-50 bg-gradient-to-r from-blue-400 via-rose-900 to-indigo-500">
+            <div class="w-50 h-50 bg-black bg-opacity-70">
+                <div
+                    class="w-full h-full flex flex-col items-start justify-between container mx-auto py-8 px-8 lg:px-4 xl:px-0">
+                    <img src="{{ asset('img/logoGamerFest.png') }}" alt="" class="flex-initial">
+                    <div class="flex-1 flex flex-col items-start justify-center">
+
+                        <h1
+                            class="text-6xl lg:text-7xl xl:text-8xl text-gray-200 tracking-wider font-bold font-serif mt-12 text-center md:text-left">
+                            Pronto iniciara el <span class="text-yellow-300">GamerFest</span> </h1>
+                        <div class="mt-12 flex flex-col items-center mt-8 ml-2">
+                            <p class="text-gray-300 uppercase text-sm">Tiempo restante para la emoción </p>
+                            <div class="flex items-center justify-center space-x-4 mt-4" x-data="timer(new Date().setDate(new Date().getDate() + 1))"
+                                x-init="init();">
+                                <div class="flex flex-col items-center px-4">
+                                    <span id="days" class="text-4xl lg:text-5xl text-gray-200">00</span>
+                                    <span class="text-gray-400 mt-2">Dias</span>
+                                </div>
+                                <span class="w-[1px] h-24 bg-gray-400"></span>
+                                <div class="flex flex-col items-center px-4">
+                                    <span id="hours" class="text-4xl lg:text-5xl text-gray-200">00</span>
+                                    <span class="text-gray-400 mt-2">Horas</span>
+                                </div>
+                                <span class="w-[1px] h-24 bg-gray-400"></span>
+                                <div class="flex flex-col items-center px-4">
+                                    <span id="minutes" class="text-4xl lg:text-5xl text-gray-200">00</span>
+                                    <span class="text-gray-400 mt-2">Minutos</span>
+                                </div>
+                                <span class="w-[1px] h-24 bg-gray-400"></span>
+                                <div class="flex flex-col items-center px-4">
+                                    <span id="seconds" class="text-4xl lg:text-5xl text-gray-200">00</span>
+                                    <span class="text-gray-400 mt-2">Segundos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        const $days = document.getElementById('days'),
+                            $hours = document.getElementById('hours'),
+                            $minutes = document.getElementById('minutes'),
+                            $seconds = document.getElementById('seconds'),
+                            $finalMessage = document.querySelector('.final-sms');
+
+                        //Fecha a futuro
+                        const countdownDate = new Date('01 30, 2024 00:00:00').getTime();
+
+                        let interval = setInterval(function() {
+                            //Obtener fecha actual y milisegundos
+                            const now = new Date().getTime();
+
+                            //Obtener las distancias entre ambas fechas
+                            let distance = countdownDate - now;
+
+                            //Calculos a dias-horas-minutos-segundos
+                            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            let seconds = Math.floor((distance % (1000 * 60)) / (1000));
+
+                            //Escribimos resultados
+                            $days.innerHTML = days;
+                            $hours.innerHTML = hours;
+                            $minutes.innerHTML = minutes;
+                            $seconds.innerHTML = ('0' + seconds).slice(-2);
+
+                            //Cuando llegue a 0
+                            if (distance < 0) {
+                                clearInterval(interval);
+                                $finalMessage.style.transform = 'translateY(0)';
+                            }
+                        }, 1000);
+                    </script>
+
 
     </section>
 
     {{-- Footer --}}
-    <footer class="bg-gray-800 text-white p-4">
-        <div class="container mx-auto text-center">
-            <p class="text-sm">© 2023 Grupo 5. Todos los derechos reservados.</p>
-            <div class="mt-2">
-                <a href="https://github.com/MrT-coder/GamerFest" class="text-white hover:text-white mx-2">
-                    <i class="fab fa-github"></i>
-                </a>
+
+    <!-- component -->
+    <footer class="relative flex flex-col items-center bg-cyan-900 h-screen overflow-hidden md:py-40 text-white p-8"
+        id="sobrenosotros">
+        <div class="relative z-[1] container m-auto px-6 md:px-12 text-lg items-center">
+            <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
+                <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
+                    <div class="w-full space-x-12 flex justify-center text-gray-300 sm:w-7/12 md:justify-start">
+                        <ul class="list-disc list-inside space-y-8">
+                            <li><a href="#inicio" class="hover:text-sky-400 transition">Inicio</a></li>
+                            <li><a href="#juegos" class="hover:text-sky-400 transition">Juegos</a></li>
+                            <li><a href="#cuenta" class="hover:text-sky-400 transition">Cuenta Regresiva</a></li>
+                        </ul>
+
+                        <ul role="list" class="space-y-8">
+                            <li>
+                                <a href="#" class="flex items-center space-x-3 hover:text-sky-400 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                    </svg>
+                                    <span>Github</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-10/12 m-auto  mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
+                        <span class="block text-gray-300 font-bold">Un evento organizado por la Universidad de las Fuerzas
+                            Armadas ESPE.</span>
+
+                        <p>La universidad de las Fuerzas Armadas ESPE, presenta uno de los eventos mas grandes a nivel universitario, donde se reunen estudiantes de todas las Carreras y Universidades. Te invitamos a disfrutar de los días mas emocionantes y divertidos junto a nosotros!!!.</p>
+                        <span class="block text-gray-300">Grupo 5 &copy; 2023</span>
+
+                    </div>
+                </div>
             </div>
         </div>
+        <div aria-hidden="true" class="absolute h-screen inset-0 flex items-center">
+            <div aria-hidden="true"
+                class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-gradient-to-r from-blue-900 via-rose-900 to-indigo-500 rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl">
+            </div>
+        </div>
+        <div aria-hidden="true" class="absolute inset-0 w-screen h-screen bg-[#020314] opacity-80"></div>
     </footer>
 
 
 
-    {{-- <section class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 content-center pt-8 m-4 text-white">
 
-        @foreach ($juegos as $juego)
-            <!-- <div class="hover:scale-110 mb-8 bg-gray-800 rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:opacity-75">
-                <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="{{ $juego->nombre }}" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <p class="text-center mt-4 text-xl font-bold">{{ $juego->nombre }}</p>
-                    <div class="opacity-0 hover:opacity-100 transition duration-300 ease-in-out">
-                        <p class="text-center text-sm">{{ $juego->descripcion }}</p>
-                        <p class="text-center mt-2 font-bold">Precio: {{$juego->costo}}$</p>
-                    </div>
-                </div>
-            </div>  -->
-
-            <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-black-200 to-purple-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                <div class="w-28 h-28 bg-blue-700 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500">
-                    <img src="https://sm.ign.com/ign_es/screenshot/default/image003_ksqr.png" alt="Fortnite Image" class="w-full h-full object-cover rounded-full" />                     
-                </div>
-                
-                <div class="z-10  group-hover:-translate-y-10 transition-all duration-500">
-                    <span class="text-2xl font-semibold">{{ $juego->nombre }}</span>
-                    <p>{{ $juego->descripcion }} </p>
-                </div>
-                <a class="bg-blue-700 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Precio: {{$juego->costo}}$</a>
-                </div>
-            </div>
-
-            <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-black-200 to-purple-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                <div class="w-28 h-28 bg-blue-700 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500">
-                    <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fortnite Image" class="w-full h-full object-cover rounded-full" />                     
-                </div>
-                
-                <div class="z-10  group-hover:-translate-y-10 transition-all duration-500">
-                    <span class="text-2xl font-semibold">{{ $juego->nombre }}</span>
-                    <p>{{ $juego->descripcion }} </p>
-                </div>
-                <a class="bg-blue-700 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Precio: {{$juego->costo}}$</a>
-                </div>
-            </div>
-        @endforeach
-
-    </section>
-        <div class="transform hover:scale-110 mr-4">
-        <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-sky-200 via-orange-200 to-orange-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-        <div class="w-28 h-28 bg-blue-700 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24  group-hover:-translate-y-20 transition-all duration-500">
-        <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fortnite Image" class="w-full h-full object-cover rounded-full" />
-        </div>
-        <div class="z-10  group-hover:-translate-y-10 transition-all duration-500">
-        <span class="text-2xl font-semibold">FORNITE</span>
-        <p>Fortnite es un juego de Battle Royale que combina construcción y disparos. </p>
-        </div>
-        <a class="bg-blue-700 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Inscibete</a>
-        </div>
-        
-    </div>
-
-    
-      
-
-       <!--
-         <div class="hover:scale-110 mr-4 ">
-            <img src="https://i.pinimg.com/550x/8c/e8/ab/8ce8aba0edcb78be32945243a3d9b4e6.jpg" alt="Fifa 23" class="w-56 h-64 ">
-            <p class="text-center">
-                <b>FORTNITE</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-            Fortnite es un juego de Battle Royale que combina construcción y disparos. 
-            </p>
-        </div>
-        -->
-        <div class="hover:scale-110  mr-4">
-            <img src="https://sm.ign.com/ign_es/screenshot/default/image003_ksqr.png" alt="Fifa 23"  class="w-56 h-64">
-            <p class="text-center">
-                <b>FIFA 23</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                FIFA 23 es un juego de simulación de fútbol que recrea la experiencia del deporte en un
-                entorno virtual. 
-            </p>
-        </div>
-
-        <div class="hover:scale-110 mr-4">
-            <img src="https://theme.zdassets.com/theme_assets/43400/87a1ef48e43b8cf114017e3ad51b801951b20fcf.jpg"
-                alt="LOL"  class="w-56 h-64">
-            <p class="text-center">
-                <b>LEAGUE OF LEGENDS</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                League of Legends es un MOBA en el que dos equipos compiten para destruir la base del otro.
-
-            </p>
-        </div>
-
-        <div class="hover:scale-110  mr-4">
-            <img src="https://assetsio.reedpopcdn.com/co1mb7.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp"
-                alt="Clash Royal"  class="w-56 h-64">
-            <p class="text-center">
-                <b>CLASH ROYALE</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Clash Royale combina elementos de juegos de cartas coleccionables, defensa de torres y
-                estrategia en tiempo real. 
-            </p>
-        </div>
-        <div class="hover:scale-110 mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. 
-            </p>
-        </div>
-
-        <div class="hover:scale-110 mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos. 
-            </p>
-        </div>
-        <div class="hover:scale-110  mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos.
-            </p>
-        </div>
-
-        <div class="hover:scale-110  mr-4">
-            <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-9ebf575033287e2177106da5ff45c1d4"
-                alt="Valorant"  class="w-56 h-64">
-            <p class="text-center">
-                <b>VALORANT</b>
-            </p>
-            <p class="opacity-0 hover:opacity-100 text-center text-sm">
-                Valorant es un juego de disparos táctico donde dos equipos compiten para completar
-                objetivos.
-            </p>
-        </div>
-
-    </div>
-
-    <hr>
-    <!-- INSCRIPCIÓN -->
-    {{-- <div class="text-center bg-gray-800 text-white p-8 mt-8">
-        <h2 class="text-2xl font-bold mb-4">Inscríbete ahora</h2>
-        <p class="text-lg mb-6">Quedan 5 días, 8 horas y 11 segundos.</p>
-        <button class="border-solid border-4 border-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">INGRESAR</button>
-    </div> --}}
-
-
-    <body>
-    <div class="w-50 h-50" style="background-image: url('https://vojislavd.com/ta-template-demo/assets/img/coming-soon.jpg');">
-        <div class="w-50 h-50 bg-black bg-opacity-70">
-            <div class="w-full h-full flex flex-col items-start justify-between container mx-auto py-8 px-8 lg:px-4 xl:px-0">
-                <div class="flex-1 flex flex-col items-start justify-center">
-                    <h1 class="text-6xl lg:text-7xl xl:text-8xl text-gray-200 tracking-wider font-bold font-serif mt-12 text-center md:text-left">Pronto iniciara el <span class="text-yellow-300">GamerFest</span> </h1>
-                    <div class="mt-12 flex flex-col items-center mt-8 ml-2">
-                        <p class="text-gray-300 uppercase text-sm">Tiempo restante para el inicio </p>
-                        <div class="flex items-center justify-center space-x-4 mt-4" x-data="timer(new Date().setDate(new Date().getDate() + 1))" x-init="init();">
-                            <div class="flex flex-col items-center px-4">
-                                <span x-text="time().days" class="text-4xl lg:text-5xl text-gray-200">00</span>
-                                <span class="text-gray-400 mt-2">Dias</span>
-                            </div>
-                            <span class="w-[1px] h-24 bg-gray-400"></span>
-                            <div class="flex flex-col items-center px-4">
-                                <span x-text="time().hours" class="text-4xl lg:text-5xl text-gray-200">23</span>
-                                <span class="text-gray-400 mt-2">Horas</span>
-                            </div>
-                            <span class="w-[1px] h-24 bg-gray-400"></span>
-                            <div class="flex flex-col items-center px-4">
-                                <span x-text="time().minutes" class="text-4xl lg:text-5xl text-gray-200">59</span>
-                                <span class="text-gray-400 mt-2">Minutos</span>
-                            </div>
-                            <span class="w-[1px] h-24 bg-gray-400"></span>
-                            <div class="flex flex-col items-center px-4">
-                                <span x-text="time().seconds" class="text-4xl lg:text-5xl text-gray-200">28</span>
-                                <span class="text-gray-400 mt-2">Segundos</span>
-                            </div>
-                        </div>                      
-                    </div>       
-                </div>
-                <div class="w-full flex items-center justify-center md:justify-end">
-                    <ul class="flex items-center space-x-4">
-                        <li>
-                            <a href="#" title="Facebook">
-                                <svg class="w-8 h-8 hover:scale-110 transition duration-300" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506.86 506.86"><defs><style>.cls-1{fill:#e2e8f0;}</style></defs><path class="cls-1" d="M506.86,253.43C506.86,113.46,393.39,0,253.43,0S0,113.46,0,253.43C0,379.92,92.68,484.77,213.83,503.78V326.69H149.48V253.43h64.35V197.6c0-63.52,37.84-98.6,95.72-98.6,27.73,0,56.73,5,56.73,5v62.36H334.33c-31.49,0-41.3,19.54-41.3,39.58v47.54h70.28l-11.23,73.26H293V503.78C414.18,484.77,506.86,379.92,506.86,253.43Z"></path><path class="cls-2" d="M352.08,326.69l11.23-73.26H293V205.89c0-20,9.81-39.58,41.3-39.58h31.95V104s-29-5-56.73-5c-57.88,0-95.72,35.08-95.72,98.6v55.83H149.48v73.26h64.35V503.78a256.11,256.11,0,0,0,79.2,0V326.69Z"></path></svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" title="Twitter">
-                                <svg class="w-8 h-8 hover:scale-110 transition duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333333 333333" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"><path d="M166667 0c92048 0 166667 74619 166667 166667s-74619 166667-166667 166667S0 258715 0 166667 74619 0 166667 0zm90493 110539c-6654 2976-13822 4953-21307 5835 7669-4593 13533-11870 16333-20535-7168 4239-15133 7348-23574 9011-6787-7211-16426-11694-27105-11694-20504 0-37104 16610-37104 37101 0 2893 320 5722 949 8450-30852-1564-58204-16333-76513-38806-3285 5666-5022 12109-5022 18661v4c0 12866 6532 24246 16500 30882-6083-180-11804-1876-16828-4626v464c0 17993 12789 33007 29783 36400-3113 845-6400 1313-9786 1313-2398 0-4709-247-7007-665 4746 14736 18448 25478 34673 25791-12722 9967-28700 15902-46120 15902-3006 0-5935-184-8860-534 16466 10565 35972 16684 56928 16684 68271 0 105636-56577 105636-105632 0-1630-36-3209-104-4806 7251-5187 13538-11733 18514-19185l17-17-3 2z" fill="#e2e8f0"></path></svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" title="LinkedIn">
-                                <svg class="w-8 h-8 hover:scale-110 transition duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333333 333333" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"><path d="M166667 0c92048 0 166667 74619 166667 166667s-74619 166667-166667 166667S0 258715 0 166667 74619 0 166667 0zm-18220 138885h28897v14814l418 1c4024-7220 13865-14814 28538-14814 30514-1 36157 18989 36157 43691v50320l-30136 1v-44607c0-10634-221-24322-15670-24322-15691 0-18096 11575-18096 23548v45382h-30109v-94013zm-20892-26114c0 8650-7020 15670-15670 15670s-15672-7020-15672-15670 7022-15670 15672-15670 15670 7020 15670 15670zm-31342 26114h31342v94013H96213v-94013z" fill="#e2e8f0"></path></svg>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-    <script>
-        function timer(expiry) {
-            return {
-                expiry: expiry,
-                remaining:null,
-                init() {
-                this.setRemaining()
-                setInterval(() => {
-                    this.setRemaining();
-                }, 1000);
-                },
-                setRemaining() {
-                const diff = this.expiry - new Date().getTime();
-                this.remaining =  parseInt(diff / 1000);
-                },
-                days() {
-                return {
-                    value:this.remaining / 86400,
-                    remaining:this.remaining % 86400
-                };
-                },
-                hours() {
-                return {
-                    value:this.days().remaining / 3600,
-                    remaining:this.days().remaining % 3600
-                };
-                },
-                minutes() {
-                    return {
-                    value:this.hours().remaining / 60,
-                    remaining:this.hours().remaining % 60
-                };
-                },
-                seconds() {
-                    return {
-                    value:this.minutes().remaining,
-                };
-                },
-                format(value) {
-                return ("0" + parseInt(value)).slice(-2)
-                },
-                time(){
-                    return {
-                    days:this.format(this.days().value),
-                    hours:this.format(this.hours().value),
-                    minutes:this.format(this.minutes().value),
-                    seconds:this.format(this.seconds().value),
-                }
-                },
-            }
-        }
-    </script>
-</body>
 </body>
 
 </html>
