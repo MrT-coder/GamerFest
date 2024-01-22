@@ -72,6 +72,12 @@
                             @error('ruta_comprobante')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
+                            <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_comprobante">
+                                <button class="btn btn-outline-dark" disabled>
+                                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                    <span role="status">Cargando...</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -161,6 +167,12 @@
                             @error('ruta_comprobante')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
+                            <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_comprobante">
+                                <button class="btn btn-outline-dark" disabled>
+                                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                    <span role="status">Cargando...</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>

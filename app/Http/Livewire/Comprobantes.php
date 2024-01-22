@@ -80,7 +80,7 @@ class Comprobantes extends Component
             'id_usuarios' => $this->id_usuarios,
             'id_juegos' => $this->id_juegos,
             'estado_pago' => $this->estado_pago,
-            'ruta_comprobante' => $this->ruta_comprobante
+            'ruta_comprobante' => $this->ruta_comprobante->store('public/comprobantes')
         ]);
 
         $this->resetInput();
@@ -108,7 +108,7 @@ class Comprobantes extends Component
                 'id_usuarios' => $this->id_usuarios,
                 'id_juegos' => $this->id_juegos,
                 'estado_pago' => $this->estado_pago,
-                'ruta_comprobante' => $this->ruta_comprobante
+                'ruta_comprobante' => $this->ruta_comprobante->store('public/comprobantes')
             ]);
 
             $this->resetInput();
