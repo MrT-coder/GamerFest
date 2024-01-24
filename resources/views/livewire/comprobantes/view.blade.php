@@ -49,8 +49,16 @@
                                             {{ $row->usuario->apellido }}</td>
                                         <td class="align-middle">{{ $row->juego->nombre }} -
                                             {{ $row->juego->modalidad }}</td>
-                                        <td class="align-middle">{{ $row->estado_pago }}</td>
-                                        <td class="align-middle">{{ $row->ruta_comprobante }}</td>
+                                        <td class="align-middle text-center">{{ $row->estado_pago }}</td>
+                                        <td class="align-middle text-center">
+                                            @if ($row->ruta_comprobante && file_exists('storage/' . str_replace('public/', '', $row->ruta_comprobante)))
+                                                <img class="img-thumbnail img-fluid"
+                                                    src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_comprobante)) }}"
+                                                    alt="Comprobante" width="100">
+                                            @else
+                                                <span class="text-muted">Sin foto</span>
+                                            @endif
+                                        </td>
                                         <td class="text-center align-middle">
                                             <div>
                                                 <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
