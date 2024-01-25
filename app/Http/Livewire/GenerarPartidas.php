@@ -14,11 +14,11 @@ class GenerarPartidas extends Component
 
 	protected $paginationTheme = 'bootstrap';
     
-    public $juegos;
-    public $supervisores;
-    public $selectedJuego;
-    public $selectedSupervisor;
-    public $horaInicio;
+    public $juegos=NULL;
+    public $supervisores=NULL;
+    public $selectedJuego=NULL;
+    public $selectedSupervisor=NULL;
+    public $horaInicio=NULL;
 
     public function mount()
     {
@@ -34,9 +34,7 @@ class GenerarPartidas extends Component
     public function loadSupervisors()
     {
         // Obtener supervisores (usuarios con rol de supervisor)
-        $this->supervisores = Usuario::whereHas('rol', function ($query) {
-            $query->where('nombre_rol', 'Supervisor');
-        })->get();
+        
     }
 
     public function generarPartidas()
@@ -50,15 +48,16 @@ class GenerarPartidas extends Component
 
     public function render()
     {
-        $this->loadData();
+        //$this->loadData();
+        $this->juegos = Juego::all();
+        $this->supervisores = Usuario::whereHas('rol', function ($query) {
+            $query->where('nombre_rol', 'Supervisor');
+        })->get();
+        //print_r($this->juegos);
         
-        print_r($juegos);
-        exit;
-        
-        $keyWord = '%' . $this->keyWord . '%';
-        return view('livewire.generar-partidas', compact([
-            'juegos' => $this->juegos,
+        return view('livewire.generar-partidas', [
+            'juegos' =>  $this->juegos,
             'supervisores' => $this->supervisores,
-        ]));
+        ]);
     }
 }
