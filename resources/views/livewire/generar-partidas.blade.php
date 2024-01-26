@@ -1,15 +1,11 @@
 
 @extends('adminlte::page')
-@extends('layouts.app')
 
 @section('title', __('Generar Partidas'))
 
 @section('content')
     <div>
 
-        @php
-            $juegos = Juego::all();
-        @endphp
         <label>Juego:</label>
         <select wire:model="selectedJuego">
             @foreach($juegos as $juego)
@@ -33,8 +29,10 @@
         <br>
         <button wire:click="generarPartidas">Generar Partidas</button>
         @if (session()->has('success'))
-            <div>{{ session('success') }}</div>
-        @endif
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     </div>
 
 @endsection

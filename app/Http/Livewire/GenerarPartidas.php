@@ -9,8 +9,8 @@ use App\Models\Partida; // Agregamos el modelo Partida
 
 class GenerarPartidas extends Component
 {
-    public $juegos = [];
-    public $supervisores = [];
+    public $juegos;
+    public $supervisores ;
     public $selectedJuego;
     public $selectedSupervisor;
     public $horaInicio;
@@ -18,10 +18,10 @@ class GenerarPartidas extends Component
 
     public function mount()
     {
-        $this->juegos = Juego::all();
-        $this->supervisores = Usuario::whereHas('rol', function ($query) {
-            $query->where('nombre_rol', 'Supervisor');
-        })->get();
+    $this->juegos = Juego::all();
+    $this->supervisores = Usuario::whereHas('rol', function ($query) {
+        $query->where('nombre_rol', 'Supervisor');
+    })->get();
     }
 
     public function render()
@@ -35,29 +35,31 @@ class GenerarPartidas extends Component
 
     public function generarPartidas()
     {
+        exit();
         // Valida los datos
-        $this->validate([
-            'selectedJuego' => 'required',
-            'selectedSupervisor' => 'required',
-            'horaInicio' => 'required',
-            'selectedfecha' => 'required',
-        ]);
+        // $this->validate([
+        //     'selectedJuego' => 'required',
+        //     'selectedSupervisor' => 'required',
+        //     'horaInicio' => 'required',
+        //     'selectedfecha' => 'required',
+        // ]);
 
-        // Crea la partida
-        $partida = new Partida();
-        $partida->juego_id = $this->selectedJuego;
-        $partida->supervisor_id = $this->selectedSupervisor;
-        $partida->hora_inicio = $this->horaInicio;
-        $partida->fecha = $this->selectedfecha; // Agregamos la fecha
-        $partida->save();
+        // // Crea la partida
+        // $partida = new Partida();
+        // $partida->juego_id = $this->selectedJuego;
+        // $partida->supervisor_id = $this->selectedSupervisor;
+        // $partida->hora_inicio = $this->horaInicio;
+        // $partida->fecha = $this->selectedfecha; // Agregamos la fecha
+        // $partida->save();
 
-        // Muestra el mensaje de éxito
-        session()->flash('success', 'Se han generado las partidas con éxito.');
+        // // Muestra el mensaje de éxito
+        //   session()->flash('success', 'Se han generado las partidas con éxito.');
 
-        // Opcional: Limpiar los campos del formulario
-        $this->selectedJuego = null;
-        $this->selectedSupervisor = null;
-        $this->horaInicio = null;
-        $this->selectedfecha = null;
+        // // Opcional: Limpiar los campos del formulario
+        // $this->selectedJuego = null;
+        // $this->selectedSupervisor = null;
+        // $this->horaInicio = null;
+        // $this->selectedfecha = null;
+       
     }
 }

@@ -51,7 +51,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('rols', 'livewire.rols.index')->middleware('auth');
 	Route::view('ejemplo', 'livewire.ejemplo')->middleware('auth');
 	// ... otras rutas
-	Route::view('generar-partidas', 'livewire.generar-partidas')->middleware('auth');
+	Route::view('generar-partidas', 'livewire.index')->middleware('auth');
 
 	//Mostar Datos Juegos
 	route::get('/',[JuegoController::class,'mostrarJuegos']);
