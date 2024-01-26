@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
+    <title>GamerFest</title>
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
 </head>
 
-
-
-<body class="antialiased scroll-smooth">
-
-
+<body class="antialiased">
     <section id="inicio">
         <div class="relative overflow-hidden bg-cover bg-center bg-no-repeat p-8 md:p-12 text-center bg-fixed"
             style="background-image: url('img/bg_op1.jpg'); height: 750px ">
@@ -59,9 +50,9 @@
   overflow-hidden
    relative shadow-lg max-w-xs">
 
-                        <img class="block group-hover:opacity-40 transition-opacity duration-700"
+                    <img class="block group-hover:opacity-40 transition-opacity duration-700"
                         src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
-                        alt="Foto principal" >
+                        alt="Foto principal">
 
                     <div
                         class="absolute bg-black flex items-center group-hover:-top-0 group-hover:opacity-100 duration-700 top-full right-0 w-full opacity-0 h-1/2 transition-all">
@@ -70,8 +61,8 @@
 
                             <div class="w-full aspect-w-16 aspect-h-9">
                                 <img class="block group-hover:opacity-40 transition-opacity duration-700"
-                                src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}"
-                                alt="Foto principal" >
+                                    src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}"
+                                    alt="Foto principal">
                             </div>
 
 
@@ -209,7 +200,8 @@
 
                         <ul role="list" class="space-y-8">
                             <li>
-                                <a href="https://github.com/MrT-coder/GamerFest" class="flex items-center space-x-3 hover:text-sky-400 transition">
+                                <a href="https://github.com/MrT-coder/GamerFest"
+                                    class="flex items-center space-x-3 hover:text-sky-400 transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5"
                                         viewBox="0 0 16 16">
                                         <path
@@ -221,10 +213,13 @@
                         </ul>
                     </div>
                     <div class="w-10/12 m-auto  mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
-                        <span class="block text-gray-300 font-bold">Un evento organizado por la Universidad de las Fuerzas
+                        <span class="block text-gray-300 font-bold">Un evento organizado por la Universidad de las
+                            Fuerzas
                             Armadas ESPE.</span>
 
-                        <p>La universidad de las Fuerzas Armadas ESPE, presenta uno de los eventos mas grandes a nivel universitario, donde se reunen estudiantes de todas las Carreras y Universidades. Te invitamos a disfrutar de los días mas emocionantes y divertidos junto a nosotros!!!.</p>
+                        <p>La universidad de las Fuerzas Armadas ESPE, presenta uno de los eventos mas grandes a nivel
+                            universitario, donde se reunen estudiantes de todas las Carreras y Universidades. Te
+                            invitamos a disfrutar de los días mas emocionantes y divertidos junto a nosotros!!!.</p>
                         <span class="block text-gray-300">Grupo 5 &copy; 2023</span>
 
                     </div>
@@ -232,80 +227,45 @@
             </div>
         </div>
         <div aria-hidden="true" class="absolute h-screen inset-0 flex items-center">
-            <div aria-hidden="true"
-                class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-url['{
-  "type": "selection",
-  "guid": "1f7140a7",
-  "source": "a3fbc0074",
-  "data": {
-    "nodes": [
-      {
-        "id": "6b209ba7",
-        "x": 112,
-        "y": 84,
-        "width": 349,
-        "height": 39,
-        "rotation": 0,
-        "transform": "matrix(1 0 0 1 112 84)",
-        "inspectables": {
-          "width_policy": "auto",
-          "height_policy": "auto",
-          "color": "rgb(68, 68, 68)",
-          "font_size": 30,
-          "text_align": "left",
-          "line_height": 1.3,
-          "bold": null,
-          "italic": false,
-          "underline": false,
-          "opacity": 100,
-          "strikethrough": false,
-          "small_caps": false,
-          "uppercase": false,
-          "letter_spacing": 0,
-          "font": "Source Sans Pro",
-          "font_weight": 600,
-          "aspect_lock": false,
-          "fe_dropshadow_enabled": false,
-          "fe_dropshadow_opacity": 75,
-          "fe_dropshadow_angle": 90,
-          "fe_dropshadow_distance": 5,
-          "fe_dropshadow_size": 5,
-          "fe_dropshadow_color": "rgb(0, 0, 0)",
-          "vertical_align": "top",
-          "padding_left": 0,
-          "padding_right": 0,
-          "padding_top": 0,
-          "padding_bottom": 0,
-          "fe_blur_enabled": false,
-          "fe_blur_size": 5
-        },
-        "text": "<p dir=\"auto\">N DE PERSONAS INSCRITAS</p>",
-        "name": "text",
-        "link": null,
-        "deps": {}
-      }
-    ],
-    "hierarchy": {
-      "6b209ba7": {
-        "id": "6b209ba7",
-        "type": "item",
-        "locked": false,
-        "link": null,
-        "aspect_lock": false,
-        "visible": true,
-        "instance_name": "Paragraph 3 Copy 25"
-      }
-    },
-    "idMapping": {
-      "91a2ba5b": "6b209ba7"
-    },
-    "size": {
-      "width": 349,
-      "height": 39
-    },
-    "symbolInstances": {}
-  }
-}'] rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl">
+            <div aria-hidden="true" class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-url['{
+  "type": "selection"
+                , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id" : "6b209ba7" , "x" :
+                112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform" : "matrix(1 0 0 1 112 84)"
+                , "inspectables" : { "width_policy" : "auto" , "height_policy" : "auto" , "color" : "rgb(68, 68, 68)"
+                , "font_size" : 30, "text_align" : "left" , "line_height" : 1.3, "bold" : null, "italic" :
+                false, "underline" : false, "opacity" : 100, "strikethrough" : false, "small_caps" : false, "uppercase"
+                : false, "letter_spacing" : 0, "font" : "Source Sans Pro" , "font_weight" : 600, "aspect_lock" :
+                false, "fe_dropshadow_enabled" : false, "fe_dropshadow_opacity" : 75, "fe_dropshadow_angle" :
+                90, "fe_dropshadow_distance" : 5, "fe_dropshadow_size" : 5, "fe_dropshadow_color" : "rgb(0, 0, 0)"
+                , "vertical_align" : "top" , "padding_left" : 0, "padding_right" : 0, "padding_top" :
+                0, "padding_bottom" : 0, "fe_blur_enabled" : false, "fe_blur_size" : 5 }, "text" : "<p dir=\" auto\">N
+                DE PERSONAS INSCRITAS</p>",
+                "name": "text",
+                "link": null,
+                "deps": {}
+                }
+                ],
+                "hierarchy": {
+                "6b209ba7": {
+                "id": "6b209ba7",
+                "type": "item",
+                "locked": false,
+                "link": null,
+                "aspect_lock": false,
+                "visible": true,
+                "instance_name": "Paragraph 3 Copy 25"
+                }
+                },
+                "idMapping": {
+                "91a2ba5b": "6b209ba7"
+                },
+                "size": {
+                "width": 349,
+                "height": 39
+                },
+                "symbolInstances": {}
+                }
+                }'] rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl">
             </div>
         </div>
         <div aria-hidden="true" class="absolute inset-0 w-screen h-screen  opacity-80"></div>
