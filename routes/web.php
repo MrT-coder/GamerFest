@@ -56,4 +56,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	route::get('/',[JuegoController::class,'mostrarJuegos']);
 
 	route::get('/generar-partidas',[GenerarPartidas::class,'render']);
+	// Route::get('/generar-partidas', function () {
+	// 	return view('livewire.generar-partidas');
+	// });
+	
 	

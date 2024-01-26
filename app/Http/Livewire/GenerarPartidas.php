@@ -19,42 +19,23 @@ class GenerarPartidas extends Component
     public $selectedJuego=NULL;
     public $selectedSupervisor=NULL;
     public $horaInicio=NULL;
-
-    public function mount()
-    {
-        $this->loadData();
-    }
-
-    public function loadData()
-    {
-        $this->juegos = Juego::all();
-        $this->loadSupervisors();
-    }
-
-    public function loadSupervisors()
-    {
-        // Obtener supervisores (usuarios con rol de supervisor)
-        
-    }
+    public $selectedfecha=NULL;
 
     public function generarPartidas()
     {
-        // Aquí puedes implementar la lógica para generar partidas con los datos seleccionados
-        // Puedes usar $this->selectedJuego, $this->selectedSupervisor, $this->horaInicio, etc.
-
-        // Después de generar las partidas, puedes mostrar un mensaje de éxito
         session()->flash('success', 'Se han generado las partidas con éxito.');
+
     }
 
-    public function render()
-    {
-        //$this->loadData();
+    public function llenarCombox(){
         $this->juegos = Juego::all();
         $this->supervisores = Usuario::whereHas('rol', function ($query) {
             $query->where('nombre_rol', 'Supervisor');
         })->get();
-        //print_r($this->juegos);
-        
+    }
+    public function render()
+    {
+        $this->llenarCombox();
         return view('livewire.generar-partidas', [
             'juegos' =>  $this->juegos,
             'supervisores' => $this->supervisores,
