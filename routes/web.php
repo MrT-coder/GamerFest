@@ -49,15 +49,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('ingresos', 'livewire.ingresos.index')->middleware('auth');
 	Route::view('usuarios', 'livewire.usuarios.index')->middleware('auth');
 	Route::view('rols', 'livewire.rols.index')->middleware('auth');
-	//Route::view('generar-partidas', 'livewire.generar-partidas')->middleware('auth');
 	Route::view('ejemplo', 'livewire.ejemplo')->middleware('auth');
+	// ... otras rutas
+	Route::view('generar-partidas', 'livewire.generar-partidas')->middleware('auth');
 
 	//Mostar Datos Juegos
 	route::get('/',[JuegoController::class,'mostrarJuegos']);
 
-	route::get('/generar-partidas',[GenerarPartidas::class,'render']);
-	// Route::get('/generar-partidas', function () {
-	// 	return view('livewire.generar-partidas');
-	// });
-	
+	//route::get('/generar-partidas',[GenerarPartidas::class,'render']);
 	
