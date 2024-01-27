@@ -54,7 +54,7 @@
         </div>
     </section>
 
-    <section class="text-gray-400 bg-gray-900 body-font" id="juegos">
+    <section class="text-gray-400 body-font" id="juegos">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col flex-wrap items-center w-full mb-20 text-center">
                 <h1 class="mb-2 text-2xl font-medium text-white sm:text-3xl title-font">
