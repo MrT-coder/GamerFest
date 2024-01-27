@@ -48,7 +48,7 @@
         </div>
     </section>
 
-    <section class="text-gray-400 bg-gray-900 body-font">
+    <section class="text-gray-400 bg-gray-900 body-font" id="juegos">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col flex-wrap items-center w-full mb-20 text-center">
                 <h1 class="mb-2 text-2xl font-medium text-white sm:text-3xl title-font">
@@ -59,95 +59,43 @@
                     cupo!
                 </p>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 @foreach ($juegos as $juego)
-                <div class="p-4 h-full">
-                    <div class="relative h-full">
-                        <div class="relative p-6 border border-gray-700 rounded-lg"
-                            style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
-                            <div class="absolute inset-0 bg-black rounded-lg opacity-80"></div>
-                            <div class="relative" style="padding-bottom: 133.33%;">
-                                <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
-                                    src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
-                                    alt="Foto Juego">
-                            </div>
-                            <h2 class="relative z-10 my-2 text-lg font-medium text-white title-font">
-                                {{ $juego->nombre }}
-                            </h2>
-                            <p class="relative z-10 text-base leading-relaxed">
-                                {{ $juego->descripcion }}
-                            </p>
-                            <div class="relative z-10 flex flex-col justify-between mt-4">
-                                <span class="text-sm font-medium text-white">
-                                    <b>Modalidad:</b> {{ $juego->modalidad }}
-                                </span>
-                                <span class="text-sm font-medium text-white">
-                                    <b>Costo:</b> ${{ $juego->costo }}
-                                </span>
+                    <div class="h-full p-4">
+                        <div class="relative h-full">
+                            <div class="relative p-6 border border-gray-700 rounded-lg"
+                                style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
+                                <div class="absolute inset-0 bg-black rounded-lg opacity-80"></div>
+                                <div class="relative" style="padding-bottom: 133.33%;">
+                                    <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
+                                        src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
+                                        alt="Foto Juego">
+                                </div>
+                                <h2 class="relative z-10 my-2 text-lg font-medium text-white title-font">
+                                    {{ $juego->nombre }}
+                                </h2>
+                                <p class="relative z-10 text-base leading-relaxed">
+                                    {{ $juego->descripcion }}
+                                </p>
+                                <div class="relative z-10 flex flex-col justify-between mt-4">
+                                    <span class="text-sm font-medium text-white">
+                                        <b>Modalidad:</b> {{ $juego->modalidad }}
+                                    </span>
+                                    <span class="text-sm font-medium text-white">
+                                        <b>Costo:</b> ${{ $juego->costo }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
-            <button
-                class="flex px-8 py-2 mx-auto mt-16 text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600">
-                Button
-            </button>
-    </section>
-
-    <section
-        class="grid content-center grid-cols-1 gap-4 p-8 bg-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 h-5/6"
-        id="juegos">
-        @foreach ($juegos as $juego)
-        <div>
-            <div class="relative max-w-xs overflow-hidden shadow-lg group">
-                <img class="block transition-opacity duration-700 group-hover:opacity-40"
-                    src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
-                    alt="Foto principal">
-                <div
-                    class="absolute right-0 flex items-center w-full transition-all duration-700 bg-black opacity-0 group-hover:-top-0 group-hover:opacity-100 top-full h-1/2">
-                    <div class=""
-                        style="background-image: url(&quot;https://cdn.cloudflare.steamstatic.com/steam/apps/230410/ss_2d79448091149a8cc790b62e7422615a011d015a.600x338.jpg?t=1637183731&quot;);">
-                        <div class="w-full aspect-w-16 aspect-h-9">
-                            <img class="block transition-opacity duration-700 group-hover:opacity-40"
-                                src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}"
-                                alt="Foto principal">
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="absolute left-0 right-0 block w-full text-base text-white transition-all duration-700 opacity-50 bg-gradient-to-br bg-gradient-to-r from-indigo-900 via-violet-500 to-purple-900 top-full h-1/2 group-hover:top-1/2 group-hover:opacity-100">
-                    <div class="py-4 text-xs px-7">
-                        <div class="text-xl font-bold text-center uppercase">{{ $juego->nombre }}</div>
-                        <div class="overflow-hidden overflow-ellipsis ">
-                            <p class="text-center">{{ $juego->descripcion }}</p>
-                        </div>
-                        <div class="relative z-20 overflow-hidden whitespace-nowrap overflow-ellipsis">
-                            <span
-                                class="text-xs font-bold text-white uppercase whitespace-nowrap md:text-sm">Modalidad:</span>
-                            <span class="relative z-20 overflow-hidden text-sm whitespace-nowrap overflow-ellipsis">
-                                {{ $juego->modalidad }}
-                            </span>
-                        </div>
-                        <div class="relative z-20 overflow-hidden font-bold whitespace-nowrap overflow-ellipsis">
-                            <span class="text-xs text-white uppercase whitespace-nowrap md:text-sm">Costo:</span>
-                            <span class="relative z-20 overflow-hidden whitespace-nowrap overflow-ellipsis">
-                                <span class="text-sm">
-                                    {{ $juego->costo }} $ </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="absolute left-0 pt-1 pl-7">
-                        <a href="{{ route('login') }}"
-                            class="px-4 py-2 text-sm font-bold text-white transition-all duration-300 bg-purple-800 border-2 border-transparent rounded-full hover:bg-purple-600 hover:border-white focus:outline-none focus:ring focus:border-purple-300">
-                            Inscríbete
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
+            <a href="{{ route('login') }}" class="flex justify-center">
+                <button
+                    class="px-6 py-2 m-1 text-lg text-white bg-purple-800 border-0 rounded hover:bg-purple-600 focus:outline-none">
+                    ¡Inscíbete ahora!
+                </button>
+            </a>
     </section>
 
     {{-- Contador --}}
@@ -164,8 +112,8 @@
                             Pronto iniciara el <span class="text-yellow-300">GamerFest</span> </h1>
                         <div class="flex flex-col items-center mt-8 mt-12 ml-2">
                             <p class="text-sm text-gray-300 uppercase">Tiempo restante para la emoción </p>
-                            <div class="flex items-center justify-center mt-4 space-x-4"
-                                x-data="timer(new Date().setDate(new Date().getDate() + 1))" x-init="init();">
+                            <div class="flex items-center justify-center mt-4 space-x-4" x-data="timer(new Date().setDate(new Date().getDate() + 1))"
+                                x-init="init();">
                                 <div class="flex flex-col items-center px-4">
                                     <span id="days" class="text-4xl text-gray-200 lg:text-5xl">00</span>
                                     <span class="mt-2 text-gray-400">Dias</span>
@@ -273,8 +221,9 @@
         </div>
         <div aria-hidden="true" class="absolute inset-0 flex items-center h-screen">
             <div aria-hidden="true" class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-url['{
-  " type": "selection" , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id" : "6b209ba7"
-                , "x" : 112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform"
+  "
+                type": "selection" , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id"
+                : "6b209ba7" , "x" : 112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform"
                 : "matrix(1 0 0 1 112 84)" , "inspectables" : { "width_policy" : "auto" , "height_policy" : "auto"
                 , "color" : "rgb(68, 68, 68)" , "font_size" : 30, "text_align" : "left" , "line_height" : 1.3, "bold" :
                 null, "italic" : false, "underline" : false, "opacity" : 100, "strikethrough" : false, "small_caps" :
