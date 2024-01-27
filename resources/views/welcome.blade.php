@@ -38,8 +38,14 @@
                             </a>
                             <a href="#juegos">
                                 <button
-                                    class="px-6 py-2 m-1 text-lg text-gray-400 bg-gray-800 border-0 rounded focus:outline-none hover:bg-gray-700 hover:text-white">
+                                    class="flex px-6 py-2 m-1 text-lg text-gray-400 bg-gray-800 border-0 rounded focus:outline-none hover:bg-gray-700 hover:text-white">
                                     Ver más
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                                    </svg>
+                                </button>
                             </a>
                         </div>
                     </div>
@@ -61,33 +67,33 @@
             </div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach ($juegos as $juego)
-                    <div class="h-full p-4">
-                        <div class="relative h-full">
-                            <div class="relative p-6 border border-gray-700 rounded-lg"
-                                style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
-                                <div class="absolute inset-0 bg-black rounded-lg opacity-75"></div>
-                                <div class="relative" style="padding-bottom: 133.33%;">
-                                    <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
-                                        src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
-                                        alt="Foto Juego">
-                                </div>
-                                <h2 class="relative z-10 my-2 text-lg font-medium text-white title-font">
-                                    {{ $juego->nombre }}
-                                </h2>
-                                <p class="relative z-10 text-base leading-relaxed">
-                                    {{ $juego->descripcion }}
-                                </p>
-                                <div class="relative z-10 flex flex-col justify-between mt-4">
-                                    <span class="text-sm font-medium text-white">
-                                        <b>Modalidad:</b> {{ $juego->modalidad }}
-                                    </span>
-                                    <span class="text-sm font-medium text-white">
-                                        <b>Costo:</b> ${{ $juego->costo }}
-                                    </span>
-                                </div>
+                <div class="h-full p-4">
+                    <div class="relative h-full">
+                        <div class="relative p-6 border border-gray-700 rounded-lg"
+                            style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
+                            <div class="absolute inset-0 bg-black rounded-lg opacity-75"></div>
+                            <div class="relative" style="padding-bottom: 133.33%;">
+                                <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
+                                    src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
+                                    alt="Foto Juego">
+                            </div>
+                            <h2 class="relative z-10 my-2 text-lg font-medium text-white title-font">
+                                {{ $juego->nombre }}
+                            </h2>
+                            <p class="relative z-10 text-base leading-relaxed">
+                                {{ $juego->descripcion }}
+                            </p>
+                            <div class="relative z-10 flex flex-col justify-between mt-4">
+                                <span class="text-sm font-medium text-white">
+                                    <b>Modalidad:</b> {{ $juego->modalidad }}
+                                </span>
+                                <span class="text-sm font-medium text-white">
+                                    <b>Costo:</b> ${{ $juego->costo }}
+                                </span>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
             <a href="{{ route('login') }}" class="flex justify-center">
@@ -112,8 +118,8 @@
                             Pronto iniciara el <span class="text-yellow-300">GamerFest</span> </h1>
                         <div class="flex flex-col items-center mt-8 mt-12 ml-2">
                             <p class="text-sm text-gray-300 uppercase">Tiempo restante para la emoción </p>
-                            <div class="flex items-center justify-center mt-4 space-x-4" x-data="timer(new Date().setDate(new Date().getDate() + 1))"
-                                x-init="init();">
+                            <div class="flex items-center justify-center mt-4 space-x-4"
+                                x-data="timer(new Date().setDate(new Date().getDate() + 1))" x-init="init();">
                                 <div class="flex flex-col items-center px-4">
                                     <span id="days" class="text-4xl text-gray-200 lg:text-5xl">00</span>
                                     <span class="mt-2 text-gray-400">Dias</span>
@@ -221,9 +227,8 @@
         </div>
         <div aria-hidden="true" class="absolute inset-0 flex items-center h-screen">
             <div aria-hidden="true" class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-url['{
-  "
-                type": "selection" , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id"
-                : "6b209ba7" , "x" : 112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform"
+  " type": "selection" , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id" : "6b209ba7"
+                , "x" : 112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform"
                 : "matrix(1 0 0 1 112 84)" , "inspectables" : { "width_policy" : "auto" , "height_policy" : "auto"
                 , "color" : "rgb(68, 68, 68)" , "font_size" : 30, "text_align" : "left" , "line_height" : 1.3, "bold" :
                 null, "italic" : false, "underline" : false, "opacity" : 100, "strikethrough" : false, "small_caps" :
