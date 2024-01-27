@@ -22,28 +22,27 @@
                 @component('vistas.nav')
                 @endcomponent
                 <section class="text-gray-40 body-font">
-                        <div
-                            class="flex flex-col items-center px-10 py-5 text-center md:py-40 md:px-0">
-                            <h1 class="mb-4 text-4xl font-medium text-white title-font">
-                                Bienvenido al mejor evento de videojuegos del Ecuador
-                            </h1>
-                            <p class="mb-8 text-xl leading-relaxed text-white">
-                                Sumérgete en la emoción digital de los videojuegos y la competencia en línea.
-                            </p>
-                            <div class="flex flex-col justify-center md:flex-row">
-                                <a href="{{ route('login') }}">
-                                    <button
-                                        class="px-6 py-2 m-1 text-lg text-white bg-purple-800 border-0 rounded hover:bg-purple-600 focus:outline-none">
-                                        ¡Inscíbete ahora!
-                                    </button>
-                                </a>
-                                <a href="#juegos">
-                                    <button
+                    <div class="flex flex-col items-center px-10 py-5 text-center md:py-40 md:px-0">
+                        <h1 class="mb-4 text-4xl font-medium text-white title-font">
+                            Bienvenido al mejor evento de videojuegos del Ecuador
+                        </h1>
+                        <p class="mb-8 text-xl leading-relaxed text-white">
+                            Sumérgete en la emoción digital de los videojuegos y la competencia en línea.
+                        </p>
+                        <div class="flex flex-col justify-center md:flex-row">
+                            <a href="{{ route('login') }}">
+                                <button
+                                    class="px-6 py-2 m-1 text-lg text-white bg-purple-800 border-0 rounded hover:bg-purple-600 focus:outline-none">
+                                    ¡Inscíbete ahora!
+                                </button>
+                            </a>
+                            <a href="#juegos">
+                                <button
                                     class="px-6 py-2 m-1 text-lg text-gray-400 bg-gray-800 border-0 rounded focus:outline-none hover:bg-gray-700 hover:text-white">
                                     Ver más
-                                </a>
-                            </div>
+                            </a>
                         </div>
+                    </div>
                 </section>
             </div>
         </div>
