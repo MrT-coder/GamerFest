@@ -1,7 +1,7 @@
 <header class="text-white bg-transparent body-font">
     <div class="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <a>
-            <img class="size-28" src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">
+            <img class="max-h-28" src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">
         </a>
         <nav
             class="flex flex-wrap items-center justify-center text-base md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700">
