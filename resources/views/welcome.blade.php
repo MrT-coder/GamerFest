@@ -36,7 +36,7 @@
                                     ¡Inscíbete ahora!
                                 </button>
                             </a>
-                            <a href="#juegos">
+                            <a href="#juegos" class="self-center">
                                 <button
                                     class="flex px-6 py-2 m-1 text-lg text-gray-400 bg-gray-800 border-0 rounded focus:outline-none hover:bg-gray-700 hover:text-white">
                                     Ver más
@@ -57,10 +57,10 @@
     <section class="text-gray-400 body-font" id="juegos">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col flex-wrap items-center w-full mb-20 text-center">
-                <h1 class="mb-2 text-2xl font-medium text-white sm:text-3xl title-font">
+                <h1 class="mb-2 text-3xl font-medium text-white sm:text-3xl title-font">
                     Lista de Juegos
                 </h1>
-                <p class="w-full leading-relaxed lg:w-1/2 text-opacity-80">
+                <p class="w-full text-lg leading-relaxed lg:w-1/2 text-opacity-80">
                     A continuación encontrarás la lista de juegos a los que puedes inscribirte. ¡No te quedes sin tu
                     cupo!
                 </p>
