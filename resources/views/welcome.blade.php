@@ -59,13 +59,13 @@
                     cupo!
                 </p>
             </div>
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach ($juegos as $juego)
                     <div class="h-full p-4">
                         <div class="relative h-full">
                             <div class="relative p-6 border border-gray-700 rounded-lg"
                                 style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
-                                <div class="absolute inset-0 bg-black rounded-lg opacity-80"></div>
+                                <div class="absolute inset-0 bg-black rounded-lg opacity-75"></div>
                                 <div class="relative" style="padding-bottom: 133.33%;">
                                     <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
                                         src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
