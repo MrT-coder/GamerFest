@@ -15,85 +15,89 @@
 
 <body class="antialiased">
     <section id="inicio">
-        <div class="relative overflow-hidden bg-cover bg-center bg-no-repeat p-8 md:p-12 text-center bg-fixed"
+        <div class="relative p-8 overflow-hidden text-center bg-fixed bg-center bg-no-repeat bg-cover md:p-12"
             style="background-image: url('img/bg_op1.jpg'); height: 750px ">
-            <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+            <div class="absolute top-0 bottom-0 left-0 right-0 w-full h-full overflow-hidden bg-fixed"
                 style="background-color: rgba(0, 0, 0, 0.6)">
                 @component('vistas.nav')
                 @endcomponent
-                <div class="flex h-full items-center justify-center">
-                    <div class="text-white">
-                        <h2 class="mb-2 text-2xl md:mb-4 md:text-4xl lg:text-5xl font-semibold">Bienvenido al mejor
-                            evento de videojuegos del Ecuador</h2>
-                        <h4 class="mb-4 text-lg md:mb-6 md:text-xl lg:text-2xl font-semibold">Sumérgete en la emoción
-                            digital de los videojuegos y la competencia en línea.
-                            <br>
-                            <span class="font-extrabold text-3xl sm:text-5xl md:text-6xl">INSCRÍBETE AHORA !!!</span>
-                        </h4>
-                        <a href="{{ route('login') }}"
-                            class="bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300">
-                            INSCRIBIRSE
-                        </a>
-                    </div>
-                </div>
+                <section class="text-gray-40 body-font">
+                        <div
+                            class="flex flex-col items-center px-10 py-5 text-center md:py-40 md:px-0">
+                            <h1 class="mb-4 text-4xl font-medium text-white title-font">
+                                Bienvenido al mejor evento de videojuegos del Ecuador
+                            </h1>
+                            <p class="mb-8 text-xl leading-relaxed text-white">
+                                Sumérgete en la emoción digital de los videojuegos y la competencia en línea.
+                            </p>
+                            <div class="flex flex-col justify-center md:flex-row">
+                                <a href="{{ route('login') }}">
+                                    <button
+                                        class="px-6 py-2 m-1 text-lg text-white bg-purple-800 border-0 rounded hover:bg-purple-600 focus:outline-none">
+                                        ¡Inscíbete ahora!
+                                    </button>
+                                </a>
+                                <a href="#juegos">
+                                    <button
+                                    class="px-6 py-2 m-1 text-lg text-gray-400 bg-gray-800 border-0 rounded focus:outline-none hover:bg-gray-700 hover:text-white">
+                                    Ver más
+                                </a>
+                            </div>
+                        </div>
+                </section>
             </div>
         </div>
     </section>
 
-
     <section
-        class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 content-center p-8 h-5/6 bg-black"
+        class="grid content-center grid-cols-1 gap-4 p-8 bg-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 h-5/6"
         id="juegos">
         @foreach ($juegos as $juego)
             <div>
-                <div class="group 
-  overflow-hidden
-   relative shadow-lg max-w-xs">
+                <div class="relative max-w-xs overflow-hidden shadow-lg group">
 
-                    <img class="block group-hover:opacity-40 transition-opacity duration-700"
+                    <img class="block transition-opacity duration-700 group-hover:opacity-40"
                         src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
                         alt="Foto principal">
 
                     <div
-                        class="absolute bg-black flex items-center group-hover:-top-0 group-hover:opacity-100 duration-700 top-full right-0 w-full opacity-0 h-1/2 transition-all">
+                        class="absolute right-0 flex items-center w-full transition-all duration-700 bg-black opacity-0 group-hover:-top-0 group-hover:opacity-100 top-full h-1/2">
                         <div class=""
                             style="background-image: url(&quot;https://cdn.cloudflare.steamstatic.com/steam/apps/230410/ss_2d79448091149a8cc790b62e7422615a011d015a.600x338.jpg?t=1637183731&quot;);">
 
                             <div class="w-full aspect-w-16 aspect-h-9">
-                                <img class="block group-hover:opacity-40 transition-opacity duration-700"
+                                <img class="block transition-opacity duration-700 group-hover:opacity-40"
                                     src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}"
                                     alt="Foto principal">
                             </div>
 
-
                         </div>
                     </div>
                     <div
-                        class="absolute  bg-gradient-to-br duration-700 bg-gradient-to-r from-indigo-900 via-violet-500 to-purple-900 text-white block left-0 right-0 top-full text-base h-1/2 w-full opacity-50 
-    transition-all group-hover:top-1/2 group-hover:opacity-100">
+                        class="absolute left-0 right-0 block w-full text-base text-white transition-all duration-700 opacity-50 bg-gradient-to-br bg-gradient-to-r from-indigo-900 via-violet-500 to-purple-900 top-full h-1/2 group-hover:top-1/2 group-hover:opacity-100">
                         <div class="py-4 text-xs px-7">
                             <div class="text-xl font-bold text-center uppercase">{{ $juego->nombre }}</div>
-                            <div class="overflow-ellipsis overflow-hidden ">
+                            <div class="overflow-hidden overflow-ellipsis ">
                                 <p class="text-center">{{ $juego->descripcion }}</p>
                             </div>
-                            <div class="whitespace-nowrap overflow-hidden overflow-ellipsis relative z-20">
+                            <div class="relative z-20 overflow-hidden whitespace-nowrap overflow-ellipsis">
                                 <span
-                                    class="uppercase font-bold text-white whitespace-nowrap text-xs md:text-sm">Modalidad:</span>
-                                <span class="whitespace-nowrap overflow-hidden overflow-ellipsis relative z-20 text-sm">
+                                    class="text-xs font-bold text-white uppercase whitespace-nowrap md:text-sm">Modalidad:</span>
+                                <span class="relative z-20 overflow-hidden text-sm whitespace-nowrap overflow-ellipsis">
                                     {{ $juego->modalidad }}
                                 </span>
                             </div>
-                            <div class="font-bold whitespace-nowrap overflow-hidden overflow-ellipsis relative z-20">
-                                <span class="uppercase text-white whitespace-nowrap text-xs md:text-sm">Costo:</span>
-                                <span class="whitespace-nowrap  overflow-hidden overflow-ellipsis relative z-20">
+                            <div class="relative z-20 overflow-hidden font-bold whitespace-nowrap overflow-ellipsis">
+                                <span class="text-xs text-white uppercase whitespace-nowrap md:text-sm">Costo:</span>
+                                <span class="relative z-20 overflow-hidden whitespace-nowrap overflow-ellipsis">
                                     <span class="text-sm">
                                         {{ $juego->costo }} $ </span>
                                 </span>
                             </div>
                         </div>
-                        <div class="absolute left-0  pl-7 pt-1">
+                        <div class="absolute left-0 pt-1 pl-7">
                             <a href="{{ route('login') }}"
-                                class="bg-purple-800 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 border-2 border-transparent hover:border-white focus:outline-none focus:ring focus:border-purple-300 text-sm">
+                                class="px-4 py-2 text-sm font-bold text-white transition-all duration-300 bg-purple-800 border-2 border-transparent rounded-full hover:bg-purple-600 hover:border-white focus:outline-none focus:ring focus:border-purple-300">
                                 Inscríbete
                             </a>
                         </div>
@@ -107,37 +111,37 @@
     {{-- Contador --}}
     <section id="cuenta">
         <div class="w-50 h-50 bg-gradient-to-r from-blue-400 via-rose-900 to-indigo-500">
-            <div class="w-50 h-50 bg-black bg-opacity-70">
+            <div class="bg-black w-50 h-50 bg-opacity-70">
                 <div
-                    class="w-full h-full flex flex-col items-start justify-between container mx-auto py-8 px-8 lg:px-4 xl:px-0">
+                    class="container flex flex-col items-start justify-between w-full h-full px-8 py-8 mx-auto lg:px-4 xl:px-0">
                     <img src="{{ asset('img/logoGamerFest.png') }}" alt="" class="flex-initial">
-                    <div class="flex-1 flex flex-col items-start justify-center">
+                    <div class="flex flex-col items-start justify-center flex-1">
 
                         <h1
-                            class="text-6xl lg:text-7xl xl:text-8xl text-gray-200 tracking-wider font-bold font-serif mt-12 text-center md:text-left">
+                            class="mt-12 font-serif text-6xl font-bold tracking-wider text-center text-gray-200 lg:text-7xl xl:text-8xl md:text-left">
                             Pronto iniciara el <span class="text-yellow-300">GamerFest</span> </h1>
-                        <div class="mt-12 flex flex-col items-center mt-8 ml-2">
-                            <p class="text-gray-300 uppercase text-sm">Tiempo restante para la emoción </p>
-                            <div class="flex items-center justify-center space-x-4 mt-4" x-data="timer(new Date().setDate(new Date().getDate() + 1))"
+                        <div class="flex flex-col items-center mt-8 mt-12 ml-2">
+                            <p class="text-sm text-gray-300 uppercase">Tiempo restante para la emoción </p>
+                            <div class="flex items-center justify-center mt-4 space-x-4" x-data="timer(new Date().setDate(new Date().getDate() + 1))"
                                 x-init="init();">
                                 <div class="flex flex-col items-center px-4">
-                                    <span id="days" class="text-4xl lg:text-5xl text-gray-200">00</span>
-                                    <span class="text-gray-400 mt-2">Dias</span>
+                                    <span id="days" class="text-4xl text-gray-200 lg:text-5xl">00</span>
+                                    <span class="mt-2 text-gray-400">Dias</span>
                                 </div>
                                 <span class="w-[1px] h-24 bg-gray-400"></span>
                                 <div class="flex flex-col items-center px-4">
-                                    <span id="hours" class="text-4xl lg:text-5xl text-gray-200">00</span>
-                                    <span class="text-gray-400 mt-2">Horas</span>
+                                    <span id="hours" class="text-4xl text-gray-200 lg:text-5xl">00</span>
+                                    <span class="mt-2 text-gray-400">Horas</span>
                                 </div>
                                 <span class="w-[1px] h-24 bg-gray-400"></span>
                                 <div class="flex flex-col items-center px-4">
-                                    <span id="minutes" class="text-4xl lg:text-5xl text-gray-200">00</span>
-                                    <span class="text-gray-400 mt-2">Minutos</span>
+                                    <span id="minutes" class="text-4xl text-gray-200 lg:text-5xl">00</span>
+                                    <span class="mt-2 text-gray-400">Minutos</span>
                                 </div>
                                 <span class="w-[1px] h-24 bg-gray-400"></span>
                                 <div class="flex flex-col items-center px-4">
-                                    <span id="seconds" class="text-4xl lg:text-5xl text-gray-200">00</span>
-                                    <span class="text-gray-400 mt-2">Segundos</span>
+                                    <span id="seconds" class="text-4xl text-gray-200 lg:text-5xl">00</span>
+                                    <span class="mt-2 text-gray-400">Segundos</span>
                                 </div>
                             </div>
                         </div>
@@ -180,28 +184,27 @@
                         }, 1000);
                     </script>
 
-
     </section>
 
     {{-- Footer --}}
 
     <!-- component -->
-    <footer class="relative flex flex-col items-center bg-cyan-900 h-screen overflow-hidden md:py-40 text-white p-8"
+    <footer class="relative flex flex-col items-center h-screen p-8 overflow-hidden text-white bg-cyan-900 md:py-40"
         id="sobrenosotros">
         <div class="relative z-[1] container m-auto px-6 md:px-12 text-lg items-center">
             <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
                 <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
-                    <div class="w-full space-x-12 flex justify-center text-gray-300 sm:w-7/12 md:justify-start">
-                        <ul class="list-disc list-inside space-y-8">
-                            <li><a href="#inicio" class="hover:text-sky-400 transition">Inicio</a></li>
-                            <li><a href="#juegos" class="hover:text-sky-400 transition">Juegos</a></li>
-                            <li><a href="#cuenta" class="hover:text-sky-400 transition">Cuenta Regresiva</a></li>
+                    <div class="flex justify-center w-full space-x-12 text-gray-300 sm:w-7/12 md:justify-start">
+                        <ul class="space-y-8 list-disc list-inside">
+                            <li><a href="#inicio" class="transition hover:text-sky-400">Inicio</a></li>
+                            <li><a href="#juegos" class="transition hover:text-sky-400">Juegos</a></li>
+                            <li><a href="#cuenta" class="transition hover:text-sky-400">Cuenta Regresiva</a></li>
                         </ul>
 
                         <ul role="list" class="space-y-8">
                             <li>
                                 <a href="https://github.com/MrT-coder/GamerFest"
-                                    class="flex items-center space-x-3 hover:text-sky-400 transition">
+                                    class="flex items-center space-x-3 transition hover:text-sky-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5"
                                         viewBox="0 0 16 16">
                                         <path
@@ -212,8 +215,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="w-10/12 m-auto  mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
-                        <span class="block text-gray-300 font-bold">Un evento organizado por la Universidad de las
+                    <div class="w-10/12 m-auto mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
+                        <span class="block font-bold text-gray-300">Un evento organizado por la Universidad de las
                             Fuerzas
                             Armadas ESPE.</span>
 
@@ -226,19 +229,20 @@
                 </div>
             </div>
         </div>
-        <div aria-hidden="true" class="absolute h-screen inset-0 flex items-center">
+        <div aria-hidden="true" class="absolute inset-0 flex items-center h-screen">
             <div aria-hidden="true" class="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-url['{
-  "type": "selection"
-                , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id" : "6b209ba7" , "x" :
-                112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform" : "matrix(1 0 0 1 112 84)"
-                , "inspectables" : { "width_policy" : "auto" , "height_policy" : "auto" , "color" : "rgb(68, 68, 68)"
-                , "font_size" : 30, "text_align" : "left" , "line_height" : 1.3, "bold" : null, "italic" :
-                false, "underline" : false, "opacity" : 100, "strikethrough" : false, "small_caps" : false, "uppercase"
-                : false, "letter_spacing" : 0, "font" : "Source Sans Pro" , "font_weight" : 600, "aspect_lock" :
-                false, "fe_dropshadow_enabled" : false, "fe_dropshadow_opacity" : 75, "fe_dropshadow_angle" :
-                90, "fe_dropshadow_distance" : 5, "fe_dropshadow_size" : 5, "fe_dropshadow_color" : "rgb(0, 0, 0)"
-                , "vertical_align" : "top" , "padding_left" : 0, "padding_right" : 0, "padding_top" :
-                0, "padding_bottom" : 0, "fe_blur_enabled" : false, "fe_blur_size" : 5 }, "text" : "<p dir=\" auto\">N
+  "
+                type": "selection" , "guid" : "1f7140a7" , "source" : "a3fbc0074" , "data" : { "nodes" : [ { "id"
+                : "6b209ba7" , "x" : 112, "height" : 39, "y" : 84, "width" : 349, "rotation" : 0, "transform"
+                : "matrix(1 0 0 1 112 84)" , "inspectables" : { "width_policy" : "auto" , "height_policy" : "auto"
+                , "color" : "rgb(68, 68, 68)" , "font_size" : 30, "text_align" : "left" , "line_height" : 1.3, "bold" :
+                null, "italic" : false, "underline" : false, "opacity" : 100, "strikethrough" : false, "small_caps" :
+                false, "uppercase" : false, "letter_spacing" : 0, "font" : "Source Sans Pro" , "font_weight" :
+                600, "aspect_lock" : false, "fe_dropshadow_enabled" : false, "fe_dropshadow_opacity" :
+                75, "fe_dropshadow_angle" : 90, "fe_dropshadow_distance" : 5, "fe_dropshadow_size" :
+                5, "fe_dropshadow_color" : "rgb(0, 0, 0)" , "vertical_align" : "top" , "padding_left" :
+                0, "padding_right" : 0, "padding_top" : 0, "padding_bottom" : 0, "fe_blur_enabled" :
+                false, "fe_blur_size" : 5 }, "text" : "<p dir=\" auto\">N
                 DE PERSONAS INSCRITAS</p>",
                 "name": "text",
                 "link": null,
@@ -268,11 +272,8 @@
                 }'] rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl">
             </div>
         </div>
-        <div aria-hidden="true" class="absolute inset-0 w-screen h-screen  opacity-80"></div>
+        <div aria-hidden="true" class="absolute inset-0 w-screen h-screen opacity-80"></div>
     </footer>
-
-
-
 
 </body>
 

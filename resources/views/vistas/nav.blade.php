@@ -1,4 +1,4 @@
-<header class="absolute w-full h-full text-gray-400 bg-transparent body-font md:h-0">
+<header class="text-white bg-transparent body-font">
     <div class="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <a>
             <img class="size-28" src="{{ asset('img/logoGamerFest.png') }}" alt="GamerFest">
@@ -10,12 +10,12 @@
         </nav>
         <a href="{{ route('login') }}">
             <button
-                class="block w-1/2 px-4 py-2 mx-1 my-2 text-lg font-medium leading-5 text-center text-white transition-all duration-300 bg-purple-800 border-2 border-transparent rounded-full hover:bg-purple-600 hover:border-white focus:outline-none focus:ring focus:border-purple-300 md:mx-2 md:w-auto ">Ingresar
+                class="block w-auto px-4 py-2 mx-2 my-2 text-lg font-medium leading-5 text-center text-white transition-all duration-300 bg-purple-800 border-2 border-transparent rounded-full hover:bg-purple-600 hover:border-white focus:outline-none focus:ring focus:border-purple-300 md:mx-2 md:w-auto ">Ingresar
             </button>
         </a>
         <a href="{{ route('register') }}">
             <button
-                class="block w-1/2 px-4 py-2 mx-1 my-2 text-lg font-medium leading-5 text-center text-white transition-all duration-300 bg-purple-800 border-2 border-transparent rounded-full hover:bg-purple-600 hover:border-white focus:outline-none focus:ring focus:border-purple-300 md:mx-0 md:w-auto">Registrarse</button>
+                class="block w-auto px-4 py-2 mx-2 my-2 text-lg font-medium leading-5 text-center text-white transition-all duration-300 bg-purple-800 border-2 border-transparent rounded-full hover:bg-purple-600 hover:border-white focus:outline-none focus:ring focus:border-purple-300 md:mx-0 md:w-auto">Registrarse</button>
         </a>
     </div>
 </header>
