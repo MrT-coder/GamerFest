@@ -66,33 +66,33 @@
             </div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach ($juegos as $juego)
-                    <div class="h-full p-4">
-                        <div class="relative h-full">
-                            <div class="relative p-6 border border-gray-700 rounded-lg"
-                                style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
-                                <div class="absolute inset-0 bg-black rounded-lg opacity-75"></div>
-                                <div class="relative" style="padding-bottom: 133.33%;">
-                                    <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
-                                        src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
-                                        alt="Foto Juego">
-                                </div>
-                                <h2 class="relative z-10 my-2 text-lg font-medium text-white title-font">
-                                    {{ $juego->nombre }}
-                                </h2>
-                                <p class="relative z-10 text-base leading-relaxed">
-                                    {{ $juego->descripcion }}
-                                </p>
-                                <div class="relative z-10 flex flex-col justify-between mt-4">
-                                    <span class="text-sm font-medium text-white">
-                                        <b>Modalidad:</b> {{ $juego->modalidad }}
-                                    </span>
-                                    <span class="text-sm font-medium text-white">
-                                        <b>Costo:</b> ${{ $juego->costo }}
-                                    </span>
-                                </div>
+                <div class="h-full p-4">
+                    <div class="relative h-full">
+                        <div class="relative p-6 border border-gray-700 rounded-lg"
+                            style="background-image: url('{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_portada)) }}'); background-size: cover; background-position: center;">
+                            <div class="absolute inset-0 bg-black rounded-lg opacity-75"></div>
+                            <div class="relative" style="padding-bottom: 133.33%;">
+                                <img class="absolute inset-0 object-cover w-full h-full rounded-lg filter brightness-100"
+                                    src="{{ asset('storage/' . str_replace('public/', '', $juego->ruta_foto_principal)) }}"
+                                    alt="Foto Juego">
+                            </div>
+                            <h2 class="relative z-10 my-2 text-lg font-medium text-white title-font">
+                                {{ $juego->nombre }}
+                            </h2>
+                            <p class="relative z-10 text-base leading-relaxed">
+                                {{ $juego->descripcion }}
+                            </p>
+                            <div class="relative z-10 flex flex-col justify-between mt-4">
+                                <span class="text-sm font-medium text-white">
+                                    <b>Modalidad:</b> {{ $juego->modalidad }}
+                                </span>
+                                <span class="text-sm font-medium text-white">
+                                    <b>Costo:</b> ${{ $juego->costo }}
+                                </span>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
             <a href="{{ route('login') }}" class="flex justify-center">
@@ -197,48 +197,127 @@
                 </script>
     </section>
 
-    {{-- Footer --}}
-    <footer class="relative flex flex-col items-center h-screen p-8 overflow-hidden text-white bg-cyan-900 md:py-40"
-        id="sobrenosotros">
-        <div class="relative z-[1] container m-auto px-6 md:px-12 text-lg items-center">
-            <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
-                <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
-                    <div class="flex justify-center w-full space-x-12 text-gray-300 sm:w-7/12 md:justify-start">
-                        <ul class="space-y-8 list-disc list-inside">
-                            <li><a href="#inicio" class="transition hover:text-sky-400">Inicio</a></li>
-                            <li><a href="#juegos" class="transition hover:text-sky-400">Juegos</a></li>
-                            <li><a href="#cuenta" class="transition hover:text-sky-400">Cuenta Regresiva</a></li>
-                        </ul>
-
-                        <ul role="list" class="space-y-8">
-                            <li>
-                                <a href="https://github.com/MrT-coder/GamerFest"
-                                    class="flex items-center space-x-3 transition hover:text-sky-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                                    </svg>
-                                    <span>Github</span>
-                                </a>
-                            </li>
-                        </ul>
+    <section class="text-gray-400 body-font" id="sobrenosotros">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+                <h1 class="text-2xl font-medium title-font mb-4 text-white">NUESTRO EQUIPO</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Presentamos al equipo a cargo del desarrollo y
+                    ejecución del GamerFest. Compuesto por estudiantes de la carrera de Ingeniería de Software de la
+                    Universidad de las Fuerzas Armadas ESPE, se han unido para crear un evento único y lleno de
+                    emociones.</p>
+                </p>
+            </div>
+            <div class="flex flex-wrap -m-4">
+                <div class="p-4 lg:w-1/4 md:w-1/2">
+                    <div class="h-full flex flex-col items-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                            src="{{ asset('img/jm.jpg') }}">
+                        <div class="w-full">
+                            <h2 class="title-font font-medium text-lg text-white">Josue Morales</h2>
+                            <h3 class="text-gray-500 mb-3">Desarrollador</h3>
+                        </div>
                     </div>
-                    <div class="w-10/12 m-auto mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
-                        <span class="block font-bold text-gray-300">Un evento organizado por la Universidad de las
-                            Fuerzas
-                            Armadas ESPE.</span>
-
-                        <p>La universidad de las Fuerzas Armadas ESPE, presenta uno de los eventos mas grandes a nivel
-                            universitario, donde se reunen estudiantes de todas las Carreras y Universidades. Te
-                            invitamos a disfrutar de los días mas emocionantes y divertidos junto a nosotros!!!.</p>
-                        <span class="block text-gray-300">Grupo 5 &copy; 2023</span>
-
+                </div>
+                <div class="p-4 lg:w-1/4 md:w-1/2">
+                    <div class="h-full flex flex-col items-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                            src="{{ asset('img/sv.png') }}">
+                        <div class="w-full">
+                            <h2 class="title-font font-medium text-lg text-white">Stephanie Valencia</h2>
+                            <h3 class="text-gray-500 mb-3">Desarrolladora</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 lg:w-1/4 md:w-1/2">
+                    <div class="h-full flex flex-col items-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                            src="{{ asset('img/as.png') }}">
+                        <div class="w-full">
+                            <h2 class="title-font font-medium text-lg text-white">Anthony Sinchiguano</h2>
+                            <h3 class="text-gray-500 mb-3">Desarrollador</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 lg:w-1/4 md:w-1/2">
+                    <div class="h-full flex flex-col items-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                            src="{{ asset('img/mm.jpg') }}">
+                        <div class="w-full">
+                            <h2 class="title-font font-medium text-lg text-white">Mateo Medina</h2>
+                            <h3 class="text-gray-500 mb-3">Desarrollador</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div aria-hidden="true" class="absolute inset-0 w-screen h-screen opacity-80"></div>
+    </section>
+
+    <section class="text-gray-400 bg-gray-900 body-font">
+        <div class="container px-5 py-20 mx-auto">
+            <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="inline-block w-8 h-8 text-gray-500 mb-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                </svg>
+                <h2 class="text-white font-medium title-font tracking-wider text-lg">Un evento desarrollado por la
+                    Universidad de las Fuerzas Armadas ESPE</h2>
+                <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
+                <p class="leading-relaxed text-lg">La Universidad de las Fuerzas Armadas ESPE se enorgullece en
+                    presentar uno de los eventos más destacados a nivel universitario, convocando a estudiantes de
+                    diversas carreras y universidades. Extendemos una cordial invitación para que te sumerjas en
+                    jornadas llenas de emoción y diversión. Únete a nosotros y experimenta momentos inolvidables
+                    mientras compartes con la vibrante comunidad estudiantil. ¡Te esperamos para celebrar juntos esta
+                    experiencia única!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-gray-400 bg-gray-900 body-font">
+        <div
+            class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-nowrap">
+            <div class="flex-shrink-0 w-64 mx-auto mt-10 text-center md:mx-0 md:mt-0">
+                <a class="flex items-center justify-center font-medium text-white title-font md:justify-start">
+                    <img src="{{ asset('img/logoGamerFest.png') }}" alt="Logo GamerFest" class="max-h-28 mx-auto">
+                </a>
+                <p class="mt-2 text-sm text-gray-500">El mejor evento de videojuegos del Ecuador</p>
+            </div>
+            <div class="flex flex-wrap flex-grow order-first -mb-10 text-center md:pr-20 md:text-left">
+                <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                    <h2 class="mb-3 text-sm font-medium tracking-widest text-white title-font">PÁGINA PRINCIPAL</h2>
+                    <nav class="mb-10 list-none">
+                        <li>
+                            <a class="text-gray-400 hover:text-white" href="#inicio">Inicio</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-400 hover:text-white" href="#juegos">Juegos</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-400 hover:text-white" href="#contador">Cuenta Regresiva</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-400 hover:text-white" href="#sobrenosotros">Sobre Nosotros</a>
+                        </li>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-800 bg-opacity-75">
+            <div class="container flex flex-col flex-wrap px-5 py-4 mx-auto sm:flex-row">
+                <p class="text-sm text-center text-gray-400 sm:text-left">© 2023 GamerFest —
+                    <span class="ml-1 text-gray-500">Grupo 5</span>
+                </p>
+                <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+                    <a class="ml-3 text-gray-400 flex" href="https://github.com/MrT-coder/GamerFest">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                        </svg>
+                        <span class="ml-2">GitHub</span>
+                    </a>
+                </span>
+            </div>
+        </div>
     </footer>
 
 </body>
