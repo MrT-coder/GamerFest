@@ -199,52 +199,52 @@
 
     <section class="text-gray-400 body-font" id="sobrenosotros">
         <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="text-2xl font-medium title-font mb-4 text-white">NUESTRO EQUIPO</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Presentamos al equipo a cargo del desarrollo y
+            <div class="flex flex-col w-full mb-20 text-center">
+                <h1 class="mb-4 text-2xl font-medium text-white title-font">NUESTRO EQUIPO</h1>
+                <p class="mx-auto text-base leading-relaxed lg:w-2/3">Presentamos al equipo a cargo del desarrollo y
                     ejecución del GamerFest. Compuesto por estudiantes de la carrera de Ingeniería de Software de la
                     Universidad de las Fuerzas Armadas ESPE, se han unido para crear un evento único y lleno de
                     emociones.</p>
                 </p>
             </div>
-            <div class="flex flex-wrap -m-4">
+            <div class="flex flex-wrap justify-center -m-4">
                 <div class="p-4 lg:w-1/4 md:w-1/2">
-                    <div class="h-full flex flex-col items-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                    <div class="flex flex-col items-center h-full text-center">
+                        <img alt="team" class="flex-shrink-0 object-cover object-center w-56 h-56 mb-4 rounded-full"
                             src="{{ asset('img/jm.jpg') }}">
                         <div class="w-full">
-                            <h2 class="title-font font-medium text-lg text-white">Josue Morales</h2>
-                            <h3 class="text-gray-500 mb-3">Desarrollador</h3>
+                            <h2 class="text-lg font-medium text-white title-font">Josue Morales</h2>
+                            <h3 class="mb-3 text-gray-500">Desarrollador</h3>
                         </div>
                     </div>
                 </div>
                 <div class="p-4 lg:w-1/4 md:w-1/2">
-                    <div class="h-full flex flex-col items-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                    <div class="flex flex-col items-center h-full text-center">
+                        <img alt="team" class="flex-shrink-0 object-cover object-center w-56 h-56 mb-4 rounded-full"
                             src="{{ asset('img/sv.png') }}">
                         <div class="w-full">
-                            <h2 class="title-font font-medium text-lg text-white">Stephanie Valencia</h2>
-                            <h3 class="text-gray-500 mb-3">Desarrolladora</h3>
+                            <h2 class="text-lg font-medium text-white title-font">Stephanie Valencia</h2>
+                            <h3 class="mb-3 text-gray-500">Desarrolladora</h3>
                         </div>
                     </div>
                 </div>
                 <div class="p-4 lg:w-1/4 md:w-1/2">
-                    <div class="h-full flex flex-col items-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                    <div class="flex flex-col items-center h-full text-center">
+                        <img alt="team" class="flex-shrink-0 object-cover object-center w-56 h-56 mb-4 rounded-full"
                             src="{{ asset('img/as.png') }}">
                         <div class="w-full">
-                            <h2 class="title-font font-medium text-lg text-white">Anthony Sinchiguano</h2>
-                            <h3 class="text-gray-500 mb-3">Desarrollador</h3>
+                            <h2 class="text-lg font-medium text-white title-font">Anthony Sinchiguano</h2>
+                            <h3 class="mb-3 text-gray-500">Desarrollador</h3>
                         </div>
                     </div>
                 </div>
                 <div class="p-4 lg:w-1/4 md:w-1/2">
-                    <div class="h-full flex flex-col items-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-56 h-56 object-cover object-center mb-4"
+                    <div class="flex flex-col items-center h-full text-center">
+                        <img alt="team" class="flex-shrink-0 object-cover object-center w-56 h-56 mb-4 rounded-full"
                             src="{{ asset('img/mm.jpg') }}">
                         <div class="w-full">
-                            <h2 class="title-font font-medium text-lg text-white">Mateo Medina</h2>
-                            <h3 class="text-gray-500 mb-3">Desarrollador</h3>
+                            <h2 class="text-lg font-medium text-white title-font">Mateo Medina</h2>
+                            <h3 class="mb-3 text-gray-500">Desarrollador</h3>
                         </div>
                     </div>
                 </div>
@@ -254,16 +254,16 @@
 
     <section class="text-gray-400 bg-gray-900 body-font">
         <div class="container px-5 py-20 mx-auto">
-            <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+            <div class="w-full mx-auto text-center xl:w-1/2 lg:w-3/4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="inline-block w-8 h-8 text-gray-500 mb-8">
+                    stroke="currentColor" class="inline-block w-8 h-8 mb-8 text-gray-500">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                 </svg>
-                <h2 class="text-white font-medium title-font tracking-wider text-lg">Un evento desarrollado por la
+                <h2 class="text-lg font-medium tracking-wider text-white title-font">Un evento desarrollado por la
                     Universidad de las Fuerzas Armadas ESPE</h2>
-                <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                <p class="leading-relaxed text-lg">La Universidad de las Fuerzas Armadas ESPE se enorgullece en
+                <span class="inline-block w-10 h-1 mt-8 mb-6 bg-indigo-500 rounded"></span>
+                <p class="text-lg leading-relaxed">La Universidad de las Fuerzas Armadas ESPE se enorgullece en
                     presentar uno de los eventos más destacados a nivel universitario, convocando a estudiantes de
                     diversas carreras y universidades. Extendemos una cordial invitación para que te sumerjas en
                     jornadas llenas de emoción y diversión. Únete a nosotros y experimenta momentos inolvidables
@@ -278,7 +278,7 @@
             class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-nowrap">
             <div class="flex-shrink-0 w-64 mx-auto mt-10 text-center md:mx-0 md:mt-0">
                 <a class="flex items-center justify-center font-medium text-white title-font md:justify-start">
-                    <img src="{{ asset('img/logoGamerFest.png') }}" alt="Logo GamerFest" class="max-h-28 mx-auto">
+                    <img src="{{ asset('img/logoGamerFest.png') }}" alt="Logo GamerFest" class="mx-auto max-h-28">
                 </a>
                 <p class="mt-2 text-sm text-gray-500">El mejor evento de videojuegos del Ecuador</p>
             </div>
@@ -308,7 +308,7 @@
                     <span class="ml-1 text-gray-500">Grupo 5</span>
                 </p>
                 <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                    <a class="ml-3 text-gray-400 flex" href="https://github.com/MrT-coder/GamerFest">
+                    <a class="flex ml-3 text-gray-400" href="https://github.com/MrT-coder/GamerFest">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
                             <path
                                 d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
