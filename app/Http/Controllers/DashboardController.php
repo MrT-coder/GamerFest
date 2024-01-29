@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ingreso;
 use App\Models\Egreso;
+use App\Models\Comprobante;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,7 @@ class DashboardController extends Controller
             ->groupBy('usuarios.carrera')
             ->get();
 
-            return $personasPorCarrera;
+        return $personasPorCarrera;
     }
     public function ingresos()
     {
@@ -26,9 +27,9 @@ class DashboardController extends Controller
             DB::raw('SUM(Valor) as total'),
             DB::raw('DATE_FORMAT(Fecha, "%Y-%m-%d") as fecha'),
         )
-        ->groupBy('fecha')
-        ->get();
-        
+            ->groupBy('fecha')
+            ->get();
+
         return $datosingresos;
 
     }
@@ -39,23 +40,34 @@ class DashboardController extends Controller
             DB::raw('SUM(Valor) as total'),
             DB::raw('DATE_FORMAT(Fecha, "%Y-%m-%d") as fecha'),
         )
-        ->groupBy('fecha')
-        ->get();
-        
+            ->groupBy('fecha')
+            ->get();
+
         return $datosegresos;
     }
 
 
     public function inscritosPorJuego()
-{
-    $inscritosPorJuego = DB::table('comprobantes')
-        ->join('juegos', 'comprobantes.id_juegos', '=', 'juegos.id')
-        ->select('juegos.nombre', DB::raw('count(*) as total'))
-        ->groupBy('juegos.nombre')
+    {
+        $inscritosPorJuego = DB::table('comprobantes')
+            ->join('juegos', 'comprobantes.id_juegos', '=', 'juegos.id')
+            ->select('juegos.nombre', DB::raw('count(*) as total'))
+            ->groupBy('juegos.nombre')
+            ->get();
+
+        return $inscritosPorJuego;
+    }
+
+    public function personasInscritasPorModalidad()
+    {
+        $inscritosPorModalidad = Comprobante::join('juegos', 'comprobantes.id_juegos', '=', 'juegos.id')
+        ->select('juegos.modalidad', DB::raw('count(*) as total'))
+        ->groupBy('juegos.modalidad')
         ->get();
 
-    return $inscritosPorJuego;
-}
+        return $inscritosPorModalidad;
+    }
+
 
     public function mostrarDashboard()
     {
@@ -63,7 +75,8 @@ class DashboardController extends Controller
         $datosingresos = $this->ingresos();
         $datosegresos = $this->egresos();
         $inscritosPorJuego = $this->inscritosPorJuego();
+        $inscritosPorModalidad = $this->personasInscritasPorModalidad();
 
-        return view('dashboard', compact('personasPorCarrera', 'datosingresos', 'datosegresos', 'inscritosPorJuego'));
+        return view('dashboard', compact('personasPorCarrera', 'datosingresos', 'datosegresos', 'inscritosPorJuego', 'inscritosPorModalidad'));
     }
 }

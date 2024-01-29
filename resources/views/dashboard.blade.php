@@ -3,26 +3,29 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <canvas id="bar-chart" class="w-100"></canvas>
-            </div>
-            <div class="col-md-4">
-                <canvas id="line-chart" class="w-100 mw-100" width="400" height="225"
-                    style="width: 100%; height: auto;"></canvas>
-            </div>
-            <!-- Añadir más filas según sea necesario -->
-            <div class="col-md-6">
-                <canvas id="bar-chart-horizontal" class="w-100 mw-100" width="400" height="225"
-                    style="width: 100%; height: auto;"></canvas>
-            </div>
-            <div class="col-md-6">
-                <canvas id="doughnut-chart" class="w-100 mw-100" width="400" height="225"
-                    style="width: 100%; height: auto;"></canvas>
-            </div>
+<div class="container mt-3">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <h3></h3>
+            <p>Inscritos</p>
+        </div>
+        <div class="col-md-4">
+            <canvas id="bar-chart" class="w-100"></canvas>
+        </div>
+        <div class="col-md-4">
+            <canvas id="line-chart" class="w-100"></canvas>
+        </div>
+        <!-- Añadir más filas según sea necesario -->
+        <div class="col-md-6">
+            <canvas id="bar-chart-horizontal" class="w-100"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="doughnut-chart" class="w-100"></canvas>
         </div>
     </div>
+</div>
+
+
 
 
 
@@ -54,13 +57,13 @@
                         data: fechasUnicas.map(fecha => ingresosPorFecha[fecha] || 0),
                         label: "Ingresos",
                         borderColor: "#3e95cd",
-                        fill: false
+                        fill: true
                     },
                     {
                         data: fechasUnicas.map(fecha => egresosPorFecha[fecha] || 0),
                         label: "Egresos",
                         borderColor: "#c45850",
-                        fill: false
+                        fill: true
                     }
                 ]
             },
@@ -140,43 +143,26 @@ new Chart(document.getElementById("bar-chart-horizontal"), {
     }
 });
 
-        // new Chart(document.getElementById("bar-chart-horizontal"), {
-        //     type: 'horizontalBar',
-        //     data: {
-        //         labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-        //         datasets: [{
-        //             label: "Population (millions)",
-        //             backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-        //             data: [2478, 5267, 734, 784, 433]
-        //         }]
-        //     },
-        //     options: {
-        //         legend: {
-        //             display: false
-        //         },
-        //         title: {
-        //             display: true,
-        //             text: 'Predicted world population (millions) in 2050'
-        //         }
-        //     }
-        // });
 
-        new Chart(document.getElementById("doughnut-chart"), {
-            type: 'doughnut',
-            data: {
-                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-                datasets: [{
-                    label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                    data: [2478, 5267, 734, 784, 433]
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Predicted world population (millions) in 2050'
-                }
+var datos = @json($inscritosPorModalidad);
+
+    new Chart(document.getElementById("doughnut-chart"), {
+        type: 'doughnut',
+        data: {
+            labels: datos.map(item => item.modalidad),
+            datasets: [{
+                label: "Inscritos",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: datos.map(item => item.total)
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Número de personas inscritas por modalidad'
             }
-        });
+        }
+    });
+
     </script>
 @stop
