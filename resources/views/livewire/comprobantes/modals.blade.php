@@ -57,8 +57,11 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="estado_pago">Estado del pago</label>
-                            <input wire:model="estado_pago" type="text" class="form-control" id="estado_pago"
-                                placeholder="Estado Pago">
+                            <select wire:model="estado_pago" class="form-control">
+                                <option value="">Seleccione un estado</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Pagado">Pagado</option>
+                            </select>
                             @error('estado_pago')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
@@ -146,8 +149,11 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="estado_pago">Estado de pago</label>
-                            <input wire:model="estado_pago" type="text" class="form-control" id="estado_pago"
-                                placeholder="Estado Pago">
+                            <select wire:model="estado_pago" class="form-control">
+                                <option value="">Seleccione un estado</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Pagado">Pagado</option>
+                            </select>
                             @error('estado_pago')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror

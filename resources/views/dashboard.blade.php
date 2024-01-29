@@ -6,8 +6,20 @@
 <div class="container mt-3">
     <div class="row g-4">
         <div class="col-md-4">
-            <h3></h3>
-            <p>Inscritos</p>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ $totalInscritos }}</h3>
+                    <p class="card-text">Inscritos</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ $saldo }} $</h3>
+                    <p class="card-text">Saldo</p>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <canvas id="bar-chart" class="w-100"></canvas>

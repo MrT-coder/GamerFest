@@ -68,6 +68,29 @@ class DashboardController extends Controller
         return $inscritosPorModalidad;
     }
 
+    public function totalInscritos()
+    {
+        // Obtener el número total de comprobantes
+        $totalInscritos = Comprobante::count();
+
+        // Pasar el resultado a la vista
+        return $totalInscritos;
+    }
+
+    public function saldo()
+    {
+        // Obtener el total de ingresos
+        $totalIngresos = Ingreso::sum('Valor');
+
+        // Obtener el total de egresos
+        $totalEgresos = Egreso::sum('Valor');
+
+        // Calcular el saldo
+        $saldo = $totalIngresos - $totalEgresos;
+
+        // Pasar los valores a la vista
+        return $saldo;
+    }
 
     public function mostrarDashboard()
     {
@@ -76,7 +99,9 @@ class DashboardController extends Controller
         $datosegresos = $this->egresos();
         $inscritosPorJuego = $this->inscritosPorJuego();
         $inscritosPorModalidad = $this->personasInscritasPorModalidad();
+        $totalInscritos = $this->totalInscritos();
+        $saldo = $this->saldo();
 
-        return view('dashboard', compact('personasPorCarrera', 'datosingresos', 'datosegresos', 'inscritosPorJuego', 'inscritosPorModalidad'));
+        return view('dashboard', compact('personasPorCarrera', 'datosingresos', 'datosegresos', 'inscritosPorJuego', 'inscritosPorModalidad', 'totalInscritos', 'saldo'));
     }
 }
