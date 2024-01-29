@@ -32,7 +32,9 @@ Route::middleware([
     Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 });
 
-Auth::routes();
+Auth::routes(
+	// ['register'=>false,'reset'=>false]
+);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
