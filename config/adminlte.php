@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'GamerFest',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Gamer</b>Fest',
+    'logo' => '<span class="text-white"><b>Gamer</b>Fest</span>',
     'logo_img' => 'vendor\adminlte\dist\img\logoGamerFest.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -84,11 +84,11 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor\adminlte\dist\img\logoGamerFest.png',
-            'alt' => 'Auth Logo',
-            'class' => '',
+            'alt' => 'GamerFest',
+            'class' => 'd-inline-block',
             'width' => 100,
             'height' => 100,
         ],
@@ -110,7 +110,7 @@ return [
         'enabled' => true,
         'img' => [
             'path' => 'vendor\adminlte\dist\img\logoGamerFest.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'alt' => 'GamerFest',
             'effect' => 'animation__shake',
             'width' => 200,
             'height' => 200,
@@ -130,9 +130,9 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-dark',
+    'usermenu_image' => true,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
 
@@ -167,12 +167,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
-    'classes_auth_header' => '',
-    'classes_auth_body' => '',
+    'classes_auth_card' => 'text-white',
+    'classes_auth_header' => 'bg-purple',
+    'classes_auth_body' => 'bg-white',
     'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_icon' => 'text-purple',
+    'classes_auth_btn' => 'btn-primary bg-purple border-0',
 
     /*
     |--------------------------------------------------------------------------
@@ -297,7 +297,7 @@ return [
         //     'topnav_right' => true,
         // ],
         [
-            'type'         => 'fullscreen-widget',
+            'type'         => 'darkmode-widget',
             'topnav_right' => true,
         ],
 

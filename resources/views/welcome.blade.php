@@ -54,7 +54,7 @@
         </div>
     </section>
 
-    <section class="text-gray-400 body-font" id="juegos">
+    <section class="text-gray-400 body-font bg-game" id="juegos">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col flex-wrap items-center w-full mb-20 text-center">
                 <h1 class="mb-2 text-3xl font-medium text-white sm:text-3xl title-font">
@@ -197,7 +197,7 @@
                 </script>
     </section>
 
-    <section class="text-gray-400 body-font" id="sobrenosotros">
+    <section class="text-gray-400 body-font bg-circuit" id="sobrenosotros">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col w-full mb-20 text-center">
                 <h1 class="mb-4 text-2xl font-medium text-white title-font">NUESTRO EQUIPO</h1>
