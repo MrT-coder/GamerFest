@@ -18,13 +18,6 @@ return new class extends Migration
             $table->string('Detalle');
             $table->float('Valor');
             $table->dateTime('Fecha');
-
-
-
-
-
-
-
             $table->timestamps();
 
         });
