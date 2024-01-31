@@ -3,6 +3,7 @@
 use App\Models\Juego;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JuegoController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +26,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    //Route::get('/profile',[UsuarioController::class,'profile']);
-    Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
+	Route::get('/dashboard', [DashboardController::class, 'mostrarDashboard'])->name('dashboard');
+   
 });
+Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 
-Auth::routes();
+Auth::routes(
+	// ['register'=>false,'reset'=>false]
+);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
