@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Egresos', function (Blueprint $table) {
+        Schema::create('egresos', function (Blueprint $table) {
             $table->id();
             $table->string('Detalle');
             $table->float('Valor');
