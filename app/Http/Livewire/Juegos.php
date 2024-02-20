@@ -90,8 +90,8 @@ class Juegos extends Component
 			'nombre' => $this->nombre,
 			'modalidad' => $this->modalidad,
 			'costo' => $this->costo,
-			'ruta_foto_principal' => $this->ruta_foto_principal->store('public/storage/juegos'),
-			'ruta_foto_portada' => $this->ruta_foto_portada->store('public/storage/juegos'),
+			'ruta_foto_principal' => $this->ruta_foto_principal->store('public/juegos'),
+			'ruta_foto_portada' => $this->ruta_foto_portada->store('public/juegos'),
 			'descripcion' => $this->descripcion
 		]);
 
@@ -122,8 +122,8 @@ class Juegos extends Component
 				'nombre' => $this->nombre,
 				'modalidad' => $this->modalidad,
 				'costo' => $this->costo,
-				'ruta_foto_principal' => $this->ruta_foto_principal->store('public/storage/juegos'),
-				'ruta_foto_portada' => $this->ruta_foto_portada->store('public/storage/juegos'),
+				'ruta_foto_principal' => $this->ruta_foto_principal->store('public/juegos'),
+				'ruta_foto_portada' => $this->ruta_foto_portada->store('public/juegos'),
 				'descripcion' => $this->descripcion
 			]);
 
