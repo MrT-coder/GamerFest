@@ -51,9 +51,8 @@
                                         <td class="align-middle">{{ $row->modalidad }}</td>
                                         <td class="align-middle">$ {{ $row->costo }}</td>
                                         <td class="align-middle text-center">
-                                            @if ($row->ruta_foto_principal && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_principal)))
-                                                @sleep(1)
-                                                <img class="img-thumbnail img-fluid"
+                                                @if ($row->ruta_foto_principal && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_principal)))
+                                                    <img class="img-thumbnail img-fluid"
                                                         src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_principal)) }}"
                                                         alt="Foto principal" width="100">
                                                 @else
@@ -62,7 +61,6 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             @if ($row->ruta_foto_portada && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_portada)))
-                                                @sleep(1)    
                                                 <img class="img-thumbnail img-fluid"
                                                     src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_portada)) }}"
                                                     alt="Foto portada" width="100">
