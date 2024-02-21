@@ -15,48 +15,48 @@
                             <div class="form-group">
                                 <label for="id_partidas">Partida</label>
                                 @if ($partidas->count())
-                                    <select wire:model="id_partidas" class="form-control" id="id_partidas">
-                                        <option value="">Seleccione una partida</option>
-                                        @foreach ($partidas as $partida)
-                                            <option value="{{ $partida->id }}">{{ $partida->id }}</option>
-                                        @endforeach
+                                <select wire:model="id_partidas" class="form-control" id="id_partidas">
+                                    <option value="">Seleccione una partida</option>
+                                    @foreach ($partidas as $partida)
+                                    <option value="{{ $partida->id }}">{{ $partida->id }}</option>
+                                    @endforeach
                                     @else
-                                        <select wire:model="id_partidas" class="form-control" id="id_partidas" disabled>
-                                            <option value="">No hay partidas disponibles</option>
-                                @endif
-                                </select>
-                                @error('id_partidas')
+                                    <select wire:model="id_partidas" class="form-control" id="id_partidas" disabled>
+                                        <option value="">No hay partidas disponibles</option>
+                                        @endif
+                                    </select>
+                                    @error('id_partidas')
                                     <span class="error text-danger">{{ $message }}</span>
-                                @enderror
+                                    @enderror
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="id_usuarios">Usuario</label>
                                 @if ($usuarios->count())
-                                    <select wire:model="id_usuarios" class="form-control" id="id_usuarios">
-                                        <option value="">Seleccione un usuario</option>
-                                        @foreach ($usuarios as $usuario)
-                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{ $usuario->apellido }}</option>
-                                        @endforeach
+                                <select wire:model="id_usuarios" class="form-control" id="id_usuarios">
+                                    <option value="">Seleccione un usuario</option>
+                                    @foreach ($usuarios as $usuario)
+                                    <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{ $usuario->apellido }}
+                                    </option>
+                                    @endforeach
                                     @else
-                                        <select wire:model="id_usuarios" class="form-control" id="id_usuarios" disabled>
-                                            <option value="">No hay usuarios disponibles</option>
-                                @endif
-                                </select>
-                                @error('id_usuarios')
+                                    <select wire:model="id_usuarios" class="form-control" id="id_usuarios" disabled>
+                                        <option value="">No hay usuarios disponibles</option>
+                                        @endif
+                                    </select>
+                                    @error('id_usuarios')
                                     <span class="error text-danger">{{ $message }}</span>
-                                @enderror
+                                    @enderror
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="gana">Resultado</label>
-                            <input wire:model="gana" type="text" class="form-control" id="gana"
-                                placeholder="Gana">
+                            <input wire:model="gana" type="text" class="form-control" id="gana" placeholder="Gana">
                             @error('gana')
-                                <span class="error text-danger">{{ $message }}</span>
+                            <span class="error text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -90,56 +90,56 @@
                             <div class="form-group">
                                 <label for="id_partidas">Partida</label>
                                 @if ($partidas->count())
-                                    <select wire:model="id_partidas" class="form-control" id="id_partidas">
-                                        <option value="">Seleccione una partida</option>
-                                        @foreach ($partidas as $partida)
-                                            <option value="{{ $partida->id }}">{{ $partida->id }}</option>
-                                        @endforeach
+                                <select wire:model="id_partidas" class="form-control" id="id_partidas">
+                                    <option value="">Seleccione una partida</option>
+                                    @foreach ($partidas as $partida)
+                                    <option value="{{ $partida->id }}">{{ $partida->id }}</option>
+                                    @endforeach
                                     @else
-                                        <select wire:model="id_partidas" class="form-control" id="id_partidas" disabled>
-                                            <option value="">No hay partidas disponibles</option>
-                                @endif
-                                </select>
-                                @error('id_partidas')
+                                    <select wire:model="id_partidas" class="form-control" id="id_partidas" disabled>
+                                        <option value="">No hay partidas disponibles</option>
+                                        @endif
+                                    </select>
+                                    @error('id_partidas')
                                     <span class="error text-danger">{{ $message }}</span>
-                                @enderror
+                                    @enderror
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="id_usuarios">Usuario</label>
                                 @if ($usuarios->count())
-                                    <select wire:model="id_usuarios" class="form-control" id="id_usuarios">
-                                        <option value="">Seleccione un usuario</option>
-                                        @foreach ($usuarios as $usuario)
-                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{ $usuario->apellido }}</option>
-                                        @endforeach
+                                <select wire:model="id_usuarios" class="form-control" id="id_usuarios">
+                                    <option value="">Seleccione un usuario</option>
+                                    @foreach ($usuarios as $usuario)
+                                    <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{ $usuario->apellido }}
+                                    </option>
+                                    @endforeach
                                     @else
-                                        <select wire:model="id_usuarios" class="form-control" id="id_usuarios" disabled>
-                                            <option value="">No hay usuarios disponibles</option>
-                                @endif
-                                </select>
-                                @error('id_usuarios')
+                                    <select wire:model="id_usuarios" class="form-control" id="id_usuarios" disabled>
+                                        <option value="">No hay usuarios disponibles</option>
+                                        @endif
+                                    </select>
+                                    @error('id_usuarios')
                                     <span class="error text-danger">{{ $message }}</span>
-                                @enderror
+                                    @enderror
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="gana">Resultado</label>
-                            <input wire:model="gana" type="text" class="form-control" id="gana"
-                                placeholder="Gana">
+                            <input wire:model="gana" type="text" class="form-control" id="gana" placeholder="Gana">
                             @error('gana')
-                                <span class="error text-danger">{{ $message }}</span>
+                            <span class="error text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                    data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                        class="fa-solid fa-xmark"></i> Cancelar</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
                         class="fa-solid fa-pen-to-square"></i> Actualizar</button>
             </div>

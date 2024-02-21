@@ -15,7 +15,7 @@
                         <input wire:model="nombre_rol" type="text" class="form-control" id="nombre_rol"
                             placeholder="Rol">
                         @error('nombre_rol')
-                            <span class="error text-danger">{{ $message }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -49,15 +49,15 @@
                         <input wire:model="nombre_rol" type="text" class="form-control" id="nombre_rol"
                             placeholder="Rol">
                         @error('nombre_rol')
-                            <span class="error text-danger">{{ $message }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                    data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                        class="fa-solid fa-xmark"></i> Cancelar</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
                         class="fa-solid fa-pen-to-square"></i> Actualizar</button>
             </div>

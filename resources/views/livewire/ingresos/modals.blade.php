@@ -12,9 +12,10 @@
                 <form>
                     <div class="form-group">
                         <label for="Detalle">Detalle</label>
-                        <textarea wire:model="Detalle" class="form-control" id="Detalle" placeholder="Detalle" rows="3"></textarea>
+                        <textarea wire:model="Detalle" class="form-control" id="Detalle" placeholder="Detalle"
+                            rows="3"></textarea>
                         @error('Detalle')
-                            <span class="error text-danger">{{ $message }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="row">
@@ -23,11 +24,11 @@
                                 <label for="Valor">Valor</label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
-                                    <input wire:model="Valor" type="number" step="0.1" class="form-control"
-                                    id="Valor" placeholder="Valor">
+                                    <input wire:model="Valor" type="number" step="0.1" class="form-control" id="Valor"
+                                        placeholder="Valor">
                                 </div>
                                 @error('Valor')
-                                    <span class="error text-danger">{{ $message }}</span>
+                                <span class="error text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -37,7 +38,7 @@
                                 <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora"
                                     placeholder="Fecha y Hora">
                                 @error('Fecha')
-                                    <span class="error text-danger">{{ $message }}</span>
+                                <span class="error text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -69,9 +70,10 @@
                     <input type="hidden" wire:model="selected_id">
                     <div class="form-group">
                         <label for="Detalle">Detalle</label>
-                        <textarea wire:model="Detalle" class="form-control" id="Detalle" placeholder="Detalle" rows="3"></textarea>
+                        <textarea wire:model="Detalle" class="form-control" id="Detalle" placeholder="Detalle"
+                            rows="3"></textarea>
                         @error('Detalle')
-                            <span class="error text-danger">{{ $message }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="row">
@@ -81,10 +83,10 @@
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
                                     <input wire:model="Valor" type="text" class="form-control" id="Valor"
-                                    placeholder="Valor">
+                                        placeholder="Valor">
                                 </div>
                                 @error('Valor')
-                                    <span class="error text-danger">{{ $message }}</span>
+                                <span class="error text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -94,7 +96,7 @@
                                 <input wire:model="Fecha" type="datetime-local" class="form-control" id="FechaHora"
                                     placeholder="Fecha y Hora">
                                 @error('Fecha')
-                                    <span class="error text-danger">{{ $message }}</span>
+                                <span class="error text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -105,8 +107,8 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                    data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                        class="fa-solid fa-xmark"></i> Cancelar</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
                         class="fa-solid fa-pen-to-square"></i> Actualizar</button>
             </div>
