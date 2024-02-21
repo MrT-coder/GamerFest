@@ -1,4 +1,4 @@
-@section('title', __('Rols'))
+@section('title', __('Roles'))
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -49,9 +49,9 @@
                                                 class="btn btn-sm btn-warning m-1" wire:click="edit({{ $row->id }})"><i
                                                     class="fa fa-edit"></i>
                                                 Editar </a>
-                                            <a class="btn btn-sm btn-danger m-1"
-                                                onclick="confirm('¿Desea eliminar el rol {{ $row->nombre_rol }}? \n¡No se pueden recuperar los roles eliminados!')||event.stopImmediatePropagation()"
-                                                wire:click="destroy({{ $row->id }})"><i class="fa fa-trash"></i>
+                                            <a data-bs-toggle="modal" data-bs-target="#destroyDataModal"
+                                                class="btn btn-sm btn-danger m-1" wire:click="delete({{ $row->id }})"><i
+                                                    class="fa fa-trash"></i>
                                                 Eliminar </a>
                                         </div>
                                     </td>
