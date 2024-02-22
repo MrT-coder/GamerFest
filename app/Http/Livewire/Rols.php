@@ -11,7 +11,7 @@ class Rols extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_rol;
+    public $selected_id, $keyWord, $nombre_rol, $contadorRegistrosConflictivos = 0, $listaRegistrosConflictivos = [], $listaRoles = [], $id_rol_nuevo;
 
     protected $rules = [
         'nombre_rol' => 'required|min:3|max:100|unique:rols,nombre_rol',
@@ -89,8 +89,14 @@ class Rols extends Component
 
     public function delete($id)
     {
-        $record = Rol::findOrFail($id);
+        $record = Rol::find($id);
         $this->selected_id = $id;
+        $this->nombre_rol = $record->nombre_rol;
+        $this->contadorRegistrosConflictivos = $record->usuarios->count();
+        // Obtener la lista de usuarios que tienen el rol a eliminar
+        $this->listaRegistrosConflictivos = $record->usuarios;
+        // Devolver lista de roles sin el rol a eliminar
+        $this->listaRoles = Rol::where('id', '!=', $id)->get();
     }
 
     public function destroy()
