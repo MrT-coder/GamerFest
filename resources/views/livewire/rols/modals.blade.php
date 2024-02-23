@@ -92,6 +92,7 @@
                         </p>
                         <p class="mb-0"><strong>Rol a eliminar:</strong> {{ $nombre_rol }}</p>
                     </div>
+                    <h4 class="text-center fw-bold">Lista de usuarios con conflictos</h4>
                     <div class="table-responsive">
                         <table class="table table-sm table-hover table-bordered table-striped">
                             <thead class="thead text-center">
