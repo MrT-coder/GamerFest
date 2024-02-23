@@ -49,6 +49,12 @@ class Rols extends Component
     private function resetInput()
     {
         $this->nombre_rol = null;
+        $this->selected_id = null;
+        $this->contadorRegistrosConflictivos = 0;
+        $this->listaUsuariosConflictivos = [];
+        $this->listaSinRegistro = [];
+        $this->id_rol_nuevo = null;
+        $this->selected_roles_usuarios = [];
     }
 
     public function store()
