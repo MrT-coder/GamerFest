@@ -82,71 +82,72 @@
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
-                    {{-- <input wire:model="contadorRegistrosConflictivos" type="text" disabled> --}}
-                </form>
-                {{-- <ol>
-                    @foreach ($listaRegistrosConflictivos as $listaRegistrosConflictivos)
-                    <li>{{ $listaRegistrosConflictivos->nombre }}</li>
-                    @endforeach
-                </ol> --}}
 
-                @if ($contadorRegistrosConflictivos > 0)
-                <div class="alert bg-warning-subtle border-warning" role="alert">
-                    <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
-                    <p>El rol que intenta eliminar está asignado a <strong>{{ $contadorRegistrosConflictivos }}</strong>
-                        usuarios. Por favor
-                        seleccione un rol para reasignar a los usuarios afectados.</p>
-                    <p class="mb-0"><strong>Rol a eliminar:</strong> {{ $nombre_rol }}</p>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-sm table-hover table-bordered table-striped">
-                        <thead class="thead text-center">
-                            <tr>
-                                <th class="col-1">#</td>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Rol</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($listaRegistrosConflictivos as $listaRegistrosConflictivos)
-                            <tr>
-                                <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                <td class="align-middle">{{ $listaRegistrosConflictivos->nombre }}</td>
-                                <td class="align-middle">{{ $listaRegistrosConflictivos->apellido }}</td>
-                                <td class="align-middle">
-                                    {{-- Lista desplegable con todos los roles excepto el que se quiere eliminar --}}
-                                    @if ($listaRoles->count())
-                                    <select wire:model="id_rol_nuevo" class="form-control" id="id_rol_nuevo">
-                                        <option value="">Selecciona un rol</option>
-                                        @foreach ($listaRoles as $rol)
-                                        <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
-                                        @endforeach
-                                        @else
-                                        <select wire:model="id_rol_nuevo" class="form-control" id="id_rol_nuevo"
-                                            disabled>
-                                            <option value="">No hay otros roles disponibles.</option>
-                                            @endif
+                    @if ($contadorRegistrosConflictivos > 0)
+                    <div class="alert bg-warning-subtle border-warning" role="alert">
+                        <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
+                        <p>El rol que intenta eliminar está asignado a
+                            <strong>{{ $contadorRegistrosConflictivos }}</strong>
+                            usuarios. Por favor seleccione un rol para reasignar a los usuarios afectados.
+                        </p>
+                        <p class="mb-0"><strong>Rol a eliminar:</strong> {{ $nombre_rol }}</p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaRegistrosConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->nombre }}</td>
+                                    <td class="align-middle">{{ $registro->apellido }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaRoles->count())
+                                        <select wire:model="selected_roles.{{ $loop->index }}" class="form-control"
+                                            id="id_rol_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un rol</option>
+                                            @foreach ($listaRoles as $rol)
+                                            <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
+                                            @endforeach
                                         </select>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                @endif
+                                        @else
+                                        <select class="form-control" id="id_rol_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros roles disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+                </form>
+
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
                     @if ($contadorRegistrosConflictivos > 0)
-                    <button type="button" class="btn btn-danger" disabled data-bs-toggle="tooltip"
-                        data-bs-placement="top" data-bs-title="Tooltip on top">
-                        <i class="fa-solid fa-trash"></i>
-                        Conflictos existentes
+                    @if ($selected_roles && count(array_filter($selected_roles)) == $contadorRegistrosConflictivos)
+                    <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
                     @else
-                    <button type="button" wire:click.prevent="destroy()" class="btn btn-danger"><i
-                            class="fa-solid fa-trash"></i> Eliminar</button>
+                    <button type="button" class="btn btn-danger" disabled>
+                        <i class="fa-solid fa-trash"></i> Conflictos existentes
+                    </button>
+                    @endif
+                    @else
+                    <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
                     @endif
                 </div>
             </div>
