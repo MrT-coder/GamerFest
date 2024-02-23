@@ -11,7 +11,7 @@ class Rols extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_rol, $contadorRegistrosConflictivos = 0, $listaRegistrosConflictivos = [], $listaRoles = [], $id_rol_nuevo, $selected_roles = [];
+    public $selected_id, $keyWord, $nombre_rol, $contadorRegistrosConflictivos = 0, $listaUsuariosConflictivos = [], $listaSinRegistro = [], $id_rol_nuevo, $selected_roles_usuarios = [];
 
     protected $rules = [
         'nombre_rol' => 'required|min:3|max:100|unique:rols,nombre_rol',
@@ -94,11 +94,11 @@ class Rols extends Component
         $this->nombre_rol = $record->nombre_rol;
         $this->contadorRegistrosConflictivos = $record->usuarios->count();
         // Obtener la lista de usuarios que tienen el rol a eliminar
-        $this->listaRegistrosConflictivos = $record->usuarios;
-        // Inicializar el array selected_roles con valores por defecto para cada usuario
-        $this->selected_roles = array_fill(0, $this->contadorRegistrosConflictivos, '');
+        $this->listaUsuariosConflictivos = $record->usuarios;
+        // Inicializar el array selected_roles_usuarios con valores por defecto para cada usuario
+        $this->selected_roles_usuarios = array_fill(0, $this->contadorRegistrosConflictivos, '');
         // Devolver lista de roles sin el rol a eliminar
-        $this->listaRoles = Rol::where('id', '!=', $id)->get();
+        $this->listaSinRegistro = Rol::where('id', '!=', $id)->get();
     }
 
     public function destroy()
@@ -107,10 +107,10 @@ class Rols extends Component
             // Verificar si hay conflictos
             if ($this->contadorRegistrosConflictivos > 0) {
                 // Cambiar el rol de los usuarios que tienen el rol a eliminar
-                foreach ($this->listaRegistrosConflictivos as $index => $usuario) {
+                foreach ($this->listaUsuariosConflictivos as $index => $usuario) {
                     // Actualizar el rol del usuario
                     $usuario->update([
-                        'id_rol' => $this->selected_roles[$index] // Usar el rol seleccionado para este usuario
+                        'id_rol' => $this->selected_roles_usuarios[$index] // Usar el rol seleccionado para este usuario
                     ]);
                 }
             }

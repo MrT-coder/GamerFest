@@ -103,17 +103,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($listaRegistrosConflictivos as $registro)
+                                @foreach ($listaUsuariosConflictivos as $registro)
                                 <tr>
                                     <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
                                     <td class="align-middle">{{ $registro->nombre }}</td>
                                     <td class="align-middle">{{ $registro->apellido }}</td>
                                     <td class="align-middle">
-                                        @if ($listaRoles->count())
-                                        <select wire:model="selected_roles.{{ $loop->index }}" class="form-control"
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_roles_usuarios.{{ $loop->index }}" class="form-control"
                                             id="id_rol_nuevo_{{ $loop->index }}">
                                             <option value="">Selecciona un rol</option>
-                                            @foreach ($listaRoles as $rol)
+                                            @foreach ($listaSinRegistro as $rol)
                                             <option value="{{ $rol->id }}">{{ $rol->nombre_rol }}</option>
                                             @endforeach
                                         </select>
@@ -135,7 +135,7 @@
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
                     @if ($contadorRegistrosConflictivos > 0)
-                    @if ($selected_roles && count(array_filter($selected_roles)) == $contadorRegistrosConflictivos)
+                    @if ($selected_roles_usuarios && count(array_filter($selected_roles_usuarios)) == $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
