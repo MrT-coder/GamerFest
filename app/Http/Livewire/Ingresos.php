@@ -103,7 +103,6 @@ class Ingresos extends Component
 
     public function delete($id)
     {
-        $record = Ingreso::find($id);
         $this->selected_id = $id;
     }
 
