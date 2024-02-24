@@ -10,8 +10,8 @@
 
     <title>
         @hasSection('title')
-            @yield('title') |
-        @endif {{ config('app.name', 'Laravel') }}
+        @yield('title') |
+        @endif {{ config('app.name', 'GamerFest') }}
     </title>
 
     <!-- Fonts -->
@@ -28,9 +28,11 @@
     <script type="module">
         const addModal = new bootstrap.Modal('#createDataModal');
         const editModal = new bootstrap.Modal('#updateDataModal');
+        const deleteModal = new bootstrap.Modal('#destroyDataModal');
         window.addEventListener('closeModal', () => {
             addModal.hide();
             editModal.hide();
+            deleteModal.hide();
         })
     </script>
 </body>

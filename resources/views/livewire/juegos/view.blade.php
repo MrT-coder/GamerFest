@@ -10,13 +10,13 @@
                                 Lista de Juegos</h4>
                         </div>
                         @if (session()->has('message'))
-                            <div wire:poll.5s class="btn btn-info placeholder-wave"
-                                style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>
-                                {{ session('message') }} </div>
+                        <div wire:poll.5s class="btn btn-info placeholder-wave"
+                            style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>
+                            {{ session('message') }} </div>
                         @endif
                         <div>
-                            <input wire:model='keyWord' type="text" class="form-control" name="search"
-                                id="search" placeholder="Buscar Juegos">
+                            <input wire:model='keyWord' type="text" class="form-control" name="search" id="search"
+                                placeholder="Buscar Juegos">
                         </div>
                     </div>
                 </div>
@@ -45,48 +45,50 @@
                             </thead>
                             <tbody>
                                 @forelse($juegos as $row)
-                                    <tr>
-                                        <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->nombre }}</td>
-                                        <td class="align-middle">{{ $row->modalidad }}</td>
-                                        <td class="align-middle">$ {{ $row->costo }}</td>
-                                        <td class="align-middle text-center">
-                                                @if ($row->ruta_foto_principal && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_principal)))
-                                                    <img class="img-thumbnail img-fluid"
-                                                        src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_principal)) }}"
-                                                        alt="Foto principal" width="100">
-                                                @else
-                                                    <span class="text-muted">Sin foto</span>
-                                                @endif
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            @if ($row->ruta_foto_portada && file_exists('storage/' . str_replace('public/', '', $row->ruta_foto_portada)))
-                                                <img class="img-thumbnail img-fluid"
-                                                    src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_portada)) }}"
-                                                    alt="Foto portada" width="100">
-                                            @else
-                                                <span class="text-muted">Sin foto</span>
-                                            @endif
-                                        </td>
-                                        <td class="align-middle">{{ $row->descripcion }}</td>
-                                        <td class="text-center align-middle">
-                                            <div>
-                                                <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
-                                                    class="btn btn-sm btn-warning m-1"
-                                                    wire:click="edit({{ $row->id }})"><i class="fa fa-edit"></i>
-                                                    Editar </a>
-                                                <a class="btn btn-sm btn-danger m-1"
-                                                    onclick="confirm('¿Desea eliminar el Juego con ID {{ $row->id }}? \n¡No se pueden recuperar los Juegos eliminados!')||event.stopImmediatePropagation()"
-                                                    wire:click="destroy({{ $row->id }})"><i
-                                                        class="fa fa-trash"></i> Eliminar </a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
+                                    <td class="align-middle">{{ $row->nombre }}</td>
+                                    <td class="align-middle">{{ $row->modalidad }}</td>
+                                    <td class="align-middle">$ {{ $row->costo }}</td>
+                                    <td class="align-middle text-center">
+                                        @if ($row->ruta_foto_principal && file_exists('storage/' .
+                                        str_replace('public/', '', $row->ruta_foto_principal)))
+                                        <img class="img-thumbnail img-fluid"
+                                            src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_principal)) }}"
+                                            alt="Foto principal" width="100">
+                                        @else
+                                        <span class="text-muted">Sin foto</span>
+                                        @endif
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        @if ($row->ruta_foto_portada && file_exists('storage/' . str_replace('public/',
+                                        '', $row->ruta_foto_portada)))
+                                        <img class="img-thumbnail img-fluid"
+                                            src="{{ asset('storage/' . str_replace('public/', '', $row->ruta_foto_portada)) }}"
+                                            alt="Foto portada" width="100">
+                                        @else
+                                        <span class="text-muted">Sin foto</span>
+                                        @endif
+                                    </td>
+                                    <td class="align-middle">{{ $row->descripcion }}</td>
+                                    <td class="text-center align-middle">
+                                        <div>
+                                            <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
+                                                class="btn btn-sm btn-warning m-1" wire:click="edit({{ $row->id }})"><i
+                                                    class="fa fa-edit"></i>
+                                                Editar </a>
+                                            <a data-bs-toggle="modal" data-bs-target="#destroyDataModal"
+                                                class="btn btn-sm btn-danger m-1" wire:click="delete({{ $row->id }})"><i
+                                                    class="fa fa-trash"></i>
+                                                Eliminar </a>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td class="table-danger text-center" colspan="100%">No se encontraron registros.
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="table-danger text-center" colspan="100%">No se encontraron registros.
+                                    </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>

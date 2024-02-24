@@ -136,13 +136,20 @@ class Partidas extends Component
 		}
 	}
 
-	public function destroy($id)
-	{
-		if ($id) {
-			Partida::where('id', $id)->delete();
-		}
+	public function delete($id)
+    {
+        $this->selected_id = $id;
+    }
 
-		$this->resetInput();
-		session()->flash('message', 'Partida eliminada correctamente.');
+	public function destroy()
+	{
+		if ($this->selected_id) {
+            $record = Partida::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Partida eliminada correctamente.');
+        }
 	}
 }

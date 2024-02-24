@@ -10,13 +10,13 @@
                                 Lista de Integrantes</h4>
                         </div>
                         @if (session()->has('message'))
-                            <div wire:poll.5s class="btn btn-info placeholder-wave"
-                                style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>
-                                {{ session('message') }} </div>
+                        <div wire:poll.5s class="btn btn-info placeholder-wave"
+                            style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>
+                            {{ session('message') }} </div>
                         @endif
                         <div>
-                            <input wire:model='keyWord' type="text" class="form-control" name="search"
-                                id="search" placeholder="Buscar Equipos - Integrantes">
+                            <input wire:model='keyWord' type="text" class="form-control" name="search" id="search"
+                                placeholder="Buscar Equipos - Integrantes">
                         </div>
                     </div>
                 </div>
@@ -42,35 +42,35 @@
                             </thead>
                             <tbody>
                                 @forelse($equipointegrantes as $row)
-                                    <tr>
-                                        <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->usuario->nombre }}</td>
-                                        <td class="align-middle">{{ $row->equipo->nombre_equ }}</td>
-                                        <td class="align-middle">
-                                            @if ($row->isLider == 1)
-                                                Líder
-                                            @else
-                                                No Líder
-                                            @endif
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            <div>
-                                                <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
-                                                    class="btn btn-sm btn-warning m-1"
-                                                    wire:click="edit({{ $row->id }})"><i class="fa fa-edit"></i>
-                                                    Editar </a>
-                                                <a class="btn btn-sm btn-danger m-1"
-                                                    onclick="confirm('¿Desea eliminar el Integrante con ID {{ $row->id }}? \n¡No se pueden recuperar los Integrantes eliminados!')||event.stopImmediatePropagation()"
-                                                    wire:click="destroy({{ $row->id }})"><i
-                                                        class="fa fa-trash"></i> Eliminar </a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
+                                    <td class="align-middle">{{ $row->usuario->nombre }}</td>
+                                    <td class="align-middle">{{ $row->equipo->nombre_equ }}</td>
+                                    <td class="align-middle">
+                                        @if ($row->isLider == 1)
+                                        Líder
+                                        @else
+                                        No Líder
+                                        @endif
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <div>
+                                            <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
+                                                class="btn btn-sm btn-warning m-1" wire:click="edit({{ $row->id }})"><i
+                                                    class="fa fa-edit"></i>
+                                                Editar </a>
+                                            <a data-bs-toggle="modal" data-bs-target="#destroyDataModal"
+                                                class="btn btn-sm btn-danger m-1" wire:click="delete({{ $row->id }})"><i
+                                                    class="fa fa-trash"></i>
+                                                Eliminar </a>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td class="table-danger text-center" colspan="100%">No se encontraron registros.
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="table-danger text-center" colspan="100%">No se encontraron registros.
+                                    </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>

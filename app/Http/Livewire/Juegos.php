@@ -133,13 +133,20 @@ class Juegos extends Component
 		}
 	}
 
-	public function destroy($id)
-	{
-		if ($id) {
-			Juego::where('id', $id)->delete();
-		}
+	public function delete($id)
+    {
+        $this->selected_id = $id;
+    }
 
-		$this->resetInput();
-		session()->flash('message', 'Juego eliminado correctamente.');
+	public function destroy()
+	{
+		if ($this->selected_id) {
+            $record = Juego::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Juego eliminado correctamente.');
+        }
 	}
 }

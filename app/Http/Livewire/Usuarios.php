@@ -164,13 +164,20 @@ class Usuarios extends Component
 		}
 	}
 
-	public function destroy($id)
-	{
-		if ($id) {
-			Usuario::where('id', $id)->delete();
-		}
+	public function delete($id)
+    {
+        $this->selected_id = $id;
+    }
 
-		$this->resetInput();
-		session()->flash('message', 'Usuario eliminado correctamente.');
+	public function destroy()
+	{
+		if ($this->selected_id) {
+            $record = Usuario::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Usuario eliminado correctamente.');
+        }
 	}
 }

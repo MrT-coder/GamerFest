@@ -87,13 +87,20 @@ class Equipos extends Component
         }
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        if ($id) {
-            Equipo::where('id', $id)->delete();
-        }
+        $this->selected_id = $id;
+    }
 
-        $this->resetInput();
-        session()->flash('message', 'Equipo eliminado correctamente.');
+    public function destroy()
+    {
+        if ($this->selected_id) {
+            $record = Equipo::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Equipo eliminado correctamente.');
+        }
     }
 }

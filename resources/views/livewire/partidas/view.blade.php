@@ -10,13 +10,13 @@
                                 Lista de Partidas</h4>
                         </div>
                         @if (session()->has('message'))
-                            <div wire:poll.5s class="btn btn-info placeholder-wave"
-                                style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>
-                                {{ session('message') }} </div>
+                        <div wire:poll.5s class="btn btn-info placeholder-wave"
+                            style="margin-top:0px; margin-bottom:0px;"><i class="fa-solid fa-circle-check"></i>
+                            {{ session('message') }} </div>
                         @endif
                         <div>
-                            <input wire:model='keyWord' type="text" class="form-control" name="search"
-                                id="search" placeholder="Buscar Partidas">
+                            <input wire:model='keyWord' type="text" class="form-control" name="search" id="search"
+                                placeholder="Buscar Partidas">
                         </div>
                     </div>
                 </div>
@@ -46,34 +46,34 @@
                             </thead>
                             <tbody>
                                 @forelse($partidas as $row)
-                                    <tr>
-                                        <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->juego->nombre }}</td>
-                                        <td class="align-middle">{{ $row->usuario->nombre }}
-                                            {{ $row->usuario->apellido }}</td>
-                                        <td class="align-middle">{{ $row->salon }}</td>
-                                        <td class="align-middle">{{ $row->fecha }}</td>
-                                        <td class="align-middle">{{ $row->hora_inicio }}</td>
-                                        <td class="align-middle">{{ $row->hora_fin }}</td>
-                                        <td class="align-middle">{{ $row->estado }}</td>
-                                        <td class="text-center align-middle">
-                                            <div>
-                                                <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
-                                                    class="btn btn-sm btn-warning m-1"
-                                                    wire:click="edit({{ $row->id }})"><i class="fa fa-edit"></i>
-                                                    Editar </a>
-                                                <a class="btn btn-sm btn-danger m-1"
-                                                    onclick="confirm('¿Desea eliminar el Partida con ID {{ $row->id }}? \n¡No se pueden recuperar los Partidas eliminados!')||event.stopImmediatePropagation()"
-                                                    wire:click="destroy({{ $row->id }})"><i
-                                                        class="fa fa-trash"></i> Eliminar </a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</td>
+                                    <td class="align-middle">{{ $row->juego->nombre }}</td>
+                                    <td class="align-middle">{{ $row->usuario->nombre }}
+                                        {{ $row->usuario->apellido }}</td>
+                                    <td class="align-middle">{{ $row->salon }}</td>
+                                    <td class="align-middle">{{ $row->fecha }}</td>
+                                    <td class="align-middle">{{ $row->hora_inicio }}</td>
+                                    <td class="align-middle">{{ $row->hora_fin }}</td>
+                                    <td class="align-middle">{{ $row->estado }}</td>
+                                    <td class="text-center align-middle">
+                                        <div>
+                                            <a data-bs-toggle="modal" data-bs-target="#updateDataModal"
+                                                class="btn btn-sm btn-warning m-1" wire:click="edit({{ $row->id }})"><i
+                                                    class="fa fa-edit"></i>
+                                                Editar </a>
+                                            <a data-bs-toggle="modal" data-bs-target="#destroyDataModal"
+                                                class="btn btn-sm btn-danger m-1" wire:click="delete({{ $row->id }})"><i
+                                                    class="fa fa-trash"></i>
+                                                Eliminar </a>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td class="table-danger text-center" colspan="100%">No se encontraron registros.
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="table-danger text-center" colspan="100%">No se encontraron registros.
+                                    </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
