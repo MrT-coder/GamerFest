@@ -117,13 +117,20 @@ class Comprobantes extends Component
         }
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        if ($id) {
-            Comprobante::where('id', $id)->delete();
-        }
+        $this->selected_id = $id;
+    }
 
-        $this->resetInput();
-        session()->flash('message', 'Comprobante eliminado correctamente.');
+    public function destroy()
+    {
+        if ($this->selected_id) {
+            $record = Comprobante::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Comprobante eliminado correctamente.');
+        }
     }
 }

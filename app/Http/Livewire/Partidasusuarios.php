@@ -103,13 +103,20 @@ class Partidasusuarios extends Component
         }
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        if ($id) {
-            Partidasusuario::where('id', $id)->delete();
-        }
+        $this->selected_id = $id;
+    }
 
-        $this->resetInput();
-        session()->flash('message', 'Partida - Usuario eliminado correctamente.');
+    public function destroy()
+    {
+        if ($this->selected_id) {
+            $record = Partidasusuario::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Partida - Usuario eliminado correctamente.');
+        }
     }
 }
