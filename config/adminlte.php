@@ -325,11 +325,9 @@ return [
         ],
         [
             'text'        => 'Egresos',
-            'url'         => '/Egresos',
+            'url'         => '/egresos',
             'icon'        => 'fa-solid fa-arrow-trend-down',
         ],
-
-
         [
             'text'        => 'Equipos',
             'url'         => '/equipos',
