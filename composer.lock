@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "380cf5193e1d560a2d57e696f69db9f9",
+    "content-hash": "9899cd61716c13c3bdefdbe173157dbb",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1436,16 +1436,16 @@
         },
         {
             "name": "jeroennoten/laravel-adminlte",
-            "version": "v3.9.3",
+            "version": "v3.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
-                "reference": "a7d16fc2190e32d51f428ff6a9589de949fa50e7"
+                "reference": "479197945506d691d9b73c56dc365d3f5e7a9a9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/a7d16fc2190e32d51f428ff6a9589de949fa50e7",
-                "reference": "a7d16fc2190e32d51f428ff6a9589de949fa50e7",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/479197945506d691d9b73c56dc365d3f5e7a9a9b",
+                "reference": "479197945506d691d9b73c56dc365d3f5e7a9a9b",
                 "shasum": ""
             },
             "require": {
@@ -1490,9 +1490,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jeroennoten/Laravel-AdminLTE/issues",
-                "source": "https://github.com/jeroennoten/Laravel-AdminLTE/tree/v3.9.3"
+                "source": "https://github.com/jeroennoten/Laravel-AdminLTE/tree/v3.9.4"
             },
-            "time": "2023-12-19T18:26:27+00:00"
+            "time": "2024-01-19T14:51:27+00:00"
         },
         {
             "name": "laravel/fortify",
