@@ -12,7 +12,7 @@ class Juegos extends Component
 	use WithPagination, WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $nombre, $modalidad, $costo, $ruta_foto_principal, $ruta_foto_portada, $descripcion;
+	public $selected_id, $keyWord, $nombre, $modalidad, $costo, $ruta_foto_principal, $ruta_foto_portada, $descripcion, $contadorRegistrosConflictivos = 0, $contadorPartidasConflictivos = 0, $contadorComprobantesConflictivos = 0, $listaPartidasConflictivos = [], $listaComprobantesConflictivos = [], $listaSinRegistro = [], $id_juego_nuevo, $selected_juegos_partidas = [], $selected_juegos_comprobantes = [];
 
 	protected $rules = [
 		'nombre' => 'required|max:100',
@@ -80,6 +80,16 @@ class Juegos extends Component
 		$this->ruta_foto_principal = null;
 		$this->ruta_foto_portada = null;
 		$this->descripcion = null;
+		$this->selected_id = null;
+		$this->contadorRegistrosConflictivos = 0;
+		$this->contadorPartidasConflictivos = 0;
+		$this->contadorComprobantesConflictivos = 0;
+		$this->listaPartidasConflictivos = [];
+		$this->listaComprobantesConflictivos = [];
+		$this->listaSinRegistro = [];
+		$this->id_juego_nuevo = null;
+		$this->selected_juegos_partidas = [];
+		$this->selected_juegos_comprobantes = [];
 	}
 
 	public function store()
@@ -135,12 +145,39 @@ class Juegos extends Component
 
 	public function delete($id)
     {
+		$record = Juego::find($id);
         $this->selected_id = $id;
+		$this->nombre = $record->nombre;
+		$this->modalidad = $record->modalidad;
+		$this->contadorPartidasConflictivos = $record->partidas->count();
+		$this->contadorComprobantesConflictivos = $record->comprobantes->count();
+		$this->contadorRegistrosConflictivos = $this->contadorPartidasConflictivos + $this->contadorComprobantesConflictivos;
+		$this->listaPartidasConflictivos = $record->partidas;
+		$this->listaComprobantesConflictivos = $record->comprobantes;
+		$this->selected_juegos_partidas = array_fill(0, $this->contadorPartidasConflictivos, '');
+		$this->selected_juegos_comprobantes = array_fill(0, $this->contadorComprobantesConflictivos, '');
+		$this->listaSinRegistro = Juego::where('id', '!=', $id)->get();
     }
 
 	public function destroy()
 	{
 		if ($this->selected_id) {
+			if ($this->contadorComprobantesConflictivos) {
+				foreach ($this->listaComprobantesConflictivos as $index => $comprobante) {
+					$comprobante->update([
+						'id_juegos' => $this->selected_juegos_comprobantes[$index]
+					]);
+				}
+			}
+
+			if ($this->contadorPartidasConflictivos) {
+				foreach ($this->listaPartidasConflictivos as $index => $partida) {
+					$partida->update([
+						'id_juegos' => $this->selected_juegos_partidas[$index]
+					]);
+				}
+			}
+
             $record = Juego::find($this->selected_id);
             $record->delete();
             
