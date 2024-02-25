@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Equipointegrante;
-use Livewire\WithFileUploads;
 use App\Models\Usuario;
 use App\Models\Equipo;
 

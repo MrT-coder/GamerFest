@@ -68,7 +68,11 @@
 <!-- Delete Modal -->
 <div wire:ignore.self class="modal fade" id="destroyDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="destroyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog
+    @if ($contadorRegistrosConflictivos > 0)
+        modal-xl
+    @endif
+    modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="destroyDataModalLabel">Eliminar Rol</h5>
@@ -82,7 +86,6 @@
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
-
                     @if ($contadorRegistrosConflictivos > 0)
                     <div class="alert bg-warning-subtle border-warning" role="alert">
                         <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
@@ -131,7 +134,6 @@
                     </div>
                     @endif
                 </form>
-
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
