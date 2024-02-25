@@ -13,7 +13,7 @@ class Partidas extends Component
 	use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $id_juegos, $id_usuarios, $salon, $fecha, $hora_inicio, $hora_fin, $estado;
+	public $selected_id, $keyWord, $id_juegos, $id_usuarios, $salon, $fecha, $hora_inicio, $hora_fin, $estado, $nombre_juego, $nombre_usuario, $apellido_usuario, $contadorRegistrosConflictivos = 0, $listaPartidasUsuariosConflictivos = [], $listaSinRegistro = [], $id_partida_nuevo, $selected_partidas_partidasusuarios = [];
 
 	protected $rules = [
 		'id_juegos' => 'required',
@@ -80,6 +80,12 @@ class Partidas extends Component
 		$this->hora_inicio = null;
 		$this->hora_fin = null;
 		$this->estado = null;
+		$this->selected_id = null;
+		$this->contadorRegistrosConflictivos = 0;
+		$this->listaPartidasUsuariosConflictivos = [];
+		$this->listaSinRegistro = [];
+		$this->id_partida_nuevo = null;
+		$this->selected_partidas_partidasusuarios = [];
 	}
 
 	public function store()
@@ -138,12 +144,29 @@ class Partidas extends Component
 
 	public function delete($id)
     {
+		$record = Partida::find($id);
         $this->selected_id = $id;
+		$this->nombre_juego = $record->juego->nombre;
+		$this->nombre_usuario = $record->usuario->nombre;
+		$this->apellido_usuario = $record->usuario->apellido;
+		$this->salon = $record->salon;
+		$this->contadorRegistrosConflictivos = $record->partidasusuarios->count();
+		$this->listaPartidasUsuariosConflictivos = $record->partidasusuarios;
+		$this->selected_partidas_partidasusuarios = array_fill(0, $this->contadorRegistrosConflictivos, '');
+		$this->listaSinRegistro = Partida::where('id', '!=', $id)->get();
     }
 
 	public function destroy()
 	{
 		if ($this->selected_id) {
+			if ($this->contadorRegistrosConflictivos > 0) {
+				foreach ($this->listaPartidasUsuariosConflictivos as $index => $partidausuario) {
+					$partidausuario->update([
+						'id_partidas' => $this->selected_partidas_partidasusuarios[$index]
+					]);
+				}
+			}
+
             $record = Partida::find($this->selected_id);
             $record->delete();
             

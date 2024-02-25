@@ -209,7 +209,11 @@
 <!-- Delete Modal -->
 <div wire:ignore.self class="modal fade" id="destroyDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="destroyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog
+    @if ($contadorRegistrosConflictivos > 0)
+        modal-xl
+    @endif
+    modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="destroyModalLabel">Eliminar Juego</h5>
@@ -223,13 +227,122 @@
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
+                    @if ($contadorRegistrosConflictivos > 0)
+                    <div class="alert bg-warning-subtle border-warning" role="alert">
+                        <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
+                        <p>El juego que intenta eliminar está asignado a
+                            <strong>{{ $contadorRegistrosConflictivos }}</strong>
+                            registros. Por favor seleccione un juego para reasignar a los registros afectados.
+                        </p>
+                        <p class="mb-0"><strong>Juego a eliminar:</strong> {{ $nombre }} - {{ $modalidad }}</p>
+                    </div>
+
+                    @if ($contadorPartidasConflictivos > 0)
+                    <h4 class="text-center fw-bold">Lista de Partidas con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <td>Usuario</td>
+                                    <td>Salón</dh>
+                                    <td>Fecha</td>
+                                    <td>Juego</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaPartidasConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->usuario->nombre }} {{
+                                        $registro->usuario->apellido }}</td>
+                                    <td class="align-middle">{{ $registro->salon }}</td>
+                                    <td class="align-middle">{{ $registro->fecha }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_juegos_partidas.{{ $loop->index }}"
+                                            class="form-control" id="id_juego_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un juego</option>
+                                            @foreach ($listaSinRegistro as $juego)
+                                            <option value="{{ $juego->id }}">{{ $juego->nombre }} - {{ $juego->modalidad
+                                                }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select class="form-control" id="id_juego_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros juegos disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+
+                    @if ($contadorComprobantesConflictivos > 0)
+                    <h4 class="text-center fw-bold">Lista de Comprobantes con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <td>Usuario</td>
+                                    <td>Estado Pago</td>
+                                    <td>Juego</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaComprobantesConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->usuario->nombre }} {{
+                                        $registro->usuario->apellido }}</td>
+                                    <td class="align-middle">{{ $registro->estado_pago }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_juegos_comprobantes.{{ $loop->index }}"
+                                            class="form-control" id="id_juego_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un juego</option>
+                                            @foreach ($listaSinRegistro as $juego)
+                                            <option value="{{ $juego->id }}">{{ $juego->nombre }} - {{ $juego->modalidad
+                                                }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select class="form-control" id="id_juego_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros juegos disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+                    @endif
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                    @if ($contadorRegistrosConflictivos > 0)
+                    @if (count(array_filter($selected_juegos_partidas)) +
+                    count(array_filter($selected_juegos_comprobantes)) == $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
+                    @else
+                    <button type="button" class="btn btn-danger" disabled>
+                        <i class="fa-solid fa-trash"></i> Conflictos existentes
+                    </button>
+                    @endif
+                    @else
+                    <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
+                    @endif
                 </div>
             </div>
         </div>

@@ -295,7 +295,11 @@
 <!-- Delete Modal -->
 <div wire:ignore.self class="modal fade" id="destroyDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="destroyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog
+    @if ($contadorRegistrosConflictivos > 0)
+        modal-xl
+    @endif
+    modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="destroyModalLabel">Eliminar Usuario</h5>
@@ -309,13 +313,202 @@
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
+                    @if ($contadorRegistrosConflictivos > 0)
+                    <div class="alert bg-warning-subtle border-warning" role="alert">
+                        <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
+                        <p>El usuario que intenta eliminar está asignado a
+                            <strong>{{ $contadorRegistrosConflictivos }}</strong>
+                            registros. Por favor seleccione un usuario para reasignar a los registros afectados.
+                        </p>
+                        <p class="mb-0"><strong>Usuario a eliminar:</strong> {{ $nombre }} {{ $apellido }}</p>
+                    </div>
+
+                    @if ($contadorPartidasUsuariosConflictivos > 0)
+                    <h4 class="text-center fw-bold">Lista de Partidas - Usuarios con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <td>Partida</dh>
+                                    <td>Juego</td>
+                                    <td>Usuario</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaPartidasUsuariosConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->partida }}</td>
+                                    <td class="align-middle">{{ $registro->juego->nombre }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_usuarios_partidasusuarios.{{ $loop->index }}"
+                                            class="form-control" id="id_usuario_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un usuario</option>
+                                            @foreach ($listaSinRegistro as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{
+                                                $usuario->apellido }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select class="form-control" id="id_usuario_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros usuarios disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+
+                    @if ($contadorPartidasConflictivos > 0)
+                    <h4 class="text-center fw-bold">Lista de Partidas con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <td>Juego</td>
+                                    <td>Salon</td>
+                                    <td>Fecha</td>
+                                    <td>Usuario</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaPartidasConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->juego->nombre }}</td>
+                                    <td class="align-middle">{{ $registro->salon }}</td>
+                                    <td class="align-middle">{{ $registro->fecha }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_usuarios_partidas.{{ $loop->index }}"
+                                            class="form-control" id="id_usuario_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un usuario</option>
+                                            @foreach ($listaSinRegistro as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{
+                                                $usuario->apellido }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select class="form-control" id="id_usuario_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros usuarios disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+
+                    @if ($contadorComprobantesConflictivos > 0)
+                    <h4 class="text-center fw-bold">Lista de Comprobantes con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <td>Juego</td>
+                                    <td>Estado Pago</td>
+                                    <td>Usuario</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaComprobantesConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->juego->nombre }}</td>
+                                    <td class="align-middle">{{ $registro->estado_pago }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_usuarios_comprobantes.{{ $loop->index }}"
+                                            class="form-control" id="id_usuario_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un usuario</option>
+                                            @foreach ($listaSinRegistro as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{
+                                                $usuario->apellido }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select class="form-control" id="id_usuario_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros usuarios disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+
+                    @if ($contadorEquiposIntegrantesConflictivos > 0)
+                    <h4 class="text-center fw-bold">Lista de Equipos - Integrantes con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <td>Equipo</td>
+                                    <td>Usuario</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaEquiposIntegrantesConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->equipo->nombre_equ }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_usuarios_equiposintegrantes.{{ $loop->index }}"
+                                            class="form-control" id="id_usuario_nuevo_{{ $loop->index }}">
+                                            <option value="">Selecciona un usuario</option>
+                                            @foreach ($listaSinRegistro as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }} {{
+                                                $usuario->apellido }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select class="form-control" id="id_usuario_nuevo_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otros usuarios disponibles.</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+                    @endif
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                    @if ($contadorRegistrosConflictivos > 0)
+                    @if (count(array_filter($selected_usuarios_partidasusuarios)) +
+                    count(array_filter($selected_usuarios_partidas)) +
+                    count(array_filter($selected_usuarios_comprobantes)) +
+                    count(array_filter($selected_usuarios_equiposintegrantes)) == $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
+                    @else
+                    <button type="button" class="btn btn-danger" disabled>
+                        <i class="fa-solid fa-trash"></i> Conflictos existentes
+                    </button>
+                    @endif
+                    @else
+                    <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
+                    @endif
                 </div>
             </div>
         </div>

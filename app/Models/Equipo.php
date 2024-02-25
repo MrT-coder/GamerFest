@@ -23,4 +23,11 @@ class Equipo extends Model
         return $this->hasMany('App\Models\Equipointegrante', 'id_equ', 'id');
     }
     
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuarios');
+    }
 }

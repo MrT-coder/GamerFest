@@ -242,7 +242,11 @@
 <!-- Delete Modal -->
 <div wire:ignore.self class="modal fade" id="destroyDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="destroyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog
+    @if ($contadorRegistrosConflictivos > 0)
+        modal-xl
+    @endif
+    modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="destroyModalLabel">Eliminar Partida</h5>
@@ -256,13 +260,77 @@
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
+                    @if ($contadorRegistrosConflictivos > 0)
+                    <div class="alert bg-warning-subtle border-warning" role="alert">
+                        <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
+                        <p>La partida que intenta eliminar está asignado a
+                            <strong>{{ $contadorRegistrosConflictivos }}</strong>
+                            registros. Por favor seleccione una partida para reasignar a los registros afectados.
+                        </p>
+                        <p class="mb-0"><strong>Partida a eliminar:</strong> {{ $nombre_juego }} - {{ $nombre_usuario }}
+                            {{ $apellido_usuario }} - Salón {{ $salon }}</p>
+                    </div>
+                    <h4 class="text-center fw-bold">Lista de Partidas - Usuarios con conflictos</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-bordered table-striped">
+                            <thead class="thead text-center">
+                                <tr>
+                                    <th class="col-1">#</th>
+                                    <th>Jugadores</th>
+                                    <th>Gana</th>
+                                    <th>Partida</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listaPartidasUsuariosConflictivos as $registro)
+                                <tr>
+                                    <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
+                                    <td class="align-middle">{{ $registro->usuario->nombre }} {{ $registro->usuario->apellido }}</td>
+                                    <td class="align-middle">{{ $registro->gana }}</td>
+                                    <td class="align-middle">
+                                        @if ($listaSinRegistro->count())
+                                        <select wire:model="selected_partidas_partidasusuarios.{{ $loop->index }}"
+                                            class="form-control" id="id_partida_nueva_{{ $loop->index }}">
+                                            <option value="">Seleccione una partida</option>
+                                            @foreach ($listaSinRegistro as $partida)
+                                            <option value="{{ $partida->id }}">{{ $partida->juego->nombre }} - {{
+                                                $partida->usuario->nombre }} {{ $partida->usuario->apellido }} - Salón {{
+                                                $partida->salon }}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        <select wire:model="selected_partidas_partidasusuarios.{{ $loop->index }}"
+                                            class="form-control" id="id_partida_nueva_{{ $loop->index }}" disabled>
+                                            <option value="">No hay otras partidas disponibles</option>
+                                        </select>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                    @if ($contadorRegistrosConflictivos > 0)
+                    @if ($selected_partidas_partidasusuarios && count(array_filter($selected_partidas_partidasusuarios)) ==
+                    $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
+                    @else
+                    <button type="button" class="btn btn-danger" disabled>
+                        <i class="fa-solid fa-trash"></i> Conflictos existentes
+                    </button>
+                    @endif
+                    @else
+                    <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
+                    @endif
                 </div>
             </div>
         </div>
