@@ -11,7 +11,7 @@ class Equipos extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_equ;
+    public $selected_id, $keyWord, $nombre_equ, $contadorRegistrosConflictivos = 0, $listaEquipoIntegrantesConflictivos = [], $listaSinRegistro = [], $id_equipo_nuevo, $selected_equipos_equipointegrantes = [];
 
     protected $rules = [
         'nombre_equ' => 'required|unique:equipos,nombre_equ|min:3|max:100',
@@ -49,6 +49,12 @@ class Equipos extends Component
     private function resetInput()
     {
         $this->nombre_equ = null;
+        $this->selected_id = null;
+        $this->contadorRegistrosConflictivos = 0;
+        $this->listaEquipoIntegrantesConflictivos = [];
+        $this->listaSinRegistro = [];
+        $this->id_equipo_nuevo = null;
+        $this->selected_equipos_equipointegrantes = [];
     }
 
     public function store()
@@ -89,12 +95,26 @@ class Equipos extends Component
 
     public function delete($id)
     {
+        $record = Equipo::find($id);
         $this->selected_id = $id;
+        $this->nombre_equ = $record->nombre_equ;
+        $this->contadorRegistrosConflictivos = $record->equipointegrantes->count();
+        $this->listaEquipoIntegrantesConflictivos = $record->equipointegrantes;
+        $this->selected_equipos_equipointegrantes = array_fill(0, $this->contadorRegistrosConflictivos, '');
+        $this->listaSinRegistro = Equipo::where('id', '!=', $id)->get();
     }
 
     public function destroy()
     {
         if ($this->selected_id) {
+            if ($this->contadorRegistrosConflictivos > 0) {
+                foreach ($this->listaEquipoIntegrantesConflictivos as $index => $equipointegrantes) {
+                    $equipointegrantes->update([
+                        'id_equ' => $this->selected_equipos_equipointegrantes[$index]
+                    ]); 
+                }
+            }
+            
             $record = Equipo::find($this->selected_id);
             $record->delete();
             
