@@ -79,14 +79,14 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="alert bg-danger-subtle border-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading fw-bold">¿Está seguro de eliminar este registro?</h4>
                     <strong>¡Cuidado!</strong> Esta acción no se puede deshacer.
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
                     @if ($contadorRegistrosConflictivos > 0)
-                    <div class="alert bg-warning-subtle border-warning" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
                         <p>El equipo que intenta eliminar está asignado a
                             <strong>{{ $contadorRegistrosConflictivos }}</strong>
