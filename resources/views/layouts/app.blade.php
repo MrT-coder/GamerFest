@@ -11,6 +11,8 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+        <link href="public/css/app.css" rel="stylesheet">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles

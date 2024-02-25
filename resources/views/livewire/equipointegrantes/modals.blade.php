@@ -168,7 +168,7 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="alert bg-red-200 border-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading fw-bold">¿Está seguro de eliminar este registro?</h4>
                     <strong>¡Cuidado!</strong> Esta acción no se puede deshacer.
                 </div>
