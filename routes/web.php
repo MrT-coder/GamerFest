@@ -18,23 +18,15 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
-	
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-	Route::get('/dashboard', [DashboardController::class, 'mostrarDashboard'])->name('dashboard');
-   
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'mostrarDashboard'])->name('dashboard');
+	Route::get('/profile', function () {
+        return view('profile.show');
+    })->name('profile.show');
 });
 Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
-
-Auth::routes(
-	// ['register'=>false,'reset'=>false]
-);
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
