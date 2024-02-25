@@ -315,28 +315,28 @@ return [
         [
             'text'        => 'Roles',
             'url'         => '/rols',
-            'icon'        => 'far  fa-user-circle',
+            'icon'        => 'far fa-user-circle',
         ],
 
         [
             'text'        => 'Ingresos',
             'url'         => '/ingresos',
-            'icon'        => 'fa-solid fa-dollar-sign',
+            'icon'        => 'fa fa-dollar-sign',
         ],
         [
             'text'        => 'Egresos',
             'url'         => '/egresos',
-            'icon'        => 'fa-solid fa-arrow-trend-down',
+            'icon'        => 'fa fa-money-bill',
         ],
         [
             'text'        => 'Equipos',
             'url'         => '/equipos',
-            'icon'        => 'fa-solid fa-people-group',
+            'icon'        => 'fas fa-user-friends',
         ],
         [
             'text'        => 'Integrantes',
             'url'         => '/equipointegrantes',
-            'icon'        => 'fa-solid fa-users',
+            'icon'        => 'fa fa-users',
         ],
         [
             'text'        => 'Usuarios',
@@ -346,22 +346,22 @@ return [
         [
             'text'        => 'Juegos',
             'url'         => '/juegos',
-            'icon'        => 'fa-solid fa-gamepad',
+            'icon'        => 'fa fa-gamepad',
         ],
         [
             'text'        => 'Comprobantes',
             'url'         => '/comprobantes',
-            'icon'        => 'fa-solid fa-receipt',
+            'icon'        => 'fa fa-receipt',
         ],
         [
             'text'        => 'Partidas',
             'url'         => '/partidas',
-            'icon'        => 'fa-solid fa-chess',
+            'icon'        => 'fa fa-chess',
         ],
         [
             'text'        => 'Partidas-Usuarios',
             'url'         => '/partidasusuarios',
-            'icon'        => 'fa-solid fa-arrow-right-arrow-left',
+            'icon'        => 'fa fa-dice',
         ],
         ['header' => 'account_settings'],
         [
