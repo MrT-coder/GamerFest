@@ -101,6 +101,7 @@
                                 <tr>
                                     <th class="col-1">#</th>
                                     <th>Usuario</th>
+                                    <th>Líder</th>
                                     <th>Equipo</th>
                                 </tr>
                             </thead>
@@ -108,7 +109,15 @@
                                 @foreach ($listaEquipoIntegrantesConflictivos as $registro)
                                 <tr>
                                     <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
-                                    <td class="align-middle">{{ $registro->id_usu }}</td>
+                                    <td class="align-middle">{{ $registro->usuario->nombre }} {{
+                                        $registro->usuario->apellido }}</td>
+                                    <td class="align-middle">
+                                        @if ($registro->isLider == 1)
+                                        Líder
+                                        @else
+                                        No es líder
+                                        @endif
+                                    </td>
                                     <td class="align-middle">
                                         @if ($listaSinRegistro->count())
                                         <select wire:model="selected_equipos_equipointegrantes.{{ $loop->index }}"
@@ -135,7 +144,8 @@
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
                         data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
                     @if ($contadorRegistrosConflictivos > 0)
-                    @if ($selected_equipos_equipointegrantes && count(array_filter($selected_equipos_equipointegrantes)) == $contadorRegistrosConflictivos)
+                    @if ($selected_equipos_equipointegrantes && count(array_filter($selected_equipos_equipointegrantes))
+                    == $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i> Eliminar
                     </button>
