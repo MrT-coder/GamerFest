@@ -313,8 +313,7 @@
                 </div>
                 <form>
                     <input type="hidden" wire:model="selected_id">
-                    @if ($contadorPartidasUsuariosConflictivos > 0 || $contadorPartidasConflictivos > 0 ||
-                    $contadorComprobantesConflictivos > 0 || $contadorEquiposIntegrantesConflictivos > 0)
+                    @if ($contadorRegistrosConflictivos > 0)
                     <div class="alert bg-warning-subtle border-warning" role="alert">
                         <h4 class="alert-heading fw-bold">Conflictos existentes</h4>
                         <p>El usuario que intenta eliminar está asignado a
