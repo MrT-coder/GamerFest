@@ -28,6 +28,6 @@ class Equipo extends Model
      */
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'id_usu');
+        return $this->belongsTo(Usuario::class, 'id_usuarios');
     }
 }
