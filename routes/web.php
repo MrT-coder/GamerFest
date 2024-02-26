@@ -42,6 +42,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('usuarios', 'livewire.usuarios.index')->middleware('auth');
 	Route::view('rols', 'livewire.rols.index')->middleware('auth');
 	Route::view('reportes', 'livewire.reportes.index')->middleware('auth');
+	Route::view('generarpartida', 'livewire.generarpartidas.index')->middleware('auth');
 
 	//Mostar Datos Juegos
 	route::get('/',[JuegoController::class,'mostrarJuegos']);
