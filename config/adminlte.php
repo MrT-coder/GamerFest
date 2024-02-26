@@ -359,9 +359,15 @@ return [
             'icon'        => 'fa fa-chess',
         ],
         [
-            'text'        => 'Partidas-Usuarios',
+            'text'        => 'Partidas - Usuarios',
             'url'         => '/partidasusuarios',
             'icon'        => 'fa fa-dice',
+        ],
+        ['header' => 'REPORTES'],
+        [
+            'text' => 'Reportes',
+            'url'  => '#',
+            'icon' => 'fas fa-chart-pie',
         ],
         ['header' => 'account_settings'],
         [
