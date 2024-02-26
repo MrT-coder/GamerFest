@@ -366,7 +366,7 @@ return [
         ['header' => 'REPORTES'],
         [
             'text' => 'Reportes',
-            'url'  => '#',
+            'url'  => '/reportes',
             'icon' => 'fas fa-chart-pie',
         ],
         ['header' => 'account_settings'],
