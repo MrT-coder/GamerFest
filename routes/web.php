@@ -3,7 +3,6 @@
 use App\Models\Juego;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JuegoController;
-use App\Http\Livewire\GenerarPartidas;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +17,15 @@ use App\Http\Livewire\GenerarPartidas;
 
 Route::get('/', function () {
     return view('welcome');
-	
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    //Route::get('/profile',[UsuarioController::class,'profile']);
-    Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'mostrarDashboard'])->name('dashboard');
+	Route::get('/profile', function () {
+        return view('profile.show');
+    })->name('profile.show');
 });
-
-Auth::routes();
-
+Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -45,13 +36,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('partidas', 'livewire.partidas.index')->middleware('auth');
 	Route::view('comprobantes', 'livewire.comprobantes.index')->middleware('auth');
 	Route::view('juegos', 'livewire.juegos.index')->middleware('auth');
-	Route::view('Egresos', 'livewire.Egresos.index')->middleware('auth');
+	Route::view('egresos', 'livewire.egresos.index')->middleware('auth');
 	Route::view('ingresos', 'livewire.ingresos.index')->middleware('auth');
 	Route::view('usuarios', 'livewire.usuarios.index')->middleware('auth');
 	Route::view('rols', 'livewire.rols.index')->middleware('auth');
-	Route::view('ejemplo', 'livewire.ejemplo')->middleware('auth');
-	// ... otras rutas
-	Route::view('generar-partidas', 'livewire.index')->middleware('auth');
+
+	Route::view('reportes', 'livewire.reportes.index')->middleware('auth');
+	Route::view('generarpartida', 'livewire.generarpartidas.index')->middleware('auth');
+>>>>>>> main
 
 	//Mostar Datos Juegos
 	route::get('/',[JuegoController::class,'mostrarJuegos']);

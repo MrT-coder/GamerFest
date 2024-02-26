@@ -11,7 +11,7 @@ class Rols extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_rol;
+    public $selected_id, $keyWord, $nombre_rol, $contadorRegistrosConflictivos = 0, $listaUsuariosConflictivos = [], $listaSinRegistro = [], $id_rol_nuevo, $selected_roles_usuarios = [];
 
     protected $rules = [
         'nombre_rol' => 'required|min:3|max:100|unique:rols,nombre_rol',
@@ -49,6 +49,12 @@ class Rols extends Component
     private function resetInput()
     {
         $this->nombre_rol = null;
+        $this->selected_id = null;
+        $this->contadorRegistrosConflictivos = 0;
+        $this->listaUsuariosConflictivos = [];
+        $this->listaSinRegistro = [];
+        $this->id_rol_nuevo = null;
+        $this->selected_roles_usuarios = [];
     }
 
     public function store()
@@ -87,13 +93,40 @@ class Rols extends Component
         }
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        if ($id) {
-            Rol::where('id', $id)->delete();
-        }
+        $record = Rol::find($id);
+        $this->selected_id = $id;
+        $this->nombre_rol = $record->nombre_rol;
+        $this->contadorRegistrosConflictivos = $record->usuarios->count();
+        // Obtener la lista de usuarios que tienen el rol a eliminar
+        $this->listaUsuariosConflictivos = $record->usuarios;
+        // Inicializar el array selected_roles_usuarios con valores por defecto para cada usuario
+        $this->selected_roles_usuarios = array_fill(0, $this->contadorRegistrosConflictivos, '');
+        // Devolver lista de roles sin el rol a eliminar
+        $this->listaSinRegistro = Rol::where('id', '!=', $id)->get();
+    }
 
-        $this->resetInput();
-        session()->flash('message', 'Rol eliminado correctamente.');
+    public function destroy()
+    {
+        if ($this->selected_id) {
+            // Verificar si hay conflictos
+            if ($this->contadorRegistrosConflictivos > 0) {
+                // Cambiar el rol de los usuarios que tienen el rol a eliminar
+                foreach ($this->listaUsuariosConflictivos as $index => $usuario) {
+                    // Actualizar el rol del usuario
+                    $usuario->update([
+                        'id_rol' => $this->selected_roles_usuarios[$index] // Usar el rol seleccionado para este usuario
+                    ]);
+                }
+            }
+
+            $record = Rol::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Rol eliminado correctamente.');
+        }
     }
 }

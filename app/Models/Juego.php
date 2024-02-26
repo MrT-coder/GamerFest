@@ -31,5 +31,12 @@ class Juego extends Model
         return $this->hasMany('App\Models\Partida', 'id_juegos', 'id');
     }
     
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuarios');
+    }
 
 }

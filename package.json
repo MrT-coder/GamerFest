@@ -5,22 +5,29 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@alpinejs/focus": "^3.10.5",
         "@fortawesome/fontawesome-free": "^6.2.1",
         "@popperjs/core": "^2.11.6",
-        "@tailwindcss/typography": "^0.5.10",
-        "autoprefixer": "^10.4.16",
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.0",
+        "alpinejs": "^3.0.6",
+        "autoprefixer": "^10.4.7",
         "axios": "^1.1.2",
         "bootstrap": "^5.2.3",
         "bootstrap-icons": "^1.10.3",
         "laravel-vite-plugin": "^0.7.2",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
+        "postcss": "^8.4.14",
+        "prettier": "^3.2.4",
+        "prettier-plugin-tailwindcss": "^0.5.11",
         "sass": "^1.56.1",
-        "tailwindcss": "^3.0.0",
+        "tailwindcss": "^3.1.0",
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@shufo/prettier-plugin-blade": "^1.13.4",
         "@tailwindcss/forms": "^0.5.7",
+        "chart.js": "^4.4.1",
         "tailwindcss": "^3.4.1"
     }
 }
