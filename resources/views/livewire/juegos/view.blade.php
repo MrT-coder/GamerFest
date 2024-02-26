@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <h4><i class="fa-solid fa-gamepad"></i>
+                            <h4><i class="fa fa-gamepad"></i>
                                 Lista de Juegos</h4>
                         </div>
                         @if (session()->has('message'))

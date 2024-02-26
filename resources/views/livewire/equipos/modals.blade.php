@@ -23,9 +23,9 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
+                        class="fas fa-times"></i> Cancelar</button>
                 <button type="button" wire:click.prevent="store()" class="btn btn-success"><i
-                        class="fa-solid fa-plus"></i> Crear</button>
+                        class="fa fa-check"></i> Crear</button>
             </div>
         </div>
     </div>
@@ -56,9 +56,9 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
+                        class="fas fa-times"></i> Cancelar</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
-                        class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                        class="fas fa-pen"></i> Actualizar</button>
             </div>
         </div>
     </div>
@@ -142,21 +142,21 @@
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                        data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                        data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                     @if ($contadorRegistrosConflictivos > 0)
                     @if ($selected_equipos_equipointegrantes && count(array_filter($selected_equipos_equipointegrantes))
                     == $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Eliminar
+                        <i class="fa fa-trash"></i> Eliminar
                     </button>
                     @else
-                    <button type="button" class="btn btn-danger" disabled>
-                        <i class="fa-solid fa-trash"></i> Conflictos existentes
+                    <button type="button" class="btn btn-warning" disabled>
+                        <i class="fas fa-exclamation-triangle"></i> Conflictos existentes
                     </button>
                     @endif
                     @else
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Eliminar
+                        <i class="fa fa-trash"></i> Eliminar
                     </button>
                     @endif
                 </div>
