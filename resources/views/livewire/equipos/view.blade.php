@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <h4><i class="fa-solid fa-people-group"></i>
+                            <h4><i class="fas fa-user-friends"></i>
                                 Lista de Equipos</h4>
                         </div>
                         @if (session()->has('message'))

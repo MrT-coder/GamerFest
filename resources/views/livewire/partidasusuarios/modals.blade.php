@@ -51,22 +51,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="gana">Resultado</label>
-                            <input wire:model="gana" type="text" class="form-control" id="gana" placeholder="Gana">
-                            @error('gana')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="gana">Resultado</label>
+                        <input wire:model="gana" type="text" class="form-control" id="gana" placeholder="Gana">
+                        @error('gana')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-success"><i
-                        class="fa-solid fa-plus"></i> Crear</button>
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success"><i class="fa fa-check"></i>
+                    Crear</button>
             </div>
         </div>
     </div>
@@ -126,22 +124,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="gana">Resultado</label>
-                            <input wire:model="gana" type="text" class="form-control" id="gana" placeholder="Gana">
-                            @error('gana')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="gana">Resultado</label>
+                        <input wire:model="gana" type="text" class="form-control" id="gana" placeholder="Gana">
+                        @error('gana')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
-                        class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i class="fas fa-pen"></i>
+                    Actualizar</button>
             </div>
         </div>
     </div>
@@ -167,9 +163,9 @@
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                        data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                        data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Eliminar
+                        <i class="fa fa-trash"></i> Eliminar
                     </button>
                 </div>
             </div>

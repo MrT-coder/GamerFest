@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <h4><i class="fa-regular fa-dollar-sign text-success"></i>
+                            <h4><i class="fa fa-dollar-sign"></i>
                                 Lista de Ingresos</h4>
                         </div>
                         @if (session()->has('message'))

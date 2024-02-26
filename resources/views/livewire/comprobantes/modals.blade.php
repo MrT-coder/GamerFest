@@ -54,41 +54,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="estado_pago">Estado del pago</label>
-                            <select wire:model="estado_pago" class="form-control">
-                                <option value="">Seleccione un estado</option>
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Pagado">Pagado</option>
-                            </select>
-                            @error('estado_pago')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="estado_pago">Estado del pago</label>
+                        <select wire:model="estado_pago" class="form-control">
+                            <option value="">Seleccione un estado</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Pagado">Pagado</option>
+                        </select>
+                        @error('estado_pago')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="ruta_comprobante">Subir comprobante</label>
-                            <input wire:model="ruta_comprobante" type="file" class="form-control" id="ruta_comprobante">
-                            @error('ruta_comprobante')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                            <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_comprobante">
-                                <button class="btn btn-outline-dark" disabled>
-                                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                    <span role="status">Cargando...</span>
-                                </button>
-                            </div>
+                    <div class="form-group">
+                        <label for="ruta_comprobante">Subir comprobante</label>
+                        <input wire:model="ruta_comprobante" type="file" class="form-control" id="ruta_comprobante">
+                        @error('ruta_comprobante')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
+                        <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_comprobante">
+                            <button class="btn btn-outline-dark" disabled>
+                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                <span role="status">Cargando...</span>
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-success"><i
-                        class="fa-solid fa-plus"></i> Crear</button>
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success"><i class="fa fa-check"></i>
+                    Crear</button>
             </div>
         </div>
     </div>
@@ -151,42 +147,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="estado_pago">Estado de pago</label>
-                            <select wire:model="estado_pago" class="form-control">
-                                <option value="">Seleccione un estado</option>
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Pagado">Pagado</option>
-                            </select>
-                            @error('estado_pago')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="estado_pago">Estado de pago</label>
+                        <select wire:model="estado_pago" class="form-control">
+                            <option value="">Seleccione un estado</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Pagado">Pagado</option>
+                        </select>
+                        @error('estado_pago')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="ruta_comprobante">Subir comprobante</label>
-                            <input wire:model="ruta_comprobante" type="file" class="form-control" id="ruta_comprobante"
-                                placeholder="Ruta Comprobante">
-                            @error('ruta_comprobante')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                            <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_comprobante">
-                                <button class="btn btn-outline-dark" disabled>
-                                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                    <span role="status">Cargando...</span>
-                                </button>
-                            </div>
+                    <div class="form-group">
+                        <label for="ruta_comprobante">Subir comprobante</label>
+                        <input wire:model="ruta_comprobante" type="file" class="form-control" id="ruta_comprobante"
+                            placeholder="Ruta Comprobante">
+                        @error('ruta_comprobante')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
+                        <div class="w-100 m-2 text-center" wire:loading wire:target="ruta_comprobante">
+                            <button class="btn btn-outline-dark" disabled>
+                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                <span role="status">Cargando...</span>
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
-                        class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i class="fas fa-pen"></i>
+                    Actualizar</button>
             </div>
         </div>
     </div>
@@ -212,9 +204,9 @@
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                        data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                        data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Eliminar
+                        <i class="fa fa-trash"></i> Eliminar
                     </button>
                 </div>
             </div>

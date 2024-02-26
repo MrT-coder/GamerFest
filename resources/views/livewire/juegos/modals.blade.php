@@ -4,21 +4,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Crear Nuevo Juego</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Crear Nuevo Juego</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form wire:submit.prevent="save">
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input wire:model="nombre" type="text" class="form-control" id="nombre"
-                                placeholder="Fortnite">
-                            @error('nombre')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Fortnite">
+                        @error('nombre')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col">
@@ -45,15 +42,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="descripcion">Descripción</label>
-                            <textarea wire:model="descripcion" type="text" class="form-control" id="descripcion"
-                                placeholder="Descripcion" rows="3"></textarea>
-                            @error('descripcion')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea wire:model="descripcion" type="text" class="form-control" id="descripcion"
+                            placeholder="Descripcion" rows="3"></textarea>
+                        @error('descripcion')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col">
@@ -93,9 +88,8 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-success"><i
-                        class="fa-solid fa-plus"></i>
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success"><i class="fa fa-check"></i>
                     Crear</button>
             </div>
         </div>
@@ -114,16 +108,13 @@
             </div>
             <div class="modal-body">
                 <form wire:submit.prevent="save">
-                    <div class="row">
-                        <input type="hidden" wire:model="selected_id">
-                        <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input wire:model="nombre" type="text" class="form-control" id="nombre"
-                                placeholder="Fortnite">
-                            @error('nombre')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <input type="hidden" wire:model="selected_id">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Fortnite">
+                        @error('nombre')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col">
@@ -150,15 +141,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="descripcion">Descripción</label>
-                            <textarea wire:model="descripcion" type="text" class="form-control" id="descripcion"
-                                placeholder="Descripcion" rows="3"></textarea>
-                            @error('descripcion')
-                            <span class="error text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea wire:model="descripcion" type="text" class="form-control" id="descripcion"
+                            placeholder="Descripcion" rows="3"></textarea>
+                        @error('descripcion')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col">
@@ -198,9 +187,9 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                        class="fa-solid fa-xmark"></i> Cancelar</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i
-                        class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-warning"><i class="fas fa-pen"></i>
+                    Actualizar</button>
             </div>
         </div>
     </div>
@@ -326,21 +315,21 @@
                 </form>
                 <div class="modal-footer justify-content-between">
                     <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary"
-                        data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                        data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                     @if ($contadorRegistrosConflictivos > 0)
                     @if (count(array_filter($selected_juegos_partidas)) +
                     count(array_filter($selected_juegos_comprobantes)) == $contadorRegistrosConflictivos)
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Eliminar
+                        <i class="fa fa-trash"></i> Eliminar
                     </button>
                     @else
-                    <button type="button" class="btn btn-danger" disabled>
-                        <i class="fa-solid fa-trash"></i> Conflictos existentes
+                    <button type="button" class="btn btn-warning" disabled>
+                        <i class="fas fa-exclamation-triangle"></i> Conflictos existentes
                     </button>
                     @endif
                     @else
                     <button type="button" wire:click.prevent="destroy()" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Eliminar
+                        <i class="fa fa-trash"></i> Eliminar
                     </button>
                     @endif
                 </div>

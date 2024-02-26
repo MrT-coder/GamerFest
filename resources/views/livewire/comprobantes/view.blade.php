@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <h4><i class="fa-solid fa-receipt"></i>
+                            <h4><i class="fa fa-receipt"></i>
                                 Lista de Comprobantes</h4>
                         </div>
                         @if (session()->has('message'))
