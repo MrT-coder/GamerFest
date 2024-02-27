@@ -24,30 +24,32 @@
                         </div>
                     </div>
                     <div class="table-responsive">
+
                         <div class="form-group">
                             <label for="gameSelect">Seleccionar Juego:</label>
-                            <select class="form-control" id="gameSelect">
-                                <!-- Aquí puedes agregar las opciones del combo box -->
-                                <option value="juego1">Juego 1</option>
-                                <option value="juego2">Juego 2</option>
-                                <!-- Agrega más opciones según sea necesario -->
+                            <select class="form-control" id="gameSelect" name="gameSelect">
+                                @foreach($juegos as $juego)
+                                    <option value="{{ $juego->id }}">{{ $juego->nombre }}</option>
+                                @endforeach
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="supervisorSelect">Seleccionar Supervisor:</label>
-                            <select class="form-control" id="supervisorSelect">
-                                <!-- Aquí puedes agregar las opciones del combo box -->
-                                <option value="supervisor1">Supervisor 1</option>
-                                <option value="supervisor2">Supervisor 2</option>
-                                <!-- Agrega más opciones según sea necesario -->
+                            <select class="form-control" id="supervisorSelect" wire:model="selectedSupervisor">
+                                <option value="">Seleccionar Supervisor</option>
+                                @foreach($supervisores as $supervisor)
+                                    <option value="{{ $supervisor->id }}">{{ $supervisor->nombre }} {{ $supervisor->apellido }}</option>
+                                @endforeach
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="startTime">Hora de inicio:</label>
                             <input type="time" class="form-control" id="startTime">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" id="sortearEncuentros">Sortear Encuentros</button>
+                            <button class="btn btn-primary" wire:click="asignarJugadoresAPartidas">Sortear Encuentros</button>
                         </div>
                     </div>
                 </div>
