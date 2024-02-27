@@ -48,9 +48,14 @@
                             <label for="startTime">Hora de inicio:</label>
                             <input type="time" class="form-control" id="startTime">
                         </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" wire:click="asignarJugadoresAPartidas">Sortear Encuentros</button>
-                        </div>
+                        <button wire:click="asignarJugadoresAPartidas" class="btn btn-primary">Asignar Jugadores a Partidas</button>
+
+                        @if(session()->has('message'))
+                            <div class="alert alert-success mt-3">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>

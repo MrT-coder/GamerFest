@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use App\Models\Rol;
 use App\Models\Partida;
 use App\Models\Partidasusuario;
+use Carbon\Carbon; // Importamos Carbon para trabajar con fechas y horas
 
 class Generarpartidas extends Component
 {
@@ -41,50 +42,46 @@ class Generarpartidas extends Component
 
     public function asignarJugadoresAPartidas()
     {
-        // Obtener todos los usuarios de tipo 'Jugador'
+        // Obtener los jugadores
         $rolJugador = Rol::where('nombre_rol', 'Jugador')->first();
         $jugadores = Usuario::where('id_rol', $rolJugador->id)->get();
 
-        // Obtener todas las partidas
-        $partidas = Partida::all();
+        // Obtener el supervisor seleccionado
+        $supervisor = Usuario::find($this->selectedSupervisor);
 
-        // Contador para llevar el control de jugadores asignados
-        $contadorJugadores = 0;
+        // Obtener la fecha de hoy
+        $fecha = Carbon::today();
 
-        // Iterar sobre las partidas y asignar jugadores
-        foreach ($partidas as $partida) {
-            // Verificar si la partida ya tiene el máximo de jugadores asignados
-            if ($contadorJugadores >= 2) {
-                break; // Salir del bucle si ya se asignaron 2 jugadores
-            }
+        // Calcular la hora inicial y final de la primera partida
+        $horaInicio = Carbon::createFromTime(9, 0);
+        $horaFin = $horaInicio->copy()->addMinutes(15);
 
-            // Verificar si la partida ya tiene 2 jugadores asignados
-            if ($partida->partidasusuarios->count() >= 2) {
-                continue; // Pasar a la siguiente partida si ya tiene 2 jugadores asignados
-            }
+        // Iterar sobre los jugadores
+        foreach ($jugadores as $jugador) {
+            // Crear la partida
+            $partida = Partida::create([
+                'id_juegos' => $this->juegos->first()->id, // Usamos el primer juego por defecto
+                'id_usuarios' => $supervisor->id,
+                'salon' => 5, // Salón por defecto
+                'fecha' => $fecha,
+                'hora_inicio' => $horaInicio,
+                'hora_fin' => $horaFin,
+                'estado' => 'sin jugar'
+            ]);
 
-            // Iterar sobre los jugadores y asignarlos a la partida
-            foreach ($jugadores as $jugador) {
-                // Verificar si el jugador ya está asignado a alguna partida
-                if ($partida->partidasusuarios->where('id_usuarios', $jugador->id)->count() > 0) {
-                    continue; // Pasar al siguiente jugador si ya está asignado a la partida
-                }
+            // Asignar al jugador a la partida
+            Partidasusuario::create([
+                'id_partidas' => $partida->id,
+                'id_usuarios' => $jugador->id,
+                'gana' => 'sin jugar'
+            ]);
 
-                // Asignar al jugador a la partida
-                Partidasusuario::create([
-                    'id_partidas' => $partida->id,
-                    'id_usuarios' => $jugador->id,
-                ]);
-
-                $contadorJugadores++; // Incrementar el contador de jugadores asignados
-
-                if ($contadorJugadores >= 2) {
-                    break; // Salir del bucle si ya se asignaron 2 jugadores
-                }
-            }
+            // Actualizar las horas para la próxima partida
+            $horaInicio = $horaFin->copy();
+            $horaFin->addMinutes(15);
         }
 
-        // Redireccionar a la página principal o refrescar la vista según sea necesario
-        // Puedes implementar esto según cómo manejes la navegación en tu aplicación
+        // Mostrar mensaje de éxito
+        session()->flash('message', 'Partidas creadas exitosamente.');
     }
 }
