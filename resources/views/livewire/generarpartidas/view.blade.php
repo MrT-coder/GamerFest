@@ -6,8 +6,7 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <h4><i class="fas fa-chart-pie"></i>
-                                Generar Partidas</h4>
+                            <h4><i class="fas fa-chart-pie"></i> Generar Partidas</h4>
                         </div>
                         @if (session()->has('message'))
                         <div wire:poll.5s class="btn btn-info placeholder-wave"
@@ -25,7 +24,31 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-
+                        <div class="form-group">
+                            <label for="gameSelect">Seleccionar Juego:</label>
+                            <select class="form-control" id="gameSelect">
+                                <!-- Aquí puedes agregar las opciones del combo box -->
+                                <option value="juego1">Juego 1</option>
+                                <option value="juego2">Juego 2</option>
+                                <!-- Agrega más opciones según sea necesario -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisorSelect">Seleccionar Supervisor:</label>
+                            <select class="form-control" id="supervisorSelect">
+                                <!-- Aquí puedes agregar las opciones del combo box -->
+                                <option value="supervisor1">Supervisor 1</option>
+                                <option value="supervisor2">Supervisor 2</option>
+                                <!-- Agrega más opciones según sea necesario -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="startTime">Hora de inicio:</label>
+                            <input type="time" class="form-control" id="startTime">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="sortearEncuentros">Sortear Encuentros</button>
+                        </div>
                     </div>
                 </div>
             </div>
