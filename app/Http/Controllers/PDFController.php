@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 
 class PDFController extends Controller
 {
-
-    public $title;
-
-    public function generatePDF()
+    public function generatePDF(Request $request)
     {
-        $pdfContent = View::make('pdf-content')->render();
-        $data = ['title' => $this->title];
-        $pdf = Pdf::loadHTML($pdfContent, $data);
-        return $pdf->download('document.pdf');
+        // Obtener el HTML de la consulta
+        $html = urldecode($request->input('html'));
+        $pdf = Pdf::loadHTML($html);
+        return $pdf->download('Reporte.pdf');
     }
 }
+
+?>

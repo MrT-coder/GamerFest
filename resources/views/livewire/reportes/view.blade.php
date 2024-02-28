@@ -29,7 +29,7 @@
                         Ordenamiento: {{ var_export($orden) }}
                         <br>
                         Columna de ordenamiento: {{ var_export($columna_orden) }}
-
+                        @include('livewire.reportes.modals')
                         <form>
                             <div class="row">
                                 <div class="col">
@@ -49,7 +49,7 @@
                                         @if (isset($tablasConColumnas[$tabla_seleccionada]))
                                         @foreach ($tablasConColumnas[$tabla_seleccionada] as $columna)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $loop->index }}"
+                                            <input class="form-check-input" type="checkbox" value="{{ $columna }}"
                                                 id="{{ $columna }}" wire:model="columnas_seleccionadas"
                                                 wire:click="setColumnaOrdenamiento">
                                             <label class="form-check-label" for="{{ $columna }}">
@@ -65,7 +65,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Ordenar los datos de forma:</label>
-                                        <select class="form-control form-select" name="orden" wire:model="orden">
+                                        <select class="form-control form-select" name="orden" wire:model="orden" wire:click="setResultadosConsultaNull">
                                             <option value="asc" selected>Ascendente</option>
                                             <option value="desc">Descendente</option>
                                         </select>
@@ -74,10 +74,10 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="columna_ordenamiento">Selecciona la columna para ordenar:</label>
-                                        <select class="form-control form-select" wire:model="columna_orden">
+                                        <select class="form-control form-select" wire:model="columna_orden" wire:click="setResultadosConsultaNull">
                                             @foreach ($columnas_seleccionadas as $columna)
                                             <option value="{{ $columna }}">
-                                                {{ $tablasConColumnas[$tabla_seleccionada][$columna] }}
+                                                {{ $columna }}
                                             </option>
                                             @endforeach
                                         </select>

@@ -4,25 +4,15 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
 
 class Reportes extends Component
 {
-    public $tabla_seleccionada, $columnas_seleccionadas = [], $orden = 'asc', $columna_orden, $tabla_seleccionada2, $columnas_seleccionadas2 = [], $columna_orden2;
+    public $tabla_seleccionada, $columnas_seleccionadas = [], $orden = 'asc', $columna_orden, $resultadosConsulta;
 
     public $tablasConColumnas = [
-        'Comprobantes' => ['Usuario', 'Juego', 'Estado de Pago'],
-        'Egresos' => ['Detalle', 'Valor', 'Fecha'],
-        'Integrantes' => ['Usuario', 'Equipo', 'Lider'],
-        'Equipos' => ['Nombre'],
-        'Ingresos' => ['Detalle', 'Valor', 'Fecha'],
-        'Juegos' => ['Nombre', 'Modalidad', 'Costo', 'Descripcion'],
-        'Partidas' => ['Juego', 'Usuario', 'Salon', 'Fecha', 'Hora Inicio', 'Hora Fin', 'Estado'],
-        'Partidas - Usuarios' => ['Partida', 'Usuario', 'Gana'],
-        'Roles' => ['Nombre'],
-        'Usuarios' => ['Rol', 'Nombre', 'Apellido', 'Telefono', 'Universidad', 'Carrera', 'Semestre', 'Email', 'Activo'],
-    ];
-
-    public $tablasConColumnas2 = [
         'comprobantes' => ['id_usuarios', 'id_juegos', 'estado_pago'],
         'egresos' => ['Detalle', 'Valor', 'Fecha'],
         'equipointegrantes' => ['id_usu', 'id_equ', 'isLider'],
@@ -40,6 +30,21 @@ class Reportes extends Component
         $this->columnas_seleccionadas = [];
         $this->orden = 'asc';
         $this->columna_orden = null;
+        $this->resultadosConsulta = null;
+    }
+
+    public function setDefaultsAll()
+    {
+        $this->tabla_seleccionada = null;
+        $this->columnas_seleccionadas = [];
+        $this->orden = 'asc';
+        $this->columna_orden = null;
+        $this->resultadosConsulta = null;
+    }
+
+    public function setResultadosConsultaNull()
+    {
+        $this->resultadosConsulta = null;
     }
 
     public function setColumnaOrdenamiento()
@@ -47,15 +52,30 @@ class Reportes extends Component
         if ($this->columna_orden == null) {
             $this->columna_orden = $this->columnas_seleccionadas[0];
         }
+        $this->setResultadosConsultaNull();
     }
 
     public function getTableModal()
     {
-        $this->columnas_seleccionadas2 = 
-
-        $tabla = DB::table($this->tabla_seleccionada)->select($this->columnas_seleccionadas)->orderBy($this->columna_orden, $this->orden)->get();
+        $this->resultadosConsulta = DB::table($this->tabla_seleccionada)
+            ->orderBy($this->columna_orden, $this->orden)
+            ->get();
     }
 
+    public function generatePDFModalData()
+    {
+        $data = [
+            'resultadosConsulta' => $this->resultadosConsulta = DB::table($this->tabla_seleccionada)
+            ->orderBy($this->columna_orden, $this->orden)
+            ->get(),
+            'columnas_seleccionadas' => $this->columnas_seleccionadas,
+        ];
+
+        $html = View::make('livewire.reportes.pdf_modal_view', $data)->render();
+
+        // Incluir el HTML como un parámetro de consulta en la URL
+        return Redirect::to('/generate-pdf?html=' . urlencode($html));
+    }
 
 
     public function render()
