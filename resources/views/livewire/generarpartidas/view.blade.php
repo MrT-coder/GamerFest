@@ -6,8 +6,7 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <h4><i class="fas fa-chart-pie"></i>
-                                Generar Partidas</h4>
+                            <h4><i class="fas fa-chart-pie"></i> Generar Partidas</h4>
                         </div>
                         @if (session()->has('message'))
                         <div wire:poll.5s class="btn btn-info placeholder-wave"
@@ -25,6 +24,37 @@
                         </div>
                     </div>
                     <div class="table-responsive">
+
+                        <div class="form-group">
+                            <label for="gameSelect">Seleccionar Juego:</label>
+                            <select class="form-control" id="gameSelect" name="gameSelect">
+                                @foreach($juegos as $juego)
+                                    <option value="{{ $juego->id }}">{{ $juego->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="supervisorSelect">Seleccionar Supervisor:</label>
+                            <select class="form-control" id="supervisorSelect" wire:model="selectedSupervisor">
+                                <option value="">Seleccionar Supervisor</option>
+                                @foreach($supervisores as $supervisor)
+                                    <option value="{{ $supervisor->id }}">{{ $supervisor->nombre }} {{ $supervisor->apellido }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startTime">Hora de inicio:</label>
+                            <input type="time" class="form-control" id="startTime">
+                        </div>
+                        <button wire:click="asignarJugadoresAPartidas" class="btn btn-primary">Asignar Jugadores a Partidas</button>
+
+                        @if(session()->has('message'))
+                            <div class="alert alert-success mt-3">
+                                {{ session('message') }}
+                            </div>
+                        @endif
 
                     </div>
                 </div>
