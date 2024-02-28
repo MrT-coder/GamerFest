@@ -22,13 +22,6 @@
                         <p>Generador de reportes. Actualiza todos los parámetros como sea necesario.</p>
                     </div>
                     <div class="parametros">
-                        Tabla seleccionada: {{ var_export($tabla_seleccionada) }}
-                        <br>
-                        Columnas seleccionadas: {{ var_export($columnas_seleccionadas) }}
-                        <br>
-                        Ordenamiento: {{ var_export($orden) }}
-                        <br>
-                        Columna de ordenamiento: {{ var_export($columna_orden) }}
                         @include('livewire.reportes.modals')
                         <form>
                             <div class="row">
@@ -59,40 +52,42 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            @if (isset($columnas_seleccionadas) && count($columnas_seleccionadas) > 0)
-                            <div class="row">
                                 <div class="col">
-                                    <div class="form-group">
-                                        <label>Ordenar los datos de forma:</label>
-                                        <select class="form-control form-select" name="orden" wire:model="orden" wire:click="setResultadosConsultaNull">
-                                            <option value="asc" selected>Ascendente</option>
-                                            <option value="desc">Descendente</option>
-                                        </select>
+                                    <div class="row">
+                                        @if (isset($columnas_seleccionadas) && count($columnas_seleccionadas) > 0)
+                                        <div class="form-group">
+                                            <label>Ordenar los datos de forma:</label>
+                                            <select class="form-control form-select" name="orden" wire:model="orden"
+                                                wire:click="setResultadosConsultaNull">
+                                                <option value="asc" selected>Ascendente</option>
+                                                <option value="desc">Descendente</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label for="columna_ordenamiento">Selecciona la columna para
+                                                ordenar:</label>
+                                            <select class="form-control form-select" wire:model="columna_orden"
+                                                wire:click="setResultadosConsultaNull">
+                                                @foreach ($columnas_seleccionadas as $columna)
+                                                <option value="{{ $columna }}">
+                                                    {{ $columna }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="btn btn-info" wire:click.prevent="getTableModal"
+                                            data-bs-toggle="modal" data-bs-target="#generatePDFModal">
+                                            <i class="fas fa-file-pdf"></i> Previsualizar reporte
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="columna_ordenamiento">Selecciona la columna para ordenar:</label>
-                                        <select class="form-control form-select" wire:model="columna_orden" wire:click="setResultadosConsultaNull">
-                                            @foreach ($columnas_seleccionadas as $columna)
-                                            <option value="{{ $columna }}">
-                                                {{ $columna }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="btn btn-info" wire:click.prevent="getTableModal" data-bs-toggle="modal"
-                                        data-bs-target="#generatePDFModal">
-                                        <i class="fas fa-file-pdf"></i> Previsualizar reporte
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
+
                         </form>
                     </div>
                 </div>

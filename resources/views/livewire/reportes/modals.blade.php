@@ -5,14 +5,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="generatePDFModalLabel">Previsualización del reporte</h5>
-                <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
             </div>
             <div class="modal-body" id="pdf-content">
                 @if (isset($resultadosConsulta) && count($resultadosConsulta) > 0)
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="h3 text-center">Reporte de tabla: {{ $tabla_seleccionada }}</h3>
-                    <img src="{{ asset('img/logoGamerFest.png') }}" class="img-fluid d-block" alt="PDF Icon" style="max-height: 100px">
+                    <img src="{{ asset('img/logoGamerFest.png') }}" class="img-fluid d-block" alt="PDF Icon"
+                        style="max-height: 100px">
                 </div>
                 <br>
                 <table class="table table-sm table-hover table-bordered table-striped">
@@ -43,12 +42,10 @@
                 @endif
             </div>
             <div class="modal-footer justify-content-between">
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"
-                        wire:click="setDefaultsAll"><i class="fas fa-times"></i> Cancelar</button>
-                    <button type="button" wire:click="generatePDFModalData" class="btn btn-success"><i
-                            class="fa fa-check"></i> Generar Reporte</button>
-                </div>
+                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal"
+                    wire:click="setDefaultsAll"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" wire:click="generatePDFModalData" class="btn btn-success"><i
+                        class="fa fa-check"></i> Generar Reporte</button>
             </div>
         </div>
     </div>
