@@ -1,7 +1,7 @@
 {{-- Generate PDF Modal --}}
 <div wire:ignore.self class="modal fade" id="generatePDFModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="generatePDFLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="generatePDFModalLabel">Previsualización del reporte</h5>
@@ -10,12 +10,17 @@
             </div>
             <div class="modal-body" id="pdf-content">
                 @if (isset($resultadosConsulta) && count($resultadosConsulta) > 0)
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="h3 text-center">Reporte de tabla: {{ $tabla_seleccionada }}</h3>
+                    <img src="{{ asset('img/logoGamerFest.png') }}" class="img-fluid d-block" alt="PDF Icon" style="max-height: 100px">
+                </div>
+                <br>
                 <table class="table table-sm table-hover table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th class="col-1">#</th>
+                            <th class="col-1 text-center">#</th>
                             @foreach ($columnas_seleccionadas as $columna)
-                            <th>{{ $columna }}</th>
+                            <th class="text-center">{{ $columna }}</th>
                             @endforeach
                         </tr>
                     </thead>

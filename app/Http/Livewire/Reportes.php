@@ -65,16 +65,16 @@ class Reportes extends Component
     public function generatePDFModalData()
     {
         $data = [
-            'resultadosConsulta' => $this->resultadosConsulta = DB::table($this->tabla_seleccionada)
-            ->orderBy($this->columna_orden, $this->orden)
-            ->get(),
+            'tabla_seleccionada' => $this->tabla_seleccionada,
+            'columna_orden' => $this->columna_orden,
+            'orden' => $this->orden,
             'columnas_seleccionadas' => $this->columnas_seleccionadas,
         ];
 
-        $html = View::make('livewire.reportes.pdf_modal_view', $data)->render();
+        $dataString = base64_encode(json_encode($data));
 
-        // Incluir el HTML como un parámetro de consulta en la URL
-        return Redirect::to('/generate-pdf?html=' . urlencode($html));
+        // Pasar la cadena de texto como parámetro en la URL
+        return Redirect::to('/generate-pdf?data=' . urlencode($dataString));
     }
 
 
