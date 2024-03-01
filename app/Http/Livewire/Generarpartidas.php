@@ -56,8 +56,8 @@ class Generarpartidas extends Component
         $horaInicio = Carbon::createFromTime(9, 0);
         $horaFin = $horaInicio->copy()->addMinutes(15);
 
-        // Iterar sobre los jugadores
-        foreach ($jugadores as $jugador) {
+        // Iterar sobre los jugadores de a pares
+        for ($i = 0; $i < count($jugadores); $i += 2) {
             // Crear la partida
             $partida = Partida::create([
                 'id_juegos' => $this->juegos->first()->id, // Usamos el primer juego por defecto
@@ -69,10 +69,16 @@ class Generarpartidas extends Component
                 'estado' => 'sin jugar'
             ]);
 
-            // Asignar al jugador a la partida
+            // Asignar a los jugadores a la partida
             Partidasusuario::create([
                 'id_partidas' => $partida->id,
-                'id_usuarios' => $jugador->id,
+                'id_usuarios' => $jugadores[$i]->id,
+                'gana' => 'sin jugar'
+            ]);
+
+            Partidasusuario::create([
+                'id_partidas' => $partida->id,
+                'id_usuarios' => $jugadores[$i + 1]->id,
                 'gana' => 'sin jugar'
             ]);
 
@@ -84,4 +90,5 @@ class Generarpartidas extends Component
         // Mostrar mensaje de éxito
         session()->flash('message', 'Partidas creadas exitosamente.');
     }
+
 }
