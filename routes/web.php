@@ -4,6 +4,7 @@ use App\Models\Juego;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JuegoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('usuarios', 'livewire.usuarios.index')->middleware('auth');
 	Route::view('rols', 'livewire.rols.index')->middleware('auth');
 	Route::view('reportes', 'livewire.reportes.index')->middleware('auth');
+	Route::view('generarpartida', 'livewire.generarpartidas.index')->middleware('auth');
 
 	//Mostar Datos Juegos
 	route::get('/',[JuegoController::class,'mostrarJuegos']);
+
+	//Generar Reportes PDF
+	Route::get('/generate-pdf', [PDFController::class, 'generatePDF']);

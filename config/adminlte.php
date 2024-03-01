@@ -363,6 +363,11 @@ return [
             'url'         => '/partidasusuarios',
             'icon'        => 'fa fa-dice',
         ],
+        [
+            'text'        => 'Generar Partida',
+            'url'         => '/generarpartida',
+            'icon'        => 'fas fa-trophy',
+        ],
         ['header' => 'REPORTES'],
         [
             'text' => 'Reportes',
