@@ -1,50 +1,112 @@
 @extends('adminlte::page')
-
 @section('title', 'Dashboard')
-
 @section('content_header')
-<div class="container mt-3">
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card">
+
+<div class="container-fluid">
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <a href="/reportes" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
+</div>
+
+    <div class="row">
+        <div class="col-12 col-lg-4 mb-4">
+            <div class="card bg-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <h3 class="card-title">{{ $totalInscritos }}</h3>
-                    <p class="card-text">Inscritos</p>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Inscritos</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalInscritos }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
+        <div class="col-12 col-lg-4 mb-4">
+            <div class="card bg-warning shadow h-100 py-2">
                 <div class="card-body">
-                    <h3 class="card-title">{{ $saldo }} $</h3>
-                    <p class="card-text">Saldo</p>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Juegos (Total)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalJuegos }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-gamepad fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <canvas id="bar-chart" class="w-100"></canvas>
+        <div class="col-12 col-lg-4 mb-4">
+            <div class="card bg-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Saldo (Total)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ $saldo }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4">
-            <canvas id="line-chart" class="w-100"></canvas>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Ingresos y Egresos</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="line-chart"></canvas>
+                </div>
+            </div>
         </div>
-        <!-- Añadir más filas según sea necesario -->
-        <div class="col-md-6">
-            <canvas id="bar-chart-horizontal" class="w-100"></canvas>
+        <div class="col-12 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Inscritos por Carrera</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="bar-chart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <canvas id="doughnut-chart" class="w-100"></canvas>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Inscritos por Juego</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="bar-chart-horizontal"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Inscritos por Modalidad</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="doughnut-chart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-    <script>
-        var ingresos = @json($datosingresos);
+<script>
+    var ingresos = @json($datosingresos);
         var egresos = @json($datosegresos);
 
         // Unir las listas de fechas y eliminar duplicados, ordenarlas
@@ -81,13 +143,11 @@
             },
             options: {
                 title: {
-                    display: true,
+                    display: false,
                     text: 'INGRESOS Y EGRESOS'
                 }
             }
         });
-
-        
 
         var datos = @json($personasPorCarrera);
 
@@ -106,7 +166,7 @@
                     display: false
                 },
                 title: {
-                    display: true,
+                    display: false,
                     text: 'Inscritos por Carrera'
                 },
                 scales: {
@@ -137,7 +197,7 @@ new Chart(document.getElementById("bar-chart-horizontal"), {
             display: false
         },
         title: {
-            display: true,
+            display: false,
             text: 'Inscritos por Juego'
         },
         scales: {
@@ -155,7 +215,6 @@ new Chart(document.getElementById("bar-chart-horizontal"), {
     }
 });
 
-
 var datos = @json($inscritosPorModalidad);
 
     new Chart(document.getElementById("doughnut-chart"), {
@@ -170,11 +229,11 @@ var datos = @json($inscritosPorModalidad);
         },
         options: {
             title: {
-                display: true,
+                display: false,
                 text: 'Número de personas inscritas por modalidad'
             }
         }
     });
 
-    </script>
+</script>
 @stop

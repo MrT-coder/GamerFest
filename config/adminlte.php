@@ -302,43 +302,41 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'Buscar',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         ['header' => 'CRUDS'],
         [
             'text'        => 'Roles',
             'url'         => '/rols',
-            'icon'        => 'far  fa-user-circle',
+            'icon'        => 'far fa-user-circle',
         ],
 
         [
             'text'        => 'Ingresos',
             'url'         => '/ingresos',
-            'icon'        => 'fa-solid fa-dollar-sign',
+            'icon'        => 'fa fa-dollar-sign',
         ],
         [
             'text'        => 'Egresos',
-            'url'         => '/Egresos',
-            'icon'        => 'fa-solid fa-arrow-trend-down',
+            'url'         => '/egresos',
+            'icon'        => 'fa fa-money-bill',
         ],
-
-
         [
             'text'        => 'Equipos',
             'url'         => '/equipos',
-            'icon'        => 'fa-solid fa-people-group',
+            'icon'        => 'fas fa-user-friends',
         ],
         [
             'text'        => 'Integrantes',
             'url'         => '/equipointegrantes',
-            'icon'        => 'fa-solid fa-users',
+            'icon'        => 'fa fa-users',
         ],
         [
             'text'        => 'Usuarios',
@@ -348,33 +346,39 @@ return [
         [
             'text'        => 'Juegos',
             'url'         => '/juegos',
-            'icon'        => 'fa-solid fa-gamepad',
+            'icon'        => 'fa fa-gamepad',
         ],
         [
             'text'        => 'Comprobantes',
             'url'         => '/comprobantes',
-            'icon'        => 'fa-solid fa-receipt',
+            'icon'        => 'fa fa-receipt',
         ],
         [
             'text'        => 'Partidas',
             'url'         => '/partidas',
-            'icon'        => 'fa-solid fa-chess',
+            'icon'        => 'fa fa-chess',
         ],
         [
-            'text'        => 'Partidas-Usuarios',
+            'text'        => 'Partidas - Usuarios',
             'url'         => '/partidasusuarios',
-            'icon'        => 'fa-solid fa-arrow-right-arrow-left',
+            'icon'        => 'fa fa-dice',
+        ],
+        [
+            'text'        => 'Generar Partida',
+            'url'         => '/generarpartida',
+            'icon'        => 'fas fa-trophy',
+        ],
+        ['header' => 'REPORTES'],
+        [
+            'text' => 'Reportes',
+            'url'  => '/reportes',
+            'icon' => 'fas fa-chart-pie',
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => '/user/profile',
             'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
         ],
         // [
         //     'text'    => 'multilevel',

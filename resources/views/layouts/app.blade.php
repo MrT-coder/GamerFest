@@ -1,38 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ config('app.name', 'GamerFest') }}</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <title>
-        @hasSection('title')
-            @yield('title') |
-        @endif {{ config('app.name', 'Laravel') }}
-    </title>
+        <link href="public/css/app.css" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
+    </head>
+    <body class="font-sans antialiased">
 
-    <!-- Scripts -->
-    @vite(['resources/js/app.js'])
-    @livewireStyles
-</head>
+        @stack('modals')
 
-<body>
-    @livewireScripts
-    <script type="module">
-        const addModal = new bootstrap.Modal('#createDataModal');
-        const editModal = new bootstrap.Modal('#updateDataModal');
-        window.addEventListener('closeModal', () => {
-            addModal.hide();
-            editModal.hide();
-        })
-    </script>
-</body>
-
+        @livewireScripts
+        <script type="module">
+            const addModal = new bootstrap.Modal('#createDataModal');
+            const editModal = new bootstrap.Modal('#updateDataModal');
+            const deleteModal = new bootstrap.Modal('#destroyDataModal');
+            window.addEventListener('closeModal', () => {
+                addModal.hide();
+                editModal.hide();
+                deleteModal.hide();
+            })
+        </script>
+    </body>
 </html>

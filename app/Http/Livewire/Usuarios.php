@@ -12,7 +12,7 @@ class Usuarios extends Component
 	use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $id_rol, $nombre, $apellido, $telefono, $universidad, $carrera, $semestre, $email, $pass, $activo;
+	public $selected_id, $keyWord, $id_rol, $nombre, $apellido, $telefono, $universidad, $carrera, $semestre, $email, $pass, $activo, $contadorRegistrosConflictivos = 0, $contadorPartidasUsuariosConflictivos = 0, $contadorPartidasConflictivos = 0, $contadorComprobantesConflictivos = 0, $contadorEquiposIntegrantesConflictivos = 0, $listaPartidasUsuariosConflictivos = [], $listaPartidasConflictivos = [], $listaComprobantesConflictivos = [], $listaEquiposIntegrantesConflictivos = [], $listaSinRegistro = [], $id_usuario_nuevo, $selected_usuarios_partidas = [], $selected_usuarios_partidasusuarios = [], $selected_usuarios_comprobantes = [], $selected_usuarios_equiposintegrantes = [];
 
 	protected $rules = [
 		'id_rol' => 'required',
@@ -99,6 +99,22 @@ class Usuarios extends Component
 		$this->email = null;
 		$this->pass = null;
 		$this->activo = null;
+		$this->selected_id = null;
+		$this->contadorPartidasUsuariosConflictivos = 0;
+		$this->contadorPartidasConflictivos = 0;
+		$this->contadorComprobantesConflictivos = 0;
+		$this->contadorEquiposIntegrantesConflictivos = 0;
+		$this->contadorRegistrosConflictivos = 0;
+		$this->listaPartidasUsuariosConflictivos = [];
+		$this->listaPartidasConflictivos = [];
+		$this->listaComprobantesConflictivos = [];
+		$this->listaEquiposIntegrantesConflictivos = [];
+		$this->listaSinRegistro = [];
+		$this->id_usuario_nuevo = null;
+		$this->selected_usuarios_partidas = [];
+		$this->selected_usuarios_partidasusuarios = [];
+		$this->selected_usuarios_comprobantes = [];
+		$this->selected_usuarios_equiposintegrantes = [];
 	}
 
 	public function store()
@@ -164,13 +180,69 @@ class Usuarios extends Component
 		}
 	}
 
-	public function destroy($id)
-	{
-		if ($id) {
-			Usuario::where('id', $id)->delete();
-		}
+	public function delete($id)
+    {
+		$record = Usuario::find($id);
+        $this->selected_id = $id;
+		$this->nombre = $record->nombre;
+		$this->apellido = $record->apellido;
+		$this->contadorPartidasUsuariosConflictivos = $record->partidasusuarios->count();
+		$this->contadorPartidasConflictivos = $record->partidas->count();
+		$this->contadorComprobantesConflictivos = $record->comprobantes->count();
+		$this->contadorEquiposIntegrantesConflictivos = $record->equipointegrantes->count();
+		$this->contadorRegistrosConflictivos = $this->contadorPartidasUsuariosConflictivos + $this->contadorPartidasConflictivos + $this->contadorComprobantesConflictivos + $this->contadorEquiposIntegrantesConflictivos;
+		$this->listaPartidasUsuariosConflictivos = $record->partidasusuarios;
+		$this->listaPartidasConflictivos = $record->partidas;
+		$this->listaComprobantesConflictivos = $record->comprobantes;
+		$this->listaEquiposIntegrantesConflictivos = $record->equipointegrantes;
+		$this->selected_usuarios_partidasusuarios = array_fill(0, $this->contadorPartidasUsuariosConflictivos, '');
+		$this->selected_usuarios_partidas = array_fill(0, $this->contadorPartidasConflictivos, '');
+		$this->selected_usuarios_comprobantes = array_fill(0, $this->contadorComprobantesConflictivos, '');
+		$this->selected_usuarios_equiposintegrantes = array_fill(0, $this->contadorEquiposIntegrantesConflictivos, '');
+		$this->listaSinRegistro = Usuario::where('id', '!=', $id)->get();
+    }
 
-		$this->resetInput();
-		session()->flash('message', 'Usuario eliminado correctamente.');
+	public function destroy()
+	{
+		if ($this->selected_id) {
+			if ($this->contadorPartidasUsuariosConflictivos) {
+				foreach ($this->listaPartidasUsuariosConflictivos as $index => $partidausuario) {
+					$partidausuario->update([
+						'id_usuarios' => $this->selected_usuarios_partidasusuarios[$index]
+					]);
+				}
+			}
+
+			if ($this->contadorPartidasConflictivos) {
+				foreach ($this->listaPartidasConflictivos as $index => $partida) {
+					$partida->update([
+						'id_usuarios' => $this->selected_usuarios_partidas[$index]
+					]);
+				}
+			}
+
+			if ($this->contadorComprobantesConflictivos) {
+				foreach ($this->listaComprobantesConflictivos as $index => $comprobante) {
+					$comprobante->update([
+						'id_usuarios' => $this->selected_usuarios_comprobantes[$index]
+					]);
+				}
+			}
+
+			if ($this->contadorEquiposIntegrantesConflictivos) {
+				foreach ($this->listaEquiposIntegrantesConflictivos as $index => $equipointegrante) {
+					$equipointegrante->update([
+						'id_usu' => $this->selected_usuarios_equiposintegrantes[$index]
+					]);
+				}
+			}
+
+            $record = Usuario::find($this->selected_id);
+            $record->delete();
+            
+            $this->resetInput();
+            $this->dispatchBrowserEvent('closeModal');
+            session()->flash('message', 'Usuario eliminado correctamente.');
+        }
 	}
 }

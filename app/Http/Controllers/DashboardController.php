@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Ingreso;
 use App\Models\Egreso;
 use App\Models\Comprobante;
+use App\Models\Juego;
 
 class DashboardController extends Controller
 {
@@ -77,6 +78,15 @@ class DashboardController extends Controller
         return $totalInscritos;
     }
 
+    public function totalJuegos()
+    {
+        // Obtener el número total de juegos
+        $totalJuegos = Juego::count();
+
+        // Pasar el resultado a la vista
+        return $totalJuegos;
+    }
+
     public function saldo()
     {
         // Obtener el total de ingresos
@@ -100,8 +110,9 @@ class DashboardController extends Controller
         $inscritosPorJuego = $this->inscritosPorJuego();
         $inscritosPorModalidad = $this->personasInscritasPorModalidad();
         $totalInscritos = $this->totalInscritos();
+        $totalJuegos = $this->totalJuegos();
         $saldo = $this->saldo();
 
-        return view('dashboard', compact('personasPorCarrera', 'datosingresos', 'datosegresos', 'inscritosPorJuego', 'inscritosPorModalidad', 'totalInscritos', 'saldo'));
+        return view('dashboard', compact('personasPorCarrera', 'datosingresos', 'datosegresos', 'inscritosPorJuego', 'inscritosPorModalidad', 'totalInscritos', 'totalJuegos', 'saldo'));
     }
 }
