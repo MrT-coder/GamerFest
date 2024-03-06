@@ -143,12 +143,6 @@
                         <li>
                             <a class="text-gray-400 hover:text-white" href="#juegos">Juegos</a>
                         </li>
-                        <li>
-                            <a class="text-gray-400 hover:text-white" href="#contador">Cuenta Regresiva</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-400 hover:text-white" href="#sobrenosotros">Sobre Nosotros</a>
-                        </li>
                     </nav>
                 </div>
             </div>

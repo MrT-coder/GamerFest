@@ -6,8 +6,6 @@
         <nav
             class="flex flex-wrap items-center justify-center text-base md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700">
             <a class="mr-5 font-bold hover:text-purple-600 hover:underline" href="#juegos">Juegos</a>
-            <a class="mr-5 font-bold hover:text-purple-600 hover:underline" href="#contador">Cuenta Regresiva</a>
-            <a class="mr-5 font-bold hover:text-purple-600 hover:underline" href="#sobrenosotros">Sobre Nosotros</a>
         </nav>
         <a href="{{ route('login') }}">
             <button
